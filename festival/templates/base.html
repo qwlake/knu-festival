@@ -15,24 +15,13 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav" style="background-color: rgba(44,62,80,0.8) !important; height: 80px;">
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav" style="background-color: gray !important; height: 80px;">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{% url 'index' %}">로고자리</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/foodtruck/">푸드트럭</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/lostboard/">분실물</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/friendboard/">술친구</a>
-            </li>
-        </ul>
+        <a class="navbar-brand" href="{% url 'index' %}">로고자리</a>
+        <div class="navbar-collapse" id="navbarResponsive">
+            <a class="py-3 px-0 px-lg-3 rounded " href="/foodtruck/">푸드트럭</a>
+            <a class="py-3 px-0 px-lg-3 rounded " href="/lostboard/">분실물</a>
+            <a class="py-3 px-0 px-lg-3 rounded" href="/friendboard/">술친구</a>
         </div>
     </div>
     </nav>
@@ -44,13 +33,14 @@
     {% block contents %}
     {% endblock %}
 </div>
-
-<footer class="footer">
-    <h4>E-mail: noreply@knu-festival.com</h4>
-    <p><a href="https://github.com/qwlake/knu-festival">github.com/qwlake/knu-festival</a>
-    <p class="lead mb-0">Copy right 2019, by 
-    <a href="#">멋쟁이 사자처럼</a></p>
-    <small>Copyright &copy; KNU Likelion 7th</small>
+<footer>
+    <div class="footerClass">
+        <h4>E-mail: noreply@knu-festival.com</h4>
+        <p><a href="https://github.com/qwlake/knu-festival">github.com/qwlake/knu-festival</a>
+        <p class="lead mb-0">Copy right 2019, by 
+        <a href="https://likelion.net/">멋쟁이 사자처럼</a></p>
+        <small>Copyright &copy; KNU Likelion 7th</small>
+    </div>
 </footer>
 
 </body>

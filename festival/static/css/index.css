@@ -1,7 +1,21 @@
 html, body {
    height: 100%;
 }
+a{
+   color: white !important;
+}
 
 #content-container {
    min-height: 720px;
+}
+
+.footerClass {
+   position: absolute;
+   display: block;
+   width: 80%;
+   left: 10%;
+   bottom: 0;
+   text-align: center;
+   border-top: 1px solid black;
+   padding-top: 20px;
 }
