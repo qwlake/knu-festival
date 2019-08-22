@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+# 푸드트럭 views.py
+def foodtruck(request):
+    return render(request,'foodtruck.html')

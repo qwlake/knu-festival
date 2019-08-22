@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+# 술친구 views.py
+
+def friendboard(request):
+    return render(request,'friendboard.html')
