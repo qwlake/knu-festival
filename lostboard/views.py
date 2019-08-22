@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+# 분실물 views.py
+
+def lostboard(request):
+    return render(request,'lostboard.html')

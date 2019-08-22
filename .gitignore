@@ -5,6 +5,7 @@
 .static_root/
 migrations/
 !__init__.py
+/myVenv/
 
 ### VisualStudioCode ###
 .vscode/*
