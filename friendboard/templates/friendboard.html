@@ -1,23 +1,42 @@
 {% extends 'base.html' %}
-{% block contents %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="{% static 'css/font.css' %}">
-    </head>
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/friendboard.css' %}">
+{% endblock %}
+
+{% block contents %}
 <body class="friendboardBody">
     <h1 class="title">술친구</h1>
-    <div class="friend">
-        호호허
-    </div>
-    <div class="friend">
-    </div>
-     <div class="friend">
-    </div>
-    <div class="friend">
+    <div class="friends">
+        <div class="friend">
+        <p>술 먹어요 호호</p>
+        <div class="buttons">
+        <button></button>
+        
+        </div>
+        </div>
+        <div class="friend">
+        <p>술 먹어요 호호</p>
+        <div class="buttons">
+        <button></button>
+       
+        </div>
+        </div>
+        <div class="friend">
+        <p>술 먹어요 호호</p>
+        <div class="buttons">
+        <button></button>
+       
+        </div>
+        </div>
+        <div class="friend">
+        <p>술 먹어요 호호</p>
+        <div class="buttons">
+        <button></button>
+        
+        </div>
+        </div>
     </div>
 </body>
 {% endblock %}

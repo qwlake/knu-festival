@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
-{% block contents %}
 {% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/foodtruck.css' %}">
+{% endblock %}
+
+{% block contents %}
 <!DOCTYPE html>
 <html lang="ko">
     <head>

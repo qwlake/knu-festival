@@ -1,0 +1,44 @@
+.friendboardBody {
+    padding: 80px;
+}
+.friendboardBody .friends { width: 100%;}
+
+.friendboardBody .friend {
+    display: flex;
+    width: 100%;
+    height: 220px;
+    margin: 20px 0px;
+    padding: 20px;
+    background-color: #D6CBC8;
+}
+
+.friendboardBody .friend .buttons {
+    margin-left: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.friendboardBody .buttons > button{
+    width: 80px;
+    height: 80px;
+   
+    background-image: url("https://image.flaticon.com/icons/svg/61/61848.svg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-color: #D6CBC8;
+}
+
+/* .friendboardBody .buttons > button{
+    width: 80px;
+    height: 80px;
+    background-color: antiquewhite;
+} */
+
+.friendboardBody .friend > p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    flex-grow: 1;
+    font-size: 40px;
+}
