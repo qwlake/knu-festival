@@ -3,6 +3,12 @@ html, body {
    background-color: rgb(244, 239, 235);
 }
 
+body {
+   min-height: 100%;
+   height: auto;
+}
+
+
 .indexBody, .lostboardBody, .friendboardBody, .foodtruckBody {
    background-color: rgb(244, 239, 235);
 }
