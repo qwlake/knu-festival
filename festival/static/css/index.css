@@ -16,14 +16,16 @@ a{
 }
 
 .footerClass {
-   position: absolute;
-   display: block;
-   width: 80%;
-   left: 10%;
+   position: fixed;
+   display: flex;
+   flex-flow: column;
+   width: 100%;
+
    bottom: 0;
    text-align: center;
    border-top: 1px solid black;
    padding-top: 20px;
+   background-color: rgb(244, 239, 235);
 }
 
 .title {
