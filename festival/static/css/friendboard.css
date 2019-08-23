@@ -22,7 +22,7 @@
 .friendboardBody .buttons > button{
     width: 80px;
     height: 80px;
-   
+
     background-image: url("https://image.flaticon.com/icons/svg/61/61848.svg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -41,4 +41,5 @@
     margin-block-end: 0em;
     flex-grow: 1;
     font-size: 40px;
+    overflow: scroll;
 }
