@@ -9,7 +9,7 @@
     </head>
 <body class="lostboardBody">
     <h1 class="title">분실물</h1>
-    <form method="POST" action="{% url 'lostboard:createlost' %}" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'lostboard:createpost' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
@@ -19,17 +19,20 @@
             <tr><td>
                 <input id="found" type='radio' name='finding' value=False><label for="found">주웠어요</label>
                 <input id="finding" type='radio' name='finding' value=True><label for="finding">잃어버렸어요</label>
-            </td></tr> -->
+            </td></tr>
+            <tr><td><input type="password" name="password"></td></tr> -->
         </table>
         <input type="submit">
     </form>
     <hr>
+    <a href="/lostboard/found/"><h2>주웠어요</h2></a>
+    <a href="/lostboard/finding/"><h2>잃어버렸어요</h2></a>
+    <hr>
     {% for lostpost in lostposts %}
         <div>
-            <a href="{% url 'lostboard:detail' lostpost.pk %}">
+            <a href="{% url 'lostboard:detail' pk=lostpost.pk %}">
                 <p>{{lostpost.content}}</p>
-                <p>{{lostpost.image}}</p>
-                <p>{{lostpost.finding}}</p>
+                <p>{{lostpost.found}}</p>
                 <p>{{lostpost.created_at}}</p>
                 {% if lostpost.image %}
                 <img src="{{ lostpost.image.url }}" alt="">

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+<h1 class="title">게시글 삭제</h1>
+<form method="POST" action="{% url 'lostboard:deletepost' lostpost.pk %}">
+    {% csrf_token %}
+    <input type="password" placeholder="글 비밀번호" name="password">
+    <input type="submit" value="삭제">
+</form>
+{% endblock %}
