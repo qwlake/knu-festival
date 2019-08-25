@@ -16,6 +16,7 @@ lostboard
     ├── models.py
     ├── templates
     │   ├── lostboard.html
+    │   ├── lostdelete.html
     │   └── lostdetail.html
     ├── tests.py
     ├── urls.py
