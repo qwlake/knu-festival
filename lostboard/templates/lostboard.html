@@ -9,5 +9,34 @@
     </head>
 <body class="lostboardBody">
     <h1 class="title">분실물</h1>
+    <form method="POST" action="{% url 'lostboard:createlost' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <!-- {{ form.as_table }} 로 프론트 꾸미기가 어렵다면 {{ form.as_table }}를 지우고 이 주석을 사용하세요.
+            <tr><td><input type="text" name="content"></td></tr>
+            <tr><td><input type="file" name="image"></td></tr>
+            <tr><td>
+                <input id="found" type='radio' name='finding' value=False><label for="found">주웠어요</label>
+                <input id="finding" type='radio' name='finding' value=True><label for="finding">잃어버렸어요</label>
+            </td></tr> -->
+        </table>
+        <input type="submit">
+    </form>
+    <hr>
+    {% for lostpost in lostposts %}
+        <div>
+            <a href="{% url 'lostboard:detail' lostpost.pk %}">
+                <p>{{lostpost.content}}</p>
+                <p>{{lostpost.image}}</p>
+                <p>{{lostpost.finding}}</p>
+                <p>{{lostpost.created_at}}</p>
+                {% if lostpost.image %}
+                <img src="{{ lostpost.image.url }}" alt="">
+                {% endif %}
+            </a>
+        </div>
+        <hr>
+    {% endfor %}
 </body>
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    </head>
+<body class="lostboardBody">
+    <h1 class="title">분실물</h1>
+        <p>{{lostpost.content}}</p>
+        <p>{{lostpost.image}}</p>
+        <p>{{lostpost.finding}}</p>
+        <p>{{lostpost.created_at}}</p>
+        <p>{{lostpost.image.url}}</p>
+</body>
+{% endblock %}

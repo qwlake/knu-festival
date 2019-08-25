@@ -7,16 +7,16 @@ lostboard
     ├── Readme.md
     ├── __init__.py
     ├── __pycache__
-    │   ├── __init__.cpython-37.pyc
-    │   ├── admin.cpython-37.pyc
-    │   ├── models.cpython-37.pyc
-    │   ├── urls.cpython-37.pyc
-    │   └── views.cpython-37.pyc
+    │   └── ...
+    ├── migrations
+    │   └── ...
     ├── admin.py
     ├── apps.py
+    ├── forms.py
     ├── models.py
     ├── templates
-    │   └── lostboard.html
+    │   ├── lostboard.html
+    │   └── lostdetail.html
     ├── tests.py
     ├── urls.py
     └── views.py
