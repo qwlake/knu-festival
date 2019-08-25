@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import LostPost, Comment
 
-# Register your models here.
+admin.site.register(LostPost)
+admin.site.register(Comment)
