@@ -10,7 +10,7 @@
 
     <div class="friendboardBody">
         <div class="friendboard-header">
-            <h1 class="title">술친구</h1>
+            <p class="title">술친구 구하기</p>
             <button data-toggle="modal" data-target="#createModal"></button>
         </div>
 
@@ -29,8 +29,11 @@
                 <div id="myModal{{post.pk}}" class="modal">
                 <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
                     {% csrf_token %}
-                        <div class="modal-content">
-                        <span class="close" id="cls{{post.pk}}">&times;</span>                                                               
+                    <div class="modal-content delete-body">
+                        <div class="delete-header">
+                            <p>삭제하기</p>
+                            <span class="close" id="cls{{post.pk}}">&times;</span>     
+                        </div>                                                          
                         <p>글 등록시 입력 한 비밀번호 입력하세요</p>
                         <input name="valpw" type="password">
                         <button type="submit">삭제</button>
@@ -46,10 +49,10 @@
        
         
             <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                <div class="modal-dialog create-modal" role="document">
+                    <div class="modal-content create-modal-body">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">술친구 구하기</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -60,8 +63,8 @@
                                 {{ form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                                <button type="submit" class="btn btn-primary">작성</button>
                             </div>
                         </form> 
                     </div>
