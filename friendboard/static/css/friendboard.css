@@ -1,6 +1,25 @@
 .friendboardBody {
     padding: 80px;
 }
+
+.friendboard-header { 
+    display: flex; 
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.friendboard-header button { 
+    background-image: url(https://image.flaticon.com/icons/svg/1618/1618615.svg);
+    width: 80px;
+    height: 80px;
+    background-color: #D6CBC8;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+
 .friendboardBody .friends { width: 100%;}
 
 .friendboardBody .friend {
