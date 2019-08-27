@@ -3,7 +3,9 @@
 
 ### custome files ###
 .static_root/
-/migrations/**
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
 !__init__.py
 /myVenv/
 
