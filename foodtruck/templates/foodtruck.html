@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
+
+
 {% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/foodtruck.css' %}">
+{% endblock %}
 
 {% block contents %}
 <!DOCTYPE html>
 <html lang="ko">
     <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>60주년 기념관</title>
     </head>
 <body class="foodtruckBody">
     <h1 class="title">푸드트럭</h1>
+    <img class="foodMap" src="{% static "img/sixty1.png" %}">
 </body>
 {% endblock %}
