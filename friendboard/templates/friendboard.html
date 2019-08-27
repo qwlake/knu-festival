@@ -16,29 +16,35 @@
 
         <div class="friends">
             {% for post in post_list %}
-            <div class="friend">
-                <p>{{ post.content }}</p>
-                <div class="buttons">
-                    <button id="myBtn{{post.pk}}" onclick="delpost('{{post.pk}}')"></button>
+           
+                <div class="friend">
+                    <a href= "{% url 'friendboard:friendboard' %}">
+                    <p>{{ post.content }}</p>
+                    </a>
+                    <div class="buttons">
+                        <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                    </div>
                 </div>
-            </div>
+
+                <div id="myModal{{post.pk}}" class="modal">
+                <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
+                    {% csrf_token %}
+                        <div class="modal-content">
+                        <span class="close" id="cls{{post.pk}}">&times;</span>                                                               
+                        <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                        <input name="valpw" type="password">
+                        <button type="submit">삭제</button>
+                    </div>
+                </form>
+            </div> 
+            </a>
             {% empty %}
                 <p>아직 등록된 게시물이 없습니다.</p>
             {% endfor %}
         </div>
         
-        <!-- Modal -->
-        {% comment %} <div id="myModal{{post.pk}}" class="modal">
-            <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
-                {% csrf_token %}
-                    <div class="modal-content">
-                    <span class="close" id="cls{{post.pk}}">&times;</span>                                                               
-                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
-                    <input name="valpw" type="password">
-                    <button type="submit">삭제</button>
-                </div>
-            </form>
-        </div> {% endcomment %}
+       
+        
             <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -62,8 +68,8 @@
                 </div>
             </div>
             <script>
-                function delpost(pk){
-
+                function delpost(event, pk){
+                        console.log(event)
                         clickmodal = "myModal" + pk;
                         clickbtn = "myBtn" + pk;
                         clickcls = "cls"+ pk;
@@ -81,7 +87,7 @@
                                     modal.style.display = "none";
                                 }
                             }
-
+                        event.stopPropagation()
                 }
             </script>
 
