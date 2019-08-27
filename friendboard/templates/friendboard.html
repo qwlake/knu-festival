@@ -9,53 +9,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <div class="friendboardBody">
-    <h1 class="title">술친구</h1>
-    <div class="friends">
-        
-        <hr>
-        <form action="{% url 'friendboard:friendboard' %}" method = "POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-            <button type="submit">제출</button>
-        </form> 
+        <div class="friendboard-header">
+            <h1 class="title">술친구</h1>
+            <button data-toggle="modal" data-target="#createModal"></button>
+        </div>
 
-        {% for post in post_list %}
+        <div class="friends">
+            {% for post in post_list %}
             <div class="friend">
                 <p>{{ post.content }}</p>
                 <div class="buttons">
                     <button id="myBtn{{post.pk}}" onclick="delpost('{{post.pk}}')"></button>
                 </div>
-
-                    
-                
             </div>
-
-        <!-- Modal -->
-            <div id="myModal{{post.pk}}" class="modal">
-                    <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
-                            {% csrf_token %}
-                        <div class="modal-content">
-                            <span class="close" id="cls{{post.pk}}">&times;</span>                                                               
-                            <p>글 등록시 입력 한 비밀번호 입력하세요</p>
-                            <input name="valpw" type="password">
-                            <button type="submit">삭제</button>
-                        </div>
-                    </form>
-            </div>
-                {% empty %}
-                    <p>아직 등록된 게시물이 없습니다.</p>
-                {% endfor %}
-
-
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <script>alert('{{ message }}')</script>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+            {% empty %}
+                <p>아직 등록된 게시물이 없습니다.</p>
+            {% endfor %}
+        </div>
         
-
+        <!-- Modal -->
+        {% comment %} <div id="myModal{{post.pk}}" class="modal">
+            <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
+                {% csrf_token %}
+                    <div class="modal-content">
+                    <span class="close" id="cls{{post.pk}}">&times;</span>                                                               
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit">삭제</button>
+                </div>
+            </form>
+        </div> {% endcomment %}
+            <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{% url 'friendboard:friendboard' %}" method = "POST">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                {{ form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
             <script>
                 function delpost(pk){
 
@@ -68,18 +73,19 @@
                         modal.style.display = "block";
 
 
-                            span.onclick = function() {
-                                modal.style.display = "none";
-                            }
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
                             window.onclick = function(event) {
                                 if (event.target == modal) {
                                     modal.style.display = "none";
                                 }
                             }
 
-            }
+                }
             </script>
 
     </div>
+
     </div>
 {% endblock %}
