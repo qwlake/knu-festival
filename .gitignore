@@ -3,8 +3,8 @@
 
 ### custome files ###
 .static_root/
-/migrations/
-!/migrations/__init__.py
+migrations/**
+!__init__.py
 /myVenv/
 
 ### VisualStudioCode ###
