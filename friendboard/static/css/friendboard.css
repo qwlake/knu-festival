@@ -1,5 +1,5 @@
 .friendboardBody {
-    padding: 80px;
+    padding: 80px 20px 20px 20px;
 }
 
 .friendboardBody h1{
@@ -11,14 +11,14 @@
     display: flex; 
     flex-flow: row;
     justify-content: space-between;
-    margin: 20px 0px;
+    margin: 10px 0px;
     align-items: center;
 }
 
 .friendboard-header button { 
     background-image: url(https://image.flaticon.com/icons/svg/1618/1618615.svg);
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     background-color: #D6CBC8;
     background-position: center;
     background-size: 70% 70%;
@@ -34,8 +34,8 @@
 .friendboardBody .friend {
     display: flex;
     width: 100%;
-    height: 220px;
-    margin: 20px 0px;
+    height: 80px;
+    margin: 10px 0px;
     padding: 20px;
     background-color: #D6CBC8;
 }
@@ -48,8 +48,8 @@
 }
 
 .friendboardBody .buttons > button{
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
 
     background-image: url("https://image.flaticon.com/icons/svg/61/61848.svg");
     background-position: center; /* Center the image */
@@ -65,13 +65,55 @@
     background-color: antiquewhite;
 } */
 
+.friendboardBody > p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 30px;
+}
+
 .friendboardBody .friend > a {
     margin-block-start: 0em;
     margin-block-end: 0em;
     flex-grow: 1;
-    font-size: 40px;
+}
+
+.friendboardBody .friend > a > p {
+    height: 100%;
+    font-size: 20px;
     overflow: scroll;
 }
+
+.friendboardBody .delete-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.friendboardBody .delete-body > button { 
+    width: 50px;
+    align-self: flex-end; 
+}
+.friendboardBody .delete-body > input { 
+    border: 1px solid black;
+}
+
+.friendboardBody .create-modal {
+    padding: 10%;
+}
+
+.friendboardBody .create-modal-body {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.friendboardBody .create-modal-body input {
+    width: 100%;
+    border: 1px solid #ced4da;
+}
+
+
 /* 비밀번호 확인 모달 */
 .modal {
     display: none;
