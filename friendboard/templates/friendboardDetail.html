@@ -1,0 +1,11 @@
+
+
+
+
+{% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <script>alert('{{ message }}')</script>
+                    {% endfor %}
+                </ul>
+                {% endif %}
