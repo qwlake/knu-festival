@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 {% block contents %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    </head>
-<body class="lostboardBody">
+
+<head>
+</head>
+<div class="lostboardBody">
     <h1 class="title">분실물</h1>
     <form method="POST" action="{% url 'lostboard:createpost' %}" enctype="multipart/form-data">
         {% csrf_token %}
@@ -41,5 +38,5 @@
         </div>
         <hr>
     {% endfor %}
-</body>
+</div>
 {% endblock %}
