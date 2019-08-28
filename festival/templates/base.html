@@ -12,18 +12,44 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     {% block css %}
     {% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #D6CBC8 !important; height: 80px;">
+    <!-- <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #D6CBC8 !important; height: 80px;">
         <div class="container">
             <a class="item navbar-brand" href="{% url 'index' %}">로고자리</a>
             <a class="item py-3 px-0 px-lg-3 rounded " href="/foodtruck/">푸드트럭</a>
             <a class="item py-3 px-0 px-lg-3 rounded " href="/lostboard/">분실물</a>
             <a class="item py-3 px-0 px-lg-3 rounded" href="/friendboard/">술친구</a>
         </div>
+    </nav> -->
+
+    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #D6CBC8 !important; height: 80px;">
+    <div class="container">
+        <a class="navbar-brand nav-link item py-3 px-0 px-lg-3 rounded" href="{% url 'index' %}">
+            <i class="fab fa-forumbee"></i>
+            <span>로고자리</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="navbar-toggler-icon fas fa-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/foodtruck/">
+                    <i class="fas fa-utensils"></i><span>푸드트럭</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/lostboard/">
+                    <i class="fas fa-inbox"></i><span>분실물</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/friendboard/">
+                    <i class="fas fa-users"></i><span>술친구찾기</span></a></li>
+          </ul>
+        </div>
+    </div>
     </nav>
 
 <div id="content-container">
