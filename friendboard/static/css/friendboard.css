@@ -1,6 +1,7 @@
 .friendboardBody {
-    padding: 80px 20px 40px 20px;
+    padding: 10px 10px 0px 10px;
     background-color: #FFCE4D;
+    height: 100vh;
 }
 
 .friendboardBody .title, p{
@@ -18,7 +19,7 @@
     display: flex; 
     flex-flow: row;
     justify-content: space-between;
-    margin: 10px 0px;
+    margin: 0px 0px;
     align-items: center;
 }
 
