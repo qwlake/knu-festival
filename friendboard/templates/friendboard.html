@@ -11,9 +11,8 @@
     <div class="friendboardBody">
         <div class="friendboard-header">
             <p class="title">술친구 구하기</p>
-            <button data-toggle="modal" data-target="#createModal"></button>
+            <button data-toggle="modal" data-target="#createModal">술친구 만들기</button>
         </div>
-
         <div class="friends">
             {% for post in post_list %}
            
@@ -36,7 +35,7 @@
                         </div>                                                          
                         <p>글 등록시 입력 한 비밀번호 입력하세요</p>
                         <input name="valpw" type="password">
-                        <button type="submit">삭제</button>
+                        <button type="submit" class="btn btn-danger">삭제</button>
                     </div>
                 </form>
             </div> 
@@ -60,7 +59,8 @@
                         <form action="{% url 'friendboard:friendboard' %}" method = "POST">
                             {% csrf_token %}
                             <div class="modal-body">
-                                {{ form.as_p }}
+                                <p><label for="id_content">내용</label> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea></p>
+                                <p><label for="id_password">패스워드</label> <input type="password" name="password" maxlength="200" required="" id="id_password"></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -96,5 +96,5 @@
 
     </div>
 
-    </div>
+    </body>
 {% endblock %}
