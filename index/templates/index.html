@@ -1,11 +1,36 @@
 {% extends 'base.html' %}
 {% block contents %}
 {% load static %}
+    <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}?ver=1">
+    <script type="text/javascript" src="{% static "js/index.js" %}"></script>
+    </head>
+    
+<body>
+    <h1 class="title">라인업</h1>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-</head>
-<div class="indexBody">
-    <h1 class="title">안녕</h1>
-</div>
+  <div class="slide">
+    <input type="radio" name="pos" id="pos1" checked>
+    <input type="radio" name="pos" id="pos2">
+    <input type="radio" name="pos" id="pos3">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <p class="bullet">
+      <label for="pos1">1</label>
+      <label for="pos2">2</label>
+      <label for="pos3">3</label>
+    </p>
+  </div>
+<center>
+  <div class="timetable">
+    <h1 class="title">타임테이블</h1>
+    <img src="{% static 'img/timetable.png' %}" alt="timetable" width="80%" height="80%" />
+  </div>
+</center>
+</body>
+
 {% endblock %}

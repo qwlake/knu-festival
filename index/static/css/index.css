@@ -1,3 +1,93 @@
-.indexBody {
-    margin-top: 90px;
+/* lineup banner */
+
+*{
+    margin:0;
+    padding:0;
 }
+
+ul,li{
+    list-style:none;
+}
+
+.slide{
+    height:300px;
+    overflow:hidden;
+    position:relative;
+    margin-bottom: 10%;
+}
+
+.slide ul{
+    width:calc(100% * 4);
+    display:flex;
+    transition:1s;
+}
+
+.slide li{
+    width:calc(100% / 4);
+    height:300px;
+}
+
+.slide li:nth-child(1){
+    background:#ffa;
+}
+
+.slide li:nth-child(2){
+    background:#faa;
+}
+
+.slide li:nth-child(3){
+    background:#afa;
+}
+
+.slide input{
+    display:none;
+}
+
+.slide .bullet{
+    position:absolute;
+    bottom:20px;
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:10;
+}
+
+.slide .bullet label{
+    width:10px;
+    height:10px;
+    border-radius:10px;
+    border:2px solid #666;
+    display:inline-block;
+    background:#fff;
+    font-size:0;
+    transition:0.5s;
+    cursor:pointer;
+}
+
+/* 슬라이드 조작 */
+#pos1:checked ~ ul{
+    margin-left:0;
+}
+
+#pos2:checked ~ ul{
+    margin-left:-100%;
+}
+
+#pos3:checked ~ ul{
+    margin-left:-200%;
+}
+
+#pos4:checked ~ ul{
+    margin-left:-300%;
+}
+
+/* bullet 조작 */
+#pos1:checked ~ .bullet label:nth-child(1),
+#pos2:checked ~ .bullet label:nth-child(2),
+#pos3:checked ~ .bullet label:nth-child(3){
+    background:#666;
+}
+
+.timetable{
+    padding-bottom: 30%;
+} 
