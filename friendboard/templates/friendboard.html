@@ -62,9 +62,27 @@
                 <p>아직 등록된 게시물이 없습니다.</p>
             {% endfor %}
         </div>
-        
-       
-        
+
+<ul class="pagination">
+  {% if post_list.has_previous %}
+  <li><a href="?page=1">&#60;&#60;</a></li>
+   <li><a href="?page={{ post_list.previous_page_number }}">&#60;</a></li>
+  {% endif %}
+
+  {% for num in post_list.paginator.page_range %}
+    {% if post_list.number == num %}
+      <li>{{ num }}</li>
+    {% elif num > post_list.number|add:'-3' and num < post_list.number|add:'3' %}
+    <li><a href="?page={{ num }}">{{ num }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if post_list.has_next %}
+  <li><a href="?page={{ post_list.next_page_number }}">&#62;</a></li>
+  <li><a href="?page={{ post_list.paginator.num_pages }}">&#62;&#62;</a></li>
+  {% endif %}
+</ul>
+    
             <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog create-modal" role="document">
                     <div class="modal-content create-modal-body">
@@ -113,6 +131,5 @@
             </script>
 
     </div>
-
-    </body>
 {% endblock %}
+
