@@ -2,7 +2,8 @@ apps
 1. 분실물 게시판
 2. 술 친구 게시판
 3. 푸드트럭
-4. 인덱스
+4. 강대총학 문의 게시판
+5. 인덱스
 >타임 테이블,  라인업,  강대존
   
 
@@ -15,7 +16,7 @@ apps
 
 가상환경  
 
-    myVenv 
+    myVenv, .env, .env, .venv, env/, venv/, ENV/
     
 gitignore에 추가해 놓았음
   
@@ -29,5 +30,6 @@ gitignore에 추가해 놓았음
     ├── friendboard
     ├── index
     ├── lostboard
+    ├── qnaknuch
     ├── manage.py
     └── myVenv

@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
 {% block contents %}
 {% load static %}
-<h1 class="title">분실물</h1>
-<p>{{lostpost.content}}</p>
-<p>{{lostpost.found}}</p>
-<p>{{lostpost.created_at}}</p>
-{% if lostpost.image %}
-<img src="{{ lostpost.image.url }}" alt="">
-{% endif %}
-<a href="{% url 'lostboard:deletepost' pk=lostpost.pk %}">글 삭제</a>
+<h1 class="title">QnA</h1>
+<p>{{qnapost.content}}</p>
+<p>{{qnapost.found}}</p>
+<p>{{qnapost.created_at}}</p>
+<a href="{% url 'qnaknuch:deletepost' pk=qnapost.pk %}">글 삭제</a>
 <hr>
 <div>
     <p>댓글 {{ qnapost.comments.count }}개</p>
 </div>
-{% for comment in lostpost.comments.all %}
+{% for comment in qnapost.comments.all %}
     <div class="comment">
         <div class="date">{{ comment.created_at }}</div>
         <p>{{ comment.content|linebreaks }}</p>
@@ -22,7 +19,7 @@
 {% empty %}
     <p>아직 댓글이 없습니다.</p>
 {% endfor %}
-<form method="POST" action="{% url 'lostboard:createcomment' pk=lostpost.pk %}">
+<form method="POST" action="{% url 'qnaknuch:createcomment' pk=qnapost.pk %}">
     {% csrf_token %}
     <table>
         {{ form.as_table }}

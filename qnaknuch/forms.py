@@ -7,11 +7,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('content', 'image', 'found', 'password',)
-
-    def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['image'].required = False
+        fields = ('title', 'content', 'password', 'public',)
 
 class CommentForm(forms.ModelForm):
     

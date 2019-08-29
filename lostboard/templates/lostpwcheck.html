@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+<h1 class="title">비밀번호 확인</h1>
+<form method="POST" action="{% url path lostpost.pk %}"> <!--path는 views.py의 deletepost 함수의 return value 참고-->
+    {% csrf_token %}
+    <input type="password" placeholder="글 비밀번호" name="password">
+    <input type="submit" value="확인">
+</form>
+{% endblock %}
