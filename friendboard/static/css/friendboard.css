@@ -1,7 +1,7 @@
 .friendboardBody {
-    padding: 10px 10px 0px 10px;
+    padding: 10px;
     background-color: #FFCE4D;
-    height: 100vh;
+    min-height: calc(100vh - 100px);
 }
 
 .friendboardBody .title, p{
@@ -76,6 +76,10 @@
     background-color: antiquewhite;
 } */
 
+.friendboardBody .alert { margin-top: 20px; }
+
+.friendboardBody .alert-dismissible .close { padding: 0.5rem; }
+
 .friendboardBody > p {
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -119,6 +123,7 @@
 }
 
 .friendboardBody .create-modal-body {
+    background-color: #FFCE4D;
     width: 100%;
     padding: 0px;
     margin: 0px;

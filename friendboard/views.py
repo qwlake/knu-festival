@@ -33,6 +33,6 @@ def post_delete(request, pk):
         post.delete()
         messages.info(request, '게시물 삭제에 성공했습니다.')
     else :
-        messages.info(request, '패스워드가 다릅니다.')
+        messages.error(request, '패스워드가 다릅니다.')
     return redirect('/friendboard/')
     
