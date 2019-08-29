@@ -8,14 +8,30 @@
 {% endblock %}
 
 {% block contents %}
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-    <meta charset="UTF-8">
-    <title>60주년 기념관</title>
-    </head>
-<body class="foodtruckBody">
-    <h1 class="title">푸드트럭</h1>
-    <img class="foodMap" src="{% static "img/sixty1.png" %}">
-</body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+
+<section class="Map">
+    <img class="foodMap" src="{% static "img/sixty2.png" %}">
+</section>
+
+<div class="FTcontainer">
+    <section class="FT_1 List">
+        <img src="{% static "img/foodTruck.png" %}">
+        <div class="intro">
+            {% for foodtruck in foodtrucks %}
+                <p>{{foodtruck.name}}</p>
+                <p>{{foodtruck.memo}}</p>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="FT_2 List">
+        <img src="{% static "img/foodTruck.png" %}">
+        <div class="intro">
+            {% for foodtruck in foodtrucks %}
+                <p>{{foodtruck.name}}</p>
+                <p>{{foodtruck.memo}}</p>
+            {% endfor %}
+        </div>        
+    </section>
+</div>
 {% endblock %}

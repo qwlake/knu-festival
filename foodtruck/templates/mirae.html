@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/foodtruck.css' %}">
+{% endblock %}
+
+{% block contents %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+
+<section class="Map">
+    <img class="foodMap" src="{% static "img/mirae2.png" %}">
+</section>
+
+<div class="FTcontainer">
+    <section class="Booth_1 List">
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+    </section>
+    <section class="Booth_2 List">
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+        <img src="{% static "img/booth.png" %}">
+        <img src="{% static "img/ex.png" %}">
+        <br>
+    </section>
+</div>
+{% endblock %}
