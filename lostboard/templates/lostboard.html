@@ -34,6 +34,7 @@
                 {% if lostpost.image %}
                 <img src="{{ lostpost.image.url }}" alt="">
                 {% endif %}
+                <p>댓글 {{ lostpost.comments.count }}개</p>
             </a>
         </div>
         <hr>

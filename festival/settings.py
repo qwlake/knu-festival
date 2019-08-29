@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'foodtruck',
     'friendboard',
     'lostboard',
+    'qnaknuch'
 ]
 
 MIDDLEWARE = [
