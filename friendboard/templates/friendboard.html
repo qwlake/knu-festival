@@ -28,7 +28,7 @@
                 <div id="myModal{{post.pk}}" class="modal">
                 <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
                     {% csrf_token %}
-                    <div class="modal-content delete-body">
+                    <div class="modal-content delete-body" style="width:90%">
                         <div class="delete-header">
                             <p>삭제하기</p>
                             <span class="close" id="cls{{post.pk}}">&times;</span>     

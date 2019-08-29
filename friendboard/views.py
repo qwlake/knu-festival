@@ -36,3 +36,5 @@ def post_delete(request, pk):
         messages.info(request, '패스워드가 다릅니다.')
     return redirect('/friendboard/')
     
+def friendboardDetail(request):
+    return render(request, 'friendboardDetail.html')
