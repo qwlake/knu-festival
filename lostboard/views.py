@@ -57,9 +57,7 @@ def deletepost(request, pk):
     if request.method == 'POST':
         if request.POST['password'] == lostpost.password:
             lostpost.delete()
-            return redirect('lostboard:board')
-        raise PermissionDenied("Password is not matched")
-    else:
-        path = urls.app_name + ":deletepost"
-        return render(request, 'lostpwcheck.html', {'lostpost': lostpost, 'path':path})
-    
+            messages.info(request, '게시물 삭제에 성공했습니다.')
+        else:
+            messages.error(request, '패스워드가 다릅니다.')
+        return redirect('lostboard:board')
