@@ -1,43 +1,125 @@
 {% extends 'base.html' %}
-{% block contents %}
 {% load static %}
 
-<head>
-</head>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}">
+{% endblock %}
+
+{% block contents %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <div class="lostboardBody">
-    <h1 class="title">분실물</h1>
-    <form method="POST" action="{% url 'lostboard:createpost' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-            <!-- {{ form.as_table }} 로 프론트 꾸미기가 어렵다면 {{ form.as_table }}를 지우고 이 주석을 사용하세요.
-            <tr><td><input type="text" name="content"></td></tr>
-            <tr><td><input type="file" name="image"></td></tr>
-            <tr><td>
-                <input id="found" type='radio' name='finding' value=False><label for="found">주웠어요</label>
-                <input id="finding" type='radio' name='finding' value=True><label for="finding">잃어버렸어요</label>
-            </td></tr>
-            <tr><td><input type="password" name="password"></td></tr> -->
-        </table>
-        <input type="submit">
-    </form>
-    <hr>
-    <a href="/lostboard/found/"><h2>주웠어요</h2></a>
-    <a href="/lostboard/finding/"><h2>잃어버렸어요</h2></a>
-    <hr>
-    {% for lostpost in lostposts %}
-        <div>
-            <a href="{% url 'lostboard:detail' pk=lostpost.pk %}">
-                <p>{{lostpost.content}}</p>
-                <p>{{lostpost.found}}</p>
-                <p>{{lostpost.created_at}}</p>
-                {% if lostpost.image %}
-                <img src="{{ lostpost.image.url }}" alt="">
-                {% endif %}
-                <p>댓글 {{ lostpost.comments.count }}개</p>
-            </a>
+    <div class="lostboard-header">
+        <p class="title">분실물</p>
+        <button data-toggle="modal" data-target="#createModal">분실물 작성</button>
+    </div>
+    <div class="lostboard-header">
+        <button onclick="location.href='/lostboard/found/'">주웠어요</button>
+        <button onclick="location.href='/lostboard/finding/'">잃어버렸어요</button>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'info' %}
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ message }} 
+                </div>
+            {% else %}
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ message }} 
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="losts">
+        {% for post in lostposts %}
+        
+            <div class="lost">
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.content}}<br>
+                        {{post.created_at}}<br>
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="">
+                    {% endif %}<br>
+                    댓글 {{ post.comments.count }}개</p>
+                </a>
+                <div class="buttons">
+                    <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+            </div>
+
+            <div id="myModal{{post.pk}}" class="modal">
+            <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="cls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div> 
+        </a>
+        {% empty %}
+            <p>아직 등록된 게시물이 없습니다.</p>
+        {% endfor %}
+    </div>
+
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog create-modal" role="document">
+            <div class="modal-content create-modal-body">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">분실물 작성</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'lostboard:createpost' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <p><label for="id_content">내용</label> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea></p>
+                        <p><label for="id_image">사진</label> <input type="file" name="image" id="id_image"></p>
+                        <p><label for="found">주웠어요</label> <input id="found" type='radio' name='finding' value=False></p>
+                        <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='finding' value=True></p>
+                        <p><label for="id_password">패스워드</label> <input type="password" name="password" maxlength="200" required="" id="id_password"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                        <button type="submit" class="btn btn-primary">작성</button>
+                    </div>
+                </form> 
+            </div>
         </div>
-        <hr>
-    {% endfor %}
+    </div>
+    <script>
+        function delpost(event, pk){
+                console.log(event)
+                clickmodal = "myModal" + pk;
+                clickbtn = "myBtn" + pk;
+                clickcls = "cls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+    </script>
 </div>
 {% endblock %}
