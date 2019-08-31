@@ -1,46 +1,45 @@
-.lostboardBody {
-    padding: 10px;
-    background-color: #FFCE4D;
-    min-height: calc(100vh - 100px);
+/* 탭 관련 */
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
 }
 
-.lostboardBody .title, p{
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    font-size: 20px;
-    margin-top: 0px;
-    margin-left: 0px;
-}
-.lostboardBody .title {
-    font-weight: bold;
+ul.tabs li.current{
+    background: #FFCE4D;
+    color: #222;
 }
 
-.lostboard-header { 
-    display: flex; 
-    flex-flow: row;
-    justify-content: space-between;
-    margin: 0px 0px;
-    align-items: center;
+.tab-content{
+    display: none;
+    padding: 15px;
 }
 
-.lostboard-header button { 
-    background-image: url(https://image.flaticon.com/icons/svg/1001/1001371.svg);
-    width: 140px;
-    height: 40px;
-    background-color: rgb(253, 255, 147);
-    background-position: 10px;
-    background-size: 30px 30px;
-    background-repeat: no-repeat;
+.tab-content.current{
+    display: inherit;
+}
+
+
+
+/* 주웠어요, 잃어버렸어요 */
+#found, #finding {
+    width:30px;
     border: none;
-    border-radius: 5px;
-    display: flex;
-    flex-flow: row-reverse;
+    border-bottom: 2px solid #ced4da;
 }
 
-.lostboardBody .losts { width: 100%;}
 
-.lostboardBody .lost {
-    display: flex;
+
+/* 디테일 페이지 */
+.boardBody .board {
+    display: block;
     width: 100%;
     height: auto;
     margin: 10px 0px;
@@ -48,151 +47,4 @@
 
     background-color: rgb(253, 255, 147);
     border-radius: 10px;
-}
-
-.lostboardBody .lost .buttons {
-    margin-left: 20px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-}
-
-.lostboardBody .buttons > button{
-    width: 40px;
-    height: 40px;
-
-    background-image: url("https://image.flaticon.com/icons/svg/61/61848.svg");
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    background-color: rgb(253, 255, 147);
-    background-size: 80% 80%;
-    border: none;
-}
-
-/* .lostboardBody .buttons > button{
-    width: 80px;
-    height: 80px;
-    background-color: antiquewhite;
-} */
-
-.lostboardBody .alert { margin-top: 20px; }
-
-.lostboardBody .alert-dismissible .close { padding: 0.5rem; }
-
-.lostboardBody > p {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    font-size: 30px;
-}
-
-.lostboardBody .lost > a {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    flex-grow: 1;
-}
-
-.lostboardBody .lost > a > p {
-    height: 100%;
-    font-size: 20px;
-    overflow: scroll;
-}
-
-
-.lostboardBody .delete-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 20px;
-}
-
-.lostboardBody .delete-body > button { 
-    margin-top: 20px;
-    width: 60px;
-    align-self: flex-end;
-}
-
-.lostboardBody .delete-body > input { 
-    border: none;
-    border-bottom: 2px solid #ced4da;
-    margin-top: 20px;
-}
-
-.lostboardBody .create-modal {
-    padding: 10%;
-}
-
-.lostboardBody .create-modal-body {
-    background-color: #FFCE4D;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-}
-
-.lostboardBody .create-modal-body .modal-header,
-.lostboardBody .create-modal-body .modal-footer{
-    border: none;
-}
-.lostboardBody .create-modal-body .modal-body {
-    padding-top: inherit;
-}
-
-
-.lostboardBody .create-modal-body input {
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid #ced4da;
-}
-#found, #finding {
-    width:30px;
-    border: none;
-    border-bottom: 2px solid #ced4da;
-}
-
-.lostboardBody .create-modal-body p:nth-of-type(2) {
-    margin-top: 20px;
-}
-
-
-
-
-/* 비밀번호 확인 모달 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-
-.modal-content {
-    background-color: #fefefe;
-    margin:20% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;        
-    
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.pwform{
-    color:red;
 }
