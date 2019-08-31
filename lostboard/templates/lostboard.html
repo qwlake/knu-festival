@@ -2,21 +2,18 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}?ver=1">
 {% endblock %}
 
 {% block contents %}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="lostboardBody">
-    <div class="lostboard-header">
+<div class="boardBody">
+    <div class="board-header">
         <p class="title">분실물</p>
         <button data-toggle="modal" data-target="#createModal">분실물 작성</button>
-    </div>
-    <div class="lostboard-header">
-        <button onclick="location.href='/lostboard/found/'">주웠어요</button>
-        <button onclick="location.href='/lostboard/finding/'">잃어버렸어요</button>
     </div>
 
     {% if messages %}
@@ -35,10 +32,54 @@
         {% endfor %}
     {% endif %}
 
-    <div class="losts">
-        {% for post in lostposts %}
+    <ul class="tabs">
+        <li class="tab-link current" data-tab="tab-1">주웠어요</li>
+        <li class="tab-link" data-tab="tab-2">잃어버렸어요</li>
+    </ul>
+
+    <div id="tab-1" class="boards tab-content current">
         
-            <div class="lost">
+        {% for post in foundposts %}
+        
+            <div class="board">
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.content}}<br>
+                        {{post.created_at}}<br>
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="">
+                    {% endif %}<br>
+                    댓글 {{ post.comments.count }}개</p>
+                </a>
+                <div class="buttons">
+                    <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+            </div>
+
+            <div id="myModal{{post.pk}}" class="modal">
+            <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="cls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div> 
+        </a>
+        {% empty %}
+            <p>아직 등록된 게시물이 없습니다.</p>
+        {% endfor %}
+    </div>
+
+    <div id="tab-2" class="boards tab-content">
+            
+        {% for post in findingposts %}
+        
+            <div class="board">
                 <a href="{% url 'lostboard:detail' pk=post.pk %}">
                     <p>{{post.content}}<br>
                         {{post.created_at}}<br>
@@ -86,8 +127,8 @@
                     <div class="modal-body">
                         <p><label for="id_content">내용</label> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea></p>
                         <p><label for="id_image">사진</label> <input type="file" name="image" id="id_image"></p>
-                        <p><label for="found">주웠어요</label> <input id="found" type='radio' name='finding' value=False></p>
-                        <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='finding' value=True></p>
+                        <p><label for="found">주웠어요</label> <input id="found" type='radio' name='found' value=True required></p>
+                        <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='found' value=False></p>
                         <p><label for="id_password">패스워드</label> <input type="password" name="password" maxlength="200" required="" id="id_password"></p>
                     </div>
                     <div class="modal-footer">
@@ -120,6 +161,17 @@
                     }
                 event.stopPropagation()
         }
+        $(document).ready(function(){
+            $('ul.tabs li').click(function(){
+                var tab_id = $(this).attr('data-tab');
+            
+                $('ul.tabs li').removeClass('current');
+                $('.tab-content').removeClass('current');
+            
+                $(this).addClass('current');
+                $("#"+tab_id).addClass('current');
+            })
+        })
     </script>
 </div>
 {% endblock %}

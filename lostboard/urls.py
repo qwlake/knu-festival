@@ -11,6 +11,5 @@ urlpatterns = [
     path('<int:pk>/', views.detail, name="detail"),
     path('<int:pk>/createcomment/', views.createcomment, name="createcomment"),
     path('<int:pk>/deletepost/', views.deletepost, name="deletepost"),
-    path('<str:found>/', views.board, name="board"), # '주웠어요', '잃어버렸어요'를 구분해주는 path. 마지막 줄에 넣어야 함. 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,32 +1,82 @@
 {% extends 'base.html' %}
-{% block contents %}
 {% load static %}
-<h1 class="title">분실물</h1>
-<p>{{lostpost.content}}</p>
-<p>{{lostpost.found}}</p>
-<p>{{lostpost.created_at}}</p>
-{% if lostpost.image %}
-<img src="{{ lostpost.image.url }}" alt="">
-{% endif %}
-<a href="{% url 'lostboard:deletepost' pk=lostpost.pk %}">글 삭제</a>
-<hr>
-<div>
-    <p>댓글 {{ qnapost.comments.count }}개</p>
-</div>
-{% for comment in lostpost.comments.all %}
-    <div class="comment">
-        <div class="date">{{ comment.created_at }}</div>
-        <p>{{ comment.content|linebreaks }}</p>
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}?ver=1">
+{% endblock %}
+
+{% block contents %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="boardBody">
+    <div class="board-header">
+        <p class="title">분실물</p>
     </div>
-    <hr>
-{% empty %}
-    <p>아직 댓글이 없습니다.</p>
-{% endfor %}
-<form method="POST" action="{% url 'lostboard:createcomment' pk=lostpost.pk %}">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit">
-</form>
+
+    <div class="detail-container">
+        
+        <div class="board">
+            <p class="detail-content">{{post.content}}</p>
+            <p class="detail-date">{{post.created_at}}</p>
+            {% if post.image %}
+            <p class="detail-image"><img src="{{ post.image.url }}" alt=""></p>
+            {% endif %}
+            <div>
+                <p class="detail-comment-cnt">댓글 {{ post.comments.count }}개</p>
+            </div>
+            {% for comment in post.comments.all %}
+                <div class="comment">
+                    <div class="detail-comment-date">{{ comment.created_at }}</div>
+                    <p class="detail-comment">{{ comment.content|linebreaks }}</p>
+                </div>
+            {% empty %}
+                <p>아직 댓글이 없습니다.</p>
+            {% endfor %}
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
+        </div>
+
+        <div id="myModal{{post.pk}}" class="modal">
+            <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="cls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div> 
+    </div>
+
+    <script>
+        function delpost(event, pk){
+                console.log(event)
+                clickmodal = "myModal" + pk;
+                clickbtn = "myBtn" + pk;
+                clickcls = "cls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+    </script>
+</div>
 {% endblock %}
