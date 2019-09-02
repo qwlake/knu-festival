@@ -17,8 +17,11 @@
     <div class="login">
        <form action="{% url 'foodtruck:login' %}" method="POST">
            {% csrf_token %}
-           <input type="text" name="username"></input>
-           <input type="password" name="password"></input>
+           <h1>로고자리</h1>
+           <div>
+                <input type="text" name="username"></input>
+                <input type="password" name="password"></input>
+           </div>
            <button type="submit">로그인</button>
        </form>
     </div>
