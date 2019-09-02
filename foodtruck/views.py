@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from .models import Foodtruck, Booth
+from .forms import FoodtruckForm, BoothForm
 from django.contrib.auth import authenticate
+from django.shortcuts import render, redirect
+from django.contrib import messages
+import logging
+
 # 푸드트럭 views.py
 def foodtruck(request):
     foodtrucks = Foodtruck.objects.all()
@@ -8,41 +13,42 @@ def foodtruck(request):
     return render(request,'foodtruck.html',{'foodtrucks': foodtrucks})
 
 def login(request):
-    user = request.POST['user']
-    password = request.POST['password']
-    user = authenticate(username=user, password=password)
-    
-    if user is not None:
-        messages.error(request, '패스워드가 다릅니다.')
-        return redirect('/foodtruck/' + str(foodtruck.id))
+    if request.method == 'GET':
+        return render(request,'login.html')
     else:
-        try:
-            foodtruck = Foodtruck.objects.get(user=user)
-            return redirect('/foodtruck/' + str(foodtruck.id))
-        except:
-            booth = Booth.objects.get(user=user)
-            return redirect('/booth/' + str(booth.id))
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        
+        if user is None:
+            messages.error(request, '패스워드가 다릅니다.')
+            return redirect('foodtruck:login')
+        else:
+            try:
+                foodtruck = Foodtruck.objects.get(user=user)
+                return redirect('foodtruck:foodtruck_update', pk=foodtruck.id)
+            except:
+                booth = Booth.objects.get(user=user)
+                return redirect('foodtruck:booth_update', pk=booth.id)
 
 def foodtruck_update(request, pk):
     foodtruck = Foodtruck.objects.get(pk=pk)
     if request.method == 'GET':
         return render(request,'updateFoodtruck.html',{'foodtruck': foodtruck})
     else:
-        foodtruck.name = request.POST['name']
-        foodtruck.memo = request.POST['memo']
-        foodtruck.image = request.POST['image']
-        return redirect('/')
+        form = FoodtruckForm(request.POST, request.FILES, instance=foodtruck)
+        if form.is_valid():
+            form.save()
+            return redirect('foodtruck:foodtruck_update', pk=foodtruck.id)
 
 def booth_update(request, pk):
+    booth = Booth.objects.get(pk=pk)
     if request.method == 'GET':
-        booth = Booth.objects.get(pk=pk)
-        return render(request,'updateFoodtruck.html',{'booth': booth})
+        return render(request,'updateBooth.html',{'booth': booth})
     else:
-        foodtruck.name = request.POST['name']
-        foodtruck.memo = request.POST['memo']
-        foodtruck.image = request.POST['image']
-        return redirect('/')
-
-    # else:
-    #     foodtruck = Foodtruck.objects.get(pk=pk)
-    #     return render(request,'foodtruck.html',{'foodtrucks': foodtrucks})
+        form = BoothForm(request.POST, request.FILES, instance=booth)
+        if form.is_valid():
+            form.save()
+            return redirect('foodtruck:booth_update', pk=booth.id)
+        else:
+            logging.error(form.errors)
