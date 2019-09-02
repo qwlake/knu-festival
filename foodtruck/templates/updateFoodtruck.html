@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/update.css' %}"> {% endcomment %}
+{% endblock %}
+
+{% block contents %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+
+<div class="update-container">
+  <form method="POST" action="{% url 'foodtruck:foodtruck_update' pk=foodtruck.id %}" enctype="multipart/form-data">
+          {% csrf_token %}
+        <input type="text" name="name" value="{{ foodtruck.name }}">
+        <input type="text" name="memo" value="{{ foodtruck.memo }}">
+        <input type="file" name="image" value="사진 변경시만 수정">
+        <button type="submit"></button>
+   </form>
+</div>
+{% endblock %}
