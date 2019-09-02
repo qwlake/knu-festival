@@ -1,0 +1,40 @@
+
+html, body { 
+    height: 100%; 
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-image: url('back.jpg');
+    background-size: cover;
+    padding-top: 30%;
+}
+
+.login {
+    background-color: white;
+    width: 80%;
+    height: 60%;
+}
+
+.login h1 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.login form {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    padding: 10% 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login input {
+    width: 100%;
+    border: 1px solid black;
+    margin: 1% 0%;
+    height: 2em;
+}
