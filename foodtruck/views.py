@@ -37,7 +37,7 @@ def login(request):
         user = authenticate(username=username, password=password)
         
         if user is None:
-            messages.error(request, '패스워드가 다릅니다.')
+            messages.error(request, '아이디 혹은 패스워드가 다릅니다.')
             return redirect('foodtruck:login')
         else:
             try:
