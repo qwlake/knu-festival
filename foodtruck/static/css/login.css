@@ -38,3 +38,8 @@ body {
     margin: 1% 0%;
     height: 2em;
 }
+
+.login button {
+    width: 100%;
+    background-color: snow;
+}
