@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
-{% block contents %}
 {% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}?ver=1">
+{% endblock %}
+
+{% block contents %}
+
 <h1 class="title">QnA</h1>
 <p>{{qnapost.content}}</p>
 <p>{{qnapost.found}}</p>
