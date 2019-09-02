@@ -1,8 +1,8 @@
-lostboard
+qnaknuch
 =========
   
   
-### lostboard 구조
+### qnaknuch 구조
   
     ├── Readme.md
     ├── __init__.py
@@ -17,10 +17,7 @@ lostboard
     ├── templates
     │   ├── lostboard.html
     │   ├── lostdetail.html
-    │   └── lostpwcheck.html
+    │   └── qnapwcheck.html
     ├── tests.py
     ├── urls.py
     └── views.py
-
-
-`lostdelete`가 `lostpwcheck`로 변경됨.

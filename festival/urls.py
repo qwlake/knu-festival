@@ -26,4 +26,5 @@ urlpatterns = [
     path('foodtruck/', include('foodtruck.urls'),),
     path('lostboard/', include('lostboard.urls')),
     path('friendboard/', include('friendboard.urls')),
+    path('qnaknuch/', include('qnaknuch.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

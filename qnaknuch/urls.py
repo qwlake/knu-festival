@@ -3,8 +3,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
-# 분실물 urls.py
-app_name = 'lostboard'
+# 총학문의게시판 urls.py
+app_name = 'qnaknuch'
 urlpatterns = [
     path('', views.board, name="board"),
     path('createpost/', views.createpost, name="createpost"),

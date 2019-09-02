@@ -1,0 +1,50 @@
+/* 탭 관련 */
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul.tabs li.current{
+    background: #FFCE4D;
+    color: #222;
+}
+
+.tab-content{
+    display: none;
+    padding: 15px;
+}
+
+.tab-content.current{
+    display: inherit;
+}
+
+
+
+/* 주웠어요, 잃어버렸어요 */
+#found, #finding {
+    width:30px;
+    border: none;
+    border-bottom: 2px solid #ced4da;
+}
+
+
+
+/* 디테일 페이지 */
+.boardBody .board {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 10px 0px;
+    padding: 10px;
+
+    background-color: rgb(253, 255, 147);
+    border-radius: 10px;
+}

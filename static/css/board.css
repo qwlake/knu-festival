@@ -1,21 +1,21 @@
-.friendboardBody {
+
+.boardBody {
     padding: 10px;
-    background-color: #FFCE4D;
     min-height: calc(100vh - 100px);
 }
 
-.friendboardBody .title, p{
+.boardBody .title, p{
     margin-block-start: 0em;
     margin-block-end: 0em;
     font-size: 20px;
     margin-top: 0px;
     margin-left: 0px;
 }
-.friendboardBody .title {
+.boardBody .title {
     font-weight: bold;
 }
 
-.friendboard-header { 
+.board-header { 
     display: flex; 
     flex-flow: row;
     justify-content: space-between;
@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.friendboard-header button { 
+.board-header button { 
     background-image: url(https://image.flaticon.com/icons/svg/1001/1001371.svg);
     width: 140px;
     height: 40px;
@@ -37,12 +37,12 @@
     flex-flow: row-reverse;
 }
 
-.friendboardBody .friends { width: 100%;}
+.boardBody .boards { width: 100%;}
 
-.friendboardBody .friend {
+.boardBody .board {
     display: flex;
     width: 100%;
-    height: 90px;
+    height: auto;
     margin: 10px 0px;
     padding: 10px;
 
@@ -50,14 +50,14 @@
     border-radius: 10px;
 }
 
-.friendboardBody .friend .buttons {
+.boardBody .board .buttons {
     margin-left: 20px;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
 }
 
-.friendboardBody .buttons > button{
+.boardBody .buttons > button{
     width: 40px;
     height: 40px;
 
@@ -65,104 +65,89 @@
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
-    background-color: rgb(253, 255, 147);
+    background-color: unset;
     background-size: 80% 80%;
     border: none;
 }
 
-/* .friendboardBody .buttons > button{
+/* .boardBody .buttons > button{
     width: 80px;
     height: 80px;
     background-color: antiquewhite;
 } */
 
-.friendboardBody .alert { margin-top: 20px; }
+.boardBody .alert { margin-top: 20px; }
 
-.friendboardBody .alert-dismissible .close { padding: 0.5rem; }
+.boardBody .alert-dismissible .close { padding: 0.5rem; }
 
-.friendboardBody > p {
+.boardBody > p {
     margin-block-start: 0em;
     margin-block-end: 0em;
     font-size: 30px;
 }
 
-.friendboardBody .friend > a {
+.boardBody .board > a {
     margin-block-start: 0em;
     margin-block-end: 0em;
     flex-grow: 1;
 }
 
-.friendboardBody .friend > a > p {
+.boardBody .board > a > p {
     height: 100%;
     font-size: 20px;
     overflow: scroll;
 }
 
 
-.friendboardBody .delete-header {
+.boardBody .delete-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 20px;
 }
 
-.friendboardBody .delete-body > button { 
+.boardBody .delete-body > button { 
     margin-top: 20px;
     width: 60px;
     align-self: flex-end;
 }
 
-.friendboardBody .delete-body > input { 
+.boardBody .delete-body > input { 
     border: none;
     border-bottom: 2px solid #ced4da;
     margin-top: 20px;
 }
 
-.friendboardBody .create-modal {
+.boardBody .create-modal {
     padding: 10%;
 }
 
-.friendboardBody .create-modal-body {
+.boardBody .create-modal-body {
     background-color: #FFCE4D;
     width: 100%;
     padding: 0px;
     margin: 0px;
 }
 
-.friendboardBody .create-modal-body .modal-header,
-.friendboardBody .create-modal-body .modal-footer{
+.boardBody .create-modal-body .modal-header,
+.boardBody .create-modal-body .modal-footer{
     border: none;
 }
-.friendboardBody .create-modal-body .modal-body {
+.boardBody .create-modal-body .modal-body {
     padding-top: inherit;
 }
 
 
-.friendboardBody .create-modal-body input {
+.boardBody .create-modal-body input {
     width: 100%;
     border: none;
     border-bottom: 2px solid #ced4da;
 }
 
-.friendboardBody .create-modal-body p:nth-of-type(2) {
+.boardBody .create-modal-body p:nth-of-type(2) {
     margin-top: 20px;
 }
 
-.friendboardBody .pagination { 
-    justify-content: center;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-
-.friendboardBody .pagination li {
-    border: 1px solid black;
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 
 

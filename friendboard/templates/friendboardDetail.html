@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/friendboardDetail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/boardDetail.css' %}">
 {% endblock %}
 
 {% block contents %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <body class="friendboardBody">
+    <body class="boardBody">
         <!-- Modal -->
         {% comment %} <div id="myModal{{post.pk}}" class="modal">
             <form action="{% url 'friendboard:delete' post.pk %}" method="POST">

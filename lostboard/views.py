@@ -1,23 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from django.core.exceptions import PermissionDenied
-from .models import LostPost, Comment
-from .forms import LostPostForm, CommentForm
+from django.contrib import messages
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
+from . import urls
 
 # 분실물 views.py
 
-def board(request, found='found'):
-    print(found)
-    if found == 'found':
-        lostposts = LostPost.objects.filter(found=True).order_by('-created_at')
-    else:
-        lostposts = LostPost.objects.filter(found=False).order_by('-created_at')
-    form = LostPostForm()
-    return render(request,'lostboard.html', {'lostposts':lostposts, 'form':form})
+def board(request):
+    foundposts = Post.objects.filter(found=True).order_by('-created_at')
+    findingposts = Post.objects.filter(found=False).order_by('-created_at')
+    form = PostForm()
+    return render(request,'lostboard.html', {'foundposts':foundposts, 'findingposts':findingposts, 'form':form})
 
 def createpost(request):
     if request.method == 'POST':
-        form = LostPostForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             lostpost = form.save(commit=False)
             lostpost.password = form.cleaned_data['password']
@@ -31,14 +29,14 @@ def createpost(request):
 
 def detail(request, pk):
     try:
-        lostpost = LostPost.objects.get(pk=pk)
+        lostpost = Post.objects.get(pk=pk)
     except LostPost.DoesNotExist:
         raise Http404("Post does not exist")
     form = CommentForm()
-    return render(request, 'lostdetail.html', {'lostpost':lostpost, 'form':form})
+    return render(request, 'lostdetail.html', {'post':lostpost, 'form':form})
 
 def createcomment(request, pk):
-    lostpost = get_object_or_404(LostPost, pk=pk)
+    lostpost = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -50,12 +48,14 @@ def createcomment(request, pk):
         raise Http404("Wrong Access")
 
 def deletepost(request, pk):
-    lostpost = LostPost.objects.get(pk = pk)
+    try:
+        lostpost = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        raise Http404("Post does not exist")
     if request.method == 'POST':
-        if request.POST['password'] == lostpost.password:
+        if request.POST['valpw'] == lostpost.password:
             lostpost.delete()
-            return lostboard(request)
-        raise PermissionDenied("Password is not matched")
-    else:
-        return render(request, 'lostdelete.html', {'lostpost': lostpost})
-    
+            messages.info(request, '게시물 삭제에 성공했습니다.')
+        else:
+            messages.error(request, '패스워드가 다릅니다.')
+        return redirect('lostboard:board')

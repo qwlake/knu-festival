@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+<h1 class="title">QnA</h1>
+<p>{{qnapost.content}}</p>
+<p>{{qnapost.found}}</p>
+<p>{{qnapost.created_at}}</p>
+<a href="{% url 'qnaknuch:deletepost' pk=qnapost.pk %}">글 삭제</a>
+<hr>
+<div>
+    <p>댓글 {{ qnapost.comments.count }}개</p>
+</div>
+{% for comment in qnapost.comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_at }}</div>
+        <p>{{ comment.content|linebreaks }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>아직 댓글이 없습니다.</p>
+{% endfor %}
+<form method="POST" action="{% url 'qnaknuch:createcomment' pk=qnapost.pk %}">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit">
+</form>
+{% endblock %}

@@ -44,7 +44,6 @@ table {
 }  */
 
 body{
-	background-color: #ffce4d;
 	font-size: 0;
 }
 .Map{
@@ -53,27 +52,61 @@ body{
 	height: auto;
 }
 
+.foodMap{
+	width:100%
+}
+
 .List{
 	margin: 3%;
-	width: 41%;
-	display: inline-block;
+	width: 40vw;
+}
 
+.FTcontainer{
+	display:flex;
+	font-size:1rem;
+	margin:0;
+	/* background-image:url(ex.png); */
 }
 
 .FT_1{
 	border-right: 3px solid black;
 	padding-right: 0;
+	flex-grow:1;
+	padding-right:1%;
+	margin-right:1%;
+}
 
+.detail{
+	display:flex;
+	margin-top: 1vh;
+}
+
+.img{
+	width:6vh;
+	height:6vh;
+}
+
+p{
+	margin:0;
 }
 
 .intro{
-	display:inline-block;
-	font-size:1rem;
-	background-image:url(img/ex.png);
+	/* border: 1px solid black; */
+	width:40vw;
+	flex-grow:2;
+	padding-top:3%;
+	background-image: url(ex.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.space{
+	padding-left:5vw;
 }
 
 .FT_2{
-
+	flex-grow:1;
+	margin-left: 0;
 }
 
 .Booth_1{
@@ -84,6 +117,6 @@ body{
 
 }
 
-@media(min-width: px){
+@media(min-width: 360px){
 
 }

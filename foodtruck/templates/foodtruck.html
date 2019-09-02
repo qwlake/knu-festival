@@ -16,22 +16,26 @@
 
 <div class="FTcontainer">
     <section class="FT_1 List">
-        <img src="{% static "img/foodTruck.png" %}">
-        <div class="intro">
-            {% for foodtruck in foodtrucks %}
-                <p>{{foodtruck.name}}</p>
-                <p>{{foodtruck.memo}}</p>
-            {% endfor %}
-        </div>
+        {% for foodtruck in foodtrucks %}
+            <div class="detail">
+                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <div class="intro">
+                    <p class="space">{{foodtruck.name}}</p>
+                    <p class="space">{{foodtruck.memo}}</p>
+                </div>
+            </div>
+        {% endfor %}
     </section>
     <section class="FT_2 List">
-        <img src="{% static "img/foodTruck.png" %}">
-        <div class="intro">
-            {% for foodtruck in foodtrucks %}
-                <p>{{foodtruck.name}}</p>
-                <p>{{foodtruck.memo}}</p>
-            {% endfor %}
-        </div>        
+        {% for foodtruck in foodtrucks %}
+            <div class="detail">
+                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <div class="intro">
+                    <p class="space">{{foodtruck.name}}</p>
+                    <p class="space">{{foodtruck.memo}}</p>
+                </div>
+            </div>
+        {% endfor %}        
     </section>
 </div>
 {% endblock %}
