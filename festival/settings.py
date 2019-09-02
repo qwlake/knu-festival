@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'festival'),
+    os.path.join(BASE_DIR, 'festival', 'static'),
     os.path.join(BASE_DIR, 'static'),
 ]
 
