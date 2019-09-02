@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect
 from friendboard.models import Post
 from friendboard.forms import PostForm
 from django.contrib import messages
-
+from django.core.paginator import Paginator
 # 술친구 views.py
 
 def friendboard(request):
     post_list = Post.objects.all()
+    paginator = Paginator(post_list, 10) # Show 25 contacts per page
+    page = request.GET.get('page')
+    post_list = paginator.get_page(page)
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
