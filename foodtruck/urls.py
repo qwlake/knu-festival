@@ -5,4 +5,5 @@ from . import views
 app_name = 'foodtruck'
 urlpatterns = [
     path('', views.foodtruck, name="foodtruck"),
+    path('haminseop', views.haminseop, name="haminseop"),
 ]
