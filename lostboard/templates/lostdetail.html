@@ -3,7 +3,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/board.css' %}">
-    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}?ver=1">
+    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}">
 {% endblock %}
 
 {% block contents %}
@@ -18,8 +18,29 @@
     <div class="detail-container">
         
         <div class="board">
+            <p class="detail-content">{{post.content}}<br>
+                {{post.created_at}}<br>
+                {% if post.image %}
+            <img src="{{ post.image.url }}" alt="">
+            {% endif %}<br>
+            댓글 {{ post.comments.count }}개</p>
+            {% for comment in post.comments.all %}
+                <div class="comment">
+                    <div class="detail-comment-date">{{ comment.created_at }}</div>
+                    <p class="detail-comment">{{ comment.content|linebreaks }}</p>
+                </div>
+            {% endfor %}
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
+        </div>
+
+        <!-- <div class="board">
             <p class="detail-content">{{post.content}}</p>
             <p class="detail-date">{{post.created_at}}</p>
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
             {% if post.image %}
             <p class="detail-image"><img src="{{ post.image.url }}" alt=""></p>
             {% endif %}
@@ -34,10 +55,7 @@
             {% empty %}
                 <p>아직 댓글이 없습니다.</p>
             {% endfor %}
-            <div class="buttons">
-                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
-            </div>
-        </div>
+        </div> -->
 
         <div id="myModal{{post.pk}}" class="modal">
             <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">

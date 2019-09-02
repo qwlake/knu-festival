@@ -38,13 +38,6 @@ ul.tabs li.current{
 
 
 /* 디테일 페이지 */
-.boardBody .board {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 10px 0px;
-    padding: 10px;
+/* .buttons{
 
-    background-color: rgb(253, 255, 147);
-    border-radius: 10px;
-}
+} */
