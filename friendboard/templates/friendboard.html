@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/friendboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
 {% endblock %}
 
 {% block contents %}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="friendboardBody">
-        <div class="friendboard-header">
+    <div class="boardBody">
+        <div class="board-header">
             <p class="title">술친구 구하기</p>
             <button data-toggle="modal" data-target="#createModal">술친구 만들기</button>
         </div>
@@ -31,10 +31,10 @@
             {% endfor %}
         {% endif %}
 
-        <div class="friends">
+        <div class="boards">
             {% for post in post_list %}
            
-                <div class="friend">
+                <div class="board">
                     <a href= "{% url 'friendboard:friendboard' %}">
                     <p>{{ post.content }}</p>
                     </a>

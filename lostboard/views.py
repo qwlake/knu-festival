@@ -1,19 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from django.core.exceptions import PermissionDenied
+from django.contrib import messages
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from . import urls
 
 # 분실물 views.py
 
-def board(request, found='found'):
-    if found == 'found':
-        lostposts = Post.objects.filter(found=True).order_by('-created_at')
-    else:
-        lostposts = Post.objects.filter(found=False).order_by('-created_at')
+def board(request):
+    foundposts = Post.objects.filter(found=True).order_by('-created_at')
+    findingposts = Post.objects.filter(found=False).order_by('-created_at')
     form = PostForm()
-    return render(request,'lostboard.html', {'lostposts':lostposts, 'form':form})
+    return render(request,'lostboard.html', {'foundposts':foundposts, 'findingposts':findingposts, 'form':form})
 
 def createpost(request):
     if request.method == 'POST':
@@ -35,7 +33,7 @@ def detail(request, pk):
     except LostPost.DoesNotExist:
         raise Http404("Post does not exist")
     form = CommentForm()
-    return render(request, 'lostdetail.html', {'lostpost':lostpost, 'form':form})
+    return render(request, 'lostdetail.html', {'post':lostpost, 'form':form})
 
 def createcomment(request, pk):
     lostpost = get_object_or_404(Post, pk=pk)
@@ -55,11 +53,9 @@ def deletepost(request, pk):
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
     if request.method == 'POST':
-        if request.POST['password'] == lostpost.password:
+        if request.POST['valpw'] == lostpost.password:
             lostpost.delete()
-            return redirect('lostboard:board')
-        raise PermissionDenied("Password is not matched")
-    else:
-        path = urls.app_name + ":deletepost"
-        return render(request, 'lostpwcheck.html', {'lostpost': lostpost, 'path':path})
-    
+            messages.info(request, '게시물 삭제에 성공했습니다.')
+        else:
+            messages.error(request, '패스워드가 다릅니다.')
+        return redirect('lostboard:board')
