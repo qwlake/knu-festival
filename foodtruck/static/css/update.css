@@ -1,0 +1,46 @@
+
+.update {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: calc(100vh - 100px);
+}
+
+.update form {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    max-width: 80vw;
+    background-color: white;
+
+    padding: 2vh;
+}
+
+.update input, .update textarea{
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+.update input {
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.update input[type="file"] {
+    background-color: blanchedalmond;
+    border-bottom: none;
+}
+
+.update textarea {
+    height: 20vh;
+    background-color: rgb(250, 250, 253);
+    border: 1px solid rgb(244, 244, 247);
+}
+
+.update button {
+    height: 10%;
+    border: none;
+    background-color: blanchedalmond;
+}
