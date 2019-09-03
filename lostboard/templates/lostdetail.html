@@ -19,19 +19,22 @@
         
         <div class="board">
             <a>
-                <p class="detail-content">{{post.content}}<br>
-                    {{post.created_at}}<br>
+                <div class="detail-content">
+                    <p>{{post.content|linebreaks}}</p>
+                    <br>
+                    <div>{{post.created_at}}</div>
                     {% if post.image %}
-                <img src="{{ post.image.url }}" alt="">
-                {% endif %}<br>
-                댓글 {{ post.comments.count }}개
-                {% for comment in post.comments.all %}
-                    <div class="comment">
-                        <div class="detail-comment-date">{{ comment.created_at }}</div>
-                        <p class="detail-comment">{{ comment.content|linebreaks }}</p>
-                    </div>
-                {% endfor %}
-                </p>
+                    <img src="{{ post.image.url }}" alt="">
+                    {% endif %}
+                    <div class="cmt-cnt">댓글 {{ post.comments.count }}개</div>
+                    {% for comment in post.comments.all %}
+                        <hr>
+                        <div class="comment">
+                            <p class="detail-comment">{{ comment.content|linebreaks }}</p>
+                            <div class="detail-comment-date">{{ comment.created_at }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
             </a>
             <div class="btn-addcmt">
                 <button id="cmtBtn{{post.pk}}" onclick="addcomment(event, '{{post.pk}}')"></button>
