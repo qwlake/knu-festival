@@ -9,12 +9,12 @@ html, body {
 body {
     background-image: url('back.jpg');
     background-size: cover;
-    padding-top: 30%;
+    padding-top: 20vh;
 }
 
 .login {
     background-color: white;
-    width: 80%;
+    max-width: 80%;
     height: 60%;
 }
 
@@ -37,4 +37,9 @@ body {
     border: 1px solid black;
     margin: 1% 0%;
     height: 2em;
+}
+
+.login button {
+    width: 100%;
+    background-color: snow;
 }
