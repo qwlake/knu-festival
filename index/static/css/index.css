@@ -17,28 +17,3 @@ body{
 }
 
 
-
-/* 슬라이드 배너 */
-/* *{ margin:0;padding:0;text-decoration:none}
-li{list-style:none}
-
-.product_con{ position:relative; width:300px; top:100px;margin:0 auto; border:1px solid green }
-.product_con .product_list{overflow:hidden;position:relative;margin-left:50px;width:200px; height:200px; border:1px solid red}
-.product_con .product_list li{ position:absolute;left:0;}
-.product_con .product_list li:nth-child(1){left:0px;}
-.product_con .product_list li:nth-child(2){left:200px;}
-.product_con .product_list li:nth-child(3){left:200px;}
-.product_con .product_list li:nth-child(4){left:200px;}
-.product_con .product_list li:nth-child(5){left:200px;}
-
-.product_con .product_list li a{display:block; width:200px;height:200px;background:red;font-size:150px;color:#fff;text-align: center}
-.product_con .product_list li:nth-child(1) a{background:#65f078;left:-200px;}
-.product_con .product_list li:nth-child(2) a{background:#f5da5c}
-.product_con .product_list li:nth-child(3) a{background:#fe719c;left:200px;}
-.product_con .product_list li:nth-child(4) a{background:#10A8AB;left:200px;}
-.product_con .product_list li:nth-child(5) a{background:#A1305E;left:200px;}
-
-.product_con .btn_prev,.product_con .btn_next { position:absolute;top:100px;}
-.product_con .btn_prev { left:0px;}
-.product_con .btn_next { right:0px;}
-.numlist {width:105px; margin:0 auto;} */
