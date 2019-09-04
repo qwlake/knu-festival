@@ -96,6 +96,7 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
     flex-grow: 1;
+    overflow: scroll;
 }
 
 .boardBody .board > a > p {
