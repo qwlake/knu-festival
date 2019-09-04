@@ -15,15 +15,30 @@
 
 <body>
     <div class="login">
-       <form action="{% url 'foodtruck:login' %}" method="POST">
-           {% csrf_token %}
-           <h1>로고자리</h1>
-           <div>
-                <input type="text" name="username"></input>
-                <input type="password" name="password"></input>
-           </div>
-           <button type="submit">로그인</button>
-       </form>
+        <form action="{% url 'foodtruck:login' %}" method="POST">
+            {% csrf_token %}
+            <h1>로고자리</h1>
+            <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'info' %}
+                            <div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{ message }} 
+                            </div>
+                        {% else %}
+                            <div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{ message }} 
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <input type="text" name="username" placeholder="아이디"></input>
+                <input type="password" name="password" placeholder="비밀번호"></input>
+            </div>
+            <button type="submit">로그인</button>
+        </form>
     </div>
 </body>
 </html>

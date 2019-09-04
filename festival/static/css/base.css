@@ -18,6 +18,23 @@ a{
    text-align: center;
 }
 
+.hover_li:hover {
+   background-color: black;
+   font-size: 20px;
+   color: aliceblue;
+   border-radius: 5em;
+}
+
+.hover_li:hover .hover_word {
+   font-size: 20px;
+   color: aliceblue;
+}
+
+.hover_li:hover i {
+   font-size: 20px;
+   color: aliceblue;
+}
+
 .footerClass {
    /* position: absolute;
    display: block; */

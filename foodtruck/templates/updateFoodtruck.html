@@ -3,19 +3,25 @@
 {% load static %}
 
 {% block css %}
-    {% comment %} <link rel="stylesheet" href="{% static 'css/update.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
 {% endblock %}
 
 {% block contents %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
 
-<div class="update-container">
+<div class="update">
   <form method="POST" action="{% url 'foodtruck:foodtruck_update' pk=foodtruck.id %}" enctype="multipart/form-data">
-          {% csrf_token %}
-        <input type="text" name="name" value="{{ foodtruck.name }}">
-        <input type="text" name="memo" value="{{ foodtruck.memo }}">
-        <input type="file" name="image" value="사진 변경시만 수정">
-        <button type="submit"></button>
-   </form>
+    {% csrf_token %}
+    <h4>수정하기</h4>
+    <div class="update-body">
+      <label>부스 이름</label>
+      <input type="text" name="name" value="{{ foodtruck.name }}">
+      <label>부스 소개</label>
+      <textarea  name="memo">{{ foodtruck.memo }}</textarea>
+      <label>사진 수정 (사진 수정시만 변경)</label>
+      <input type="file" name="image" value="foodtruck.image">
+    </div>
+    <button type="submit">수정하기</button>
+  </form>
 </div>
 {% endblock %}
