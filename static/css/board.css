@@ -2,6 +2,9 @@
 .boardBody {
     padding: 10px;
     min-height: calc(100vh - 100px);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .boardBody .title, p{
@@ -16,11 +19,11 @@
 }
 
 .board-header { 
-    display: flex; 
+    display: flex;
     flex-flow: row;
     justify-content: space-between;
-    margin: 0px 0px;
-    align-items: center;
+    width: 100%;
+    max-width: 500px;
 }
 
 .board-header button { 
@@ -37,15 +40,20 @@
     flex-flow: row-reverse;
 }
 
-.boardBody .boards { width: 100%;}
+.boardBody .boards { 
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
 
 .boardBody .board {
     display: flex;
     width: 100%;
-    height: auto;
-    margin: 10px 0px;
+    max-width: 500px;
+    height: 60px;
+    margin-top: 10px;
     padding: 10px;
-
     background-color: rgb(253, 255, 147);
     border-radius: 10px;
 }
@@ -190,4 +198,22 @@
 
 .pwform{
     color:red;
+}
+
+.boardBody .pagination {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.boardBody .pagination li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 10vw;
+    max-height: 60px;
+    max-width: 60px;
+    background-color: aliceblue;
+    margin: 1px;
+    font-weight: bold;
 }
