@@ -35,7 +35,7 @@
                 {% for post in post_list %}
             
                     <div class="board">
-                        <a href= "{% url 'friendboard:friendboard' %}">
+                        <a href= "{% url 'friendboard:detail' post.pk %}">
                         <p>{{ post.content }}</p>
                         </a>
                         <div class="buttons">
