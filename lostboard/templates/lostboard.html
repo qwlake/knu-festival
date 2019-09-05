@@ -33,11 +33,19 @@
     {% endif %}
 
     <ul class="tabs">
-        <li class="tab-link current" data-tab="tab-1">주웠어요</li>
-        <li class="tab-link" data-tab="tab-2">잃어버렸어요</li>
+        <a href="{% url 'lostboard:find' %}">
+            <li 
+                class="tab-link {% if foundposts is not None %} current {% endif %}" 
+                data-tab="tab-1"
+            >주웠어요</li></a>
+        <a href="{% url 'lostboard:lost' %}">
+            <li 
+                class="tab-link {% if findingposts is not None %} current {% endif %}" 
+                data-tab="tab-2"
+            >잃어버렸어요</li></a>
     </ul>
 
-    <div id="tab-1" class="boards tab-content current">
+    <div id="tab-1" class="boards tab-content {% if foundposts is not None %} current {% endif %}">
         
         {% for post in foundposts %}
         
@@ -70,12 +78,10 @@
             </form>
         </div> 
         </a>
-        {% empty %}
-            <p>아직 등록된 게시물이 없습니다.</p>
         {% endfor %}
     </div>
 
-    <div id="tab-2" class="boards tab-content">
+    <div id="tab-2" class="boards tab-content {% if findingposts is not None %} current {% endif %}">
             
         {% for post in findingposts %}
         
@@ -108,8 +114,6 @@
             </form>
         </div> 
         </a>
-        {% empty %}
-            <p>아직 등록된 게시물이 없습니다.</p>
         {% endfor %}
     </div>
 
@@ -139,6 +143,52 @@
             </div>
         </div>
     </div>
+
+    {% if foundposts is not None %}
+    <ul class="pagination">
+        {% if foundposts.has_previous %}
+        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page={{ foundposts.previous_page_number }}">&#60;</a></li>
+        {% endif %}
+
+        {% for num in foundposts.paginator.page_range %}
+            {% if foundposts.number == num %}
+            <li>{{ num }}</li>
+            {% elif num > foundposts.number|add:'-3' and num < foundposts.number|add:'3' %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if foundposts.has_next %}
+        <li><a href="?page={{ foundposts.next_page_number }}">&#62;</a></li>
+        <li><a href="?page={{ foundposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        {% endif %}
+    </ul>
+    {% else %}
+    <ul class="pagination">
+        {% if findingposts.has_previous %}
+        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page={{ findingposts.previous_page_number }}">&#60;</a></li>
+        {% endif %}
+
+        {% for num in findingposts.paginator.page_range %}
+            {% if findingposts.number == num %}
+            <li>{{ num }}</li>
+            {% elif num > findingposts.number|add:'-3' and num < findingposts.number|add:'3' %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if findingposts.has_next %}
+        <li><a href="?page={{ findingposts.next_page_number }}">&#62;</a></li>
+        <li><a href="?page={{ findingposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    
+
+    
+
     <script>
         function delpost(event, pk){
                 console.log(event)
@@ -161,7 +211,7 @@
                     }
                 event.stopPropagation()
         }
-        $(document).ready(function(){
+        {% comment %} $(document).ready(function(){
             $('ul.tabs li').click(function(){
                 var tab_id = $(this).attr('data-tab');
             
@@ -171,7 +221,7 @@
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');
             })
-        })
+        }) {% endcomment %}
     </script>
 </div>
 {% endblock %}
