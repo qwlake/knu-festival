@@ -2,10 +2,18 @@
 {% block contents %}
 {% load static %}
     <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
-    
-    <link rel="stylesheet" href="{% static 'css/swiper.css'%}">
-    <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+      <!-- jquery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+      <!-- swiper package -->
+      <link rel="stylesheet" href="{% static 'css/swiper.css'%}">
+      <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+
+      <!-- index -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
+
+      <!-- progressbar -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/progressbar.css'%}">
     </head>
     
 <body>
@@ -31,15 +39,58 @@
 
   <div class="zone">
     <h1 class="title">강대ZONE</h1>
+
+      {% if percent == 0 %}
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          막대 진행바:  <progress class="progress-bar pro1" value="0" max="100" id="pro1" name="90"></progress>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-radial progress-90">
+          <div class="overlay"><span id="percentage">90%</span></div>
+        </div>
+      </div>
+      {% else %}
+      <div class="progress-wrap">
+          <div class="progress-bar">
+            막대 진행바:  <progress class="progress-bar pro1" value="0" max="100" id="pro1" name="{{ percent }}"></progress>
+          </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-radial progress-{{ percent }}">
+          <div class="overlay"><span id="percentage">{{ percent }}%</span></div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if request.user.is_staff %}
+        <form method="POST" action="{% url 'index:percentage' %}">
+          {% csrf_token %}
+          <input type="number" name="percentage">
+          <button type="submit" class="btn btn-primary">확인</button>
+        </form>
+      {% endif %}
   </div>
 
   <script>
+    /* swiper */
     var mySwiper = new Swiper('.swiper-container', {
       speed: 400,
       loop: true,
       autoplay: {
         delay: 2000,
       },
+    });
+
+    /* 막대 진행바 */
+    $(document).ready(function(){
+      var percent = $('.pro1').attr('name');
+      $("#pro1").delay(500); /* 0.5초후 실행*/
+      var val=$("#pro1").attr("value");
+      for(var i=0;i<70;i++){
+        $("#pro1").animate({"value":percent});
+      }
     });
   </script>
 

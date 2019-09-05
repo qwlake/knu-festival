@@ -5,4 +5,5 @@ from . import views
 app_name = 'index'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('percentage/', views.percentage, name='percentage'),
 ]
