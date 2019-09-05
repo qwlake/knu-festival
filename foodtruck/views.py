@@ -16,13 +16,9 @@ def foodtruck(request):
 
 def haminseop(request):
     foodtrucks = Foodtruck.objects.all()
-    foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2+1)]
-    foodtrucks2 = foodtrucks[int(len(foodtrucks)/2+1):]
     booths = Booth.objects.all()
-    booths1 = booths[:int(len(booths)/2+1)]
-    booths2 = booths[int(len(booths)/2+1):]
     # print(foodtrucks.name)
-    return render(request,'haminseop.html',{'foodtrucks1': foodtrucks1, 'foodtrucks2': foodtrucks2, 'booths1': booths1, 'booths2': booths2})
+    return render(request,'haminseop.html',{'foodtrucks': foodtrucks, 'booths': booths})
 
 def mirae(request):
     booths = Booth.objects.all()
