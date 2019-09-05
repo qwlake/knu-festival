@@ -28,10 +28,7 @@ def createpost(request):
         raise Http404("Wrong Access")
 
 def detail(request, pk):
-    try:
-        lostpost = Post.objects.get(pk=pk)
-    except LostPost.DoesNotExist:
-        raise Http404("Post does not exist")
+    lostpost = get_object_or_404(Post, pk=pk)
     form = CommentForm()
     return render(request, 'lostdetail.html', {'post':lostpost, 'form':form})
 
@@ -48,10 +45,7 @@ def createcomment(request, pk):
         raise Http404("Wrong Access")
 
 def deletepost(request, pk):
-    try:
-        lostpost = Post.objects.get(pk=pk)
-    except Post.DoesNotExist:
-        raise Http404("Post does not exist")
+    lostpost = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         if request.POST['valpw'] == lostpost.password:
             lostpost.delete()
