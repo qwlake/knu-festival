@@ -8,20 +8,24 @@ import logging
 
 # 푸드트럭 views.py
 def foodtruck(request):
-    foodtrucks = Foodtruck.objects.all()
-    foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2+1)]
-    foodtrucks2 = foodtrucks[int(len(foodtrucks)/2+1):]
+    foodtrucks = Foodtruck.objects.all().filter(divi=1)
+    # if len(foodtrucks)//2 == 0:
+    #     foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2)]
+    #     foodtrucks2 = foodtrucks[int(len(foodtrucks)/2):]
+    # else:
+    #     foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2+1)]
+    #     foodtrucks2 = foodtrucks[int(len(foodtrucks)/2+1):] >>>>>>>>>>>>>>해결해야 함 9/6
     # print(foodtrucks.name)
     return render(request,'foodtruck.html',{'foodtrucks1': foodtrucks1, 'foodtrucks2': foodtrucks2})
 
 def haminseop(request):
-    foodtrucks = Foodtruck.objects.all()
-    booths = Booth.objects.all()
+    foodtrucks = Foodtruck.objects.all().filter(divi=2)
+    booths = Booth.objects.all().filter(divi=2)
     # print(foodtrucks.name)
     return render(request,'haminseop.html',{'foodtrucks': foodtrucks, 'booths': booths})
 
 def mirae(request):
-    booths = Booth.objects.all()
+    booths = Booth.objects.all().filter(divi=3)
     booths1 = booths[:int(len(booths)/2+1)]
     booths2 = booths[int(len(booths)/2+1):]
     # print(foodtrucks.name)

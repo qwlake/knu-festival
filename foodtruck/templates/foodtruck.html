@@ -21,28 +21,24 @@
 <div class="FTcontainer">
     <section class="FT_1 List">
         {% for foodtruck in foodtrucks1 %}
-            {% if foodtruck.divi == 1%}
-                <div class="detail">
-                    <img class="img" src="{% static "img/foodTruck.png" %}">
-                    <div class="intro">
-                        <p class="space">{{foodtruck.name}}</p>
-                        <p class="space">{{foodtruck.memo}}</p>
-                    </div>
+            <div class="detail">
+                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <div class="intro">
+                    <p class="space">{{foodtruck.name}}</p>
+                    <p class="space">{{foodtruck.memo}}</p>
                 </div>
-            {% endif %}
+            </div>
         {% endfor %}
     </section>
     <section class="FT_2 List">
         {% for foodtruck in foodtrucks2 %}
-            {% if foodtruck.divi == 1%}
-                <div class="detail">
-                    <img class="img" src="{% static "img/foodTruck.png" %}">
-                    <div class="intro">
-                        <p class="space">{{foodtruck.name}}</p>
-                        <p class="space">{{foodtruck.memo}}</p>
-                    </div>
+            <div class="detail">
+                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <div class="intro">
+                    <p class="space">{{foodtruck.name}}</p>
+                    <p class="space">{{foodtruck.memo}}</p>
                 </div>
-            {% endif %}
+            </div>
         {% endfor %}        
     </section>
 </div>
