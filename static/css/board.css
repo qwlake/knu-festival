@@ -4,7 +4,9 @@
     min-height: calc(100vh - 100px);
     display: flex;
     flex-flow: column;
+    justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .boardBody .title, p{
@@ -22,8 +24,8 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    width: 100%;
-    max-width: 500px;
+    width: 90vw;
+    max-width: 1000px;
 }
 
 .board-header button { 
@@ -41,7 +43,8 @@
 }
 
 .boardBody .boards { 
-    width: 100%;
+    width: 90vw;
+    max-width: 1000px;
     flex-flow: column;
     align-items: center;
 }
