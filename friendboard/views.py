@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
-from friendboard.models import Post
-from friendboard.forms import PostForm
+from django.shortcuts import render, redirect, get_object_or_404
+from friendboard.models import Post, Comment
+from friendboard.forms import PostForm, CommentForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.http import Http404
 # 술친구 views.py
 
 def friendboard(request):
@@ -38,4 +39,24 @@ def post_delete(request, pk):
     else :
         messages.error(request, '패스워드가 다릅니다.')
     return redirect('/friendboard/')
-    
+
+def detail(request, pk):
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        raise Http404("Post does not exist")
+    form = CommentForm()
+    return render(request, 'friendboardDetail.html', {'post':post, 'form':form})
+
+
+def createcomment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('friendboard:detail', pk=post.pk)
+    else:
+        raise Http404("Wrong Access")
