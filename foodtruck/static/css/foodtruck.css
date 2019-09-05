@@ -17,7 +17,6 @@
 	display:flex;
 	font-size:1rem;
 	margin:0;
-	/* background-image:url(ex.png); */
 }
 
 .FT_1{
@@ -43,7 +42,6 @@ p{
 }
 
 .intro{
-	/* border: 1px solid black; */
 	width:40vw;
 	flex-grow:2;
 	padding-top:3%;
