@@ -3,15 +3,32 @@ from django.http import Http404
 from django.contrib import messages
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
+from django.core.paginator import Paginator
 from . import urls
 
 # 분실물 views.py
 
-def board(request):
+# def board(request):
+#     foundposts = Post.objects.filter(found=True).order_by('-created_at')
+#     findingposts = Post.objects.filter(found=False).order_by('-created_at')
+#     form = PostForm()
+#     return render(request,'lostboard.html', {'foundposts':foundposts, 'findingposts':findingposts, 'form':form})
+
+def find(request):
     foundposts = Post.objects.filter(found=True).order_by('-created_at')
-    findingposts = Post.objects.filter(found=False).order_by('-created_at')
+    paginator = Paginator(foundposts, 10) # Show 25 contacts per page
+    page = request.GET.get('page')
+    foundposts = paginator.get_page(page)
     form = PostForm()
-    return render(request,'lostboard.html', {'foundposts':foundposts, 'findingposts':findingposts, 'form':form})
+    return render(request,'lostboard.html', {'foundposts':foundposts, 'form':form})
+
+def lost(request):
+    findingposts = Post.objects.filter(found=False).order_by('-created_at')
+    paginator = Paginator(findingposts, 10) # Show 25 contacts per page
+    page = request.GET.get('page')
+    findingposts = paginator.get_page(page)
+    form = PostForm()
+    return render(request,'lostboard.html', {'findingposts':findingposts, 'form':form})
 
 def createpost(request):
     if request.method == 'POST':
