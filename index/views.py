@@ -6,9 +6,7 @@ from .forms import ProgressForm
 _progress_pk = 1
 
 def index(request):
-    progress = get_object_or_404(Progress, pk=_progress_pk)
-    percent = progress.percentage
-    return render(request, 'index.html', {'percent':percent})
+    return render(request, 'index.html', {'percent':30})
 
 @staff_member_required
 def percentage(request):
