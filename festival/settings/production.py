@@ -7,9 +7,9 @@ ROOT_URLCONF = 'festival.urls'
 SECRET_KEY = '+zj4-xdycu$d7sxxn8%v@su&n89m$tre!2e6j7t^$tg!q%z2hp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['knu-festival-test-env.3wfmyausyg.ap-northeast-2.elasticbeanstalk.com']
 
 DATABASES = {
     'default': {
