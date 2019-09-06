@@ -1,17 +1,9 @@
 html, body {
-   /* height: 100%; */
-   background-image: url('back.jpg');
-	background-attachment: scroll;
-   background-size: 100vw 100vh;
+   background-color: #ffdde6;
 }
 
 a { 
    color: black !important;
-}
-
-#content-container {
-   width: 100%;
-   min-height: calc(100vh - 100px);
 }
 
 .nav-item a {
@@ -57,21 +49,23 @@ footer {
 
 .icon {
    margin-right: 10px;
+   /* #ffdde6; */
 }
 
 .topNav {
-   padding: 2vh;
+   position: fixed;
+   padding-top: 20px;
+   padding-left: 20px;
    list-style: none;
-   background-color: #D6CBC8;
-   min-height: 5vh;
+   background-color:white;
+   min-height: 65px;
    display: flex;
    flex-direction: row;
-   /* justify-content: space-between; */
    top: 0;
-   left:0;
+   left: 0;
    z-index: 10;
    width: 100%;
-    
+   color:#d4002f;
 }
 
 .dropMenu {
@@ -87,6 +81,12 @@ footer {
    list-style: none;
 }
 
-#content-container {
-   display: relative;
+.contentSection {
+   transition: all 0.7s;
+   margin-top: 70px;
+}
+
+.contentDiv {
+   margin-top: 110px !important;
+   transition: all 0.7s !important;
 }
