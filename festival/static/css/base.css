@@ -6,11 +6,6 @@ a {
    color: black !important;
 }
 
-#content-container {
-   width: 100%;
-   min-height: calc(100vh - 100px);
-}
-
 .nav-item a {
    text-align: center;
 }
@@ -54,13 +49,15 @@ footer {
 
 .icon {
    margin-right: 10px;
+   /* #ffdde6; */
 }
 
 .topNav {
    position: fixed;
-   padding: 2vh;
+   padding-top: 20px;
+   padding-left: 20px;
    list-style: none;
-   background-color:#ffdde6;
+   background-color:white;
    min-height: 65px;
    display: flex;
    flex-direction: row;
@@ -86,7 +83,7 @@ footer {
 
 .contentSection {
    transition: all 0.7s;
-   margin-top: 50px;
+   margin-top: 70px;
 }
 
 .contentDiv {
