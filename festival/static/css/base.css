@@ -60,15 +60,15 @@ footer {
 }
 
 .topNav {
+   position: fixed;
    padding: 2vh;
    list-style: none;
    background-color: #D6CBC8;
    min-height: 5vh;
    display: flex;
    flex-direction: row;
-   /* justify-content: space-between; */
    top: 0;
-   left:0;
+   left: 0;
    z-index: 10;
    width: 100%;
     
@@ -87,6 +87,12 @@ footer {
    list-style: none;
 }
 
-#content-container {
-   display: relative;
+.contentSection {
+   transition: all 0.7s;
+   margin-top: 50px;
+}
+
+.contentDiv {
+   margin-top: 110px !important;
+   transition: all 0.7s !important;
 }
