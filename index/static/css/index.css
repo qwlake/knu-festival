@@ -1,8 +1,7 @@
 @font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
 
-.timetable{
-    margin-bottom: 30%;
-    margin-left: 15%;
+.timetableImage{
+    margin-left: 10%;
 } 
 
 body{
@@ -10,10 +9,22 @@ body{
     color: white;
 }
 
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
 .title{
-    margin-top: 50%;
     padding-bottom: 5%;
     margin-left: 5%;
 }
 
+.empty{
+    height: 7vh;
+}
 
+.contentContainer {
+    margin-bottom: 10vh;
+}
