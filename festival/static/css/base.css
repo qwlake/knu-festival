@@ -5,7 +5,7 @@ html, body {
    background-size: 100vw 100vh;
 }
 
-a{ 
+a { 
    color: black !important;
 }
 
@@ -67,8 +67,8 @@ footer {
    display: flex;
    flex-direction: row;
    /* justify-content: space-between; */
-   position: fixed;
    top: 0;
+   left:0;
    z-index: 10;
    width: 100%;
     
@@ -88,5 +88,5 @@ footer {
 }
 
 #content-container {
-   margin-top: 150px;
+   display: relative;
 }
