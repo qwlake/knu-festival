@@ -60,10 +60,10 @@ footer {
 }
 
 .topNav {
-   padding: 15px;
+   padding: 2vh;
    list-style: none;
    background-color: #D6CBC8;
-   min-height: 65px;
+   min-height: 5vh;
    display: flex;
    flex-direction: row;
    /* justify-content: space-between; */
