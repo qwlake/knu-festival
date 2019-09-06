@@ -58,3 +58,22 @@ footer {
 .icon {
    margin-right: 10px;
 }
+
+.topNav {
+   padding: 15px;
+   list-style: none;
+   background-color: #D6CBC8;
+    min-height: 65px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+.dropMenu {
+   margin-left: 10%;
+}
+.subNav {
+   display: flex;
+   flex-direction: column;
+   display: block;
+}
