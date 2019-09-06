@@ -1,8 +1,5 @@
 html, body {
-   /* height: 100%; */
-   background-image: url('back.jpg');
-	background-attachment: scroll;
-   background-size: 100vw 100vh;
+   background-color: #ffdde6;
 }
 
 a { 
@@ -63,15 +60,15 @@ footer {
    position: fixed;
    padding: 2vh;
    list-style: none;
-   background-color: #D6CBC8;
-   min-height: 5vh;
+   background-color:#ffdde6;
+   min-height: 65px;
    display: flex;
    flex-direction: row;
    top: 0;
    left: 0;
    z-index: 10;
    width: 100%;
-    
+   color:#d4002f;
 }
 
 .dropMenu {
