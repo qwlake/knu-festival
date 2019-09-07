@@ -5,7 +5,25 @@
 }
 
 .foodMap{
-	width:100%
+	width:100vw;
+	height:40vh;
+	border-radius:15px !important;
+}
+
+.Mapleport{
+	display: flex;
+	justify-content: space-around;
+	margin: 3vh 0 3vh 0;
+}
+
+button{
+	background-color:transparent;
+	border: 1px solid #d4002f;
+	border-radius: 110px;
+	color:#d4002f;
+	font-size:10px;
+	height:7vh;
+	width:35vw;
 }
 
 .List{
@@ -20,7 +38,7 @@
 }
 
 .FT_1{
-	border-right: 3px solid black;
+	border-right: 3px solid white;
 	padding-right: 0;
 	flex-grow:1;
 	padding-right:1%;
