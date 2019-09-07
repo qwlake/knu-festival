@@ -129,11 +129,11 @@
 }
 
 .boardBody .create-modal {
-    padding: 10%;
+    padding: 5vw;
 }
 
 .boardBody .create-modal-body {
-    background-color: #FFCE4D;
+    background-color: #ffdde6;
     width: 100%;
     padding: 0px;
     margin: 0px;
@@ -151,12 +151,15 @@
 .boardBody .create-modal-body input {
     width: 100%;
     border: none;
-    border-bottom: 2px solid #ced4da;
+    border-bottom: 2px solid deeppink;
 }
 
-.boardBody .create-modal-body p:nth-of-type(2) {
+.boardBody .create-modal-body p:nth-of-type(2),
+.boardBody .create-modal-body p:nth-of-type(3),
+.boardBody .create-modal-body p:nth-of-type(5){
     margin-top: 20px;
 }
+
 
 
 
@@ -173,8 +176,24 @@
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    color: deeppink;
 }
 
+.modal .modal-footer button{
+    border: 2px solid;
+    background-color: #ffdde6;
+    color: deeppink;
+}
+
+.modal input {
+    background-color: #ffdde6;
+}
+
+.modal textarea {
+    background-color: #ffdde6;
+    border: 2px solid deeppink;
+    height: 20vh;
+}
 
 .modal-content {
     background-color: #fefefe;
