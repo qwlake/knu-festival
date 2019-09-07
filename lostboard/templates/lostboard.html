@@ -13,7 +13,8 @@
 <div class="boardBody">
     <div class="board-header">
         <p class="title">분실물</p>
-        <button data-toggle="modal" data-target="#createModal">분실물 작성</button>
+        <button data-toggle="modal" data-target="#createModal" class="big">분실물 작성</button>
+        <button data-toggle="modal" data-target="#createModal" class="small"></button>
     </div>
 
     {% if messages %}
@@ -54,9 +55,10 @@
                     <p>{{post.content}}<br>
                         {{post.created_at}}<br>
                     {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="">
                     {% endif %}<br>
-                    댓글 {{ post.comments.count }}개</p>
+                    </p>
+                    <img src="{{ post.image.url }}" alt="">
+                    <p>댓글 {{ post.comments.count }}개</p>
                 </a>
                 <div class="buttons">
                     <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>

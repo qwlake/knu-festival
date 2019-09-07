@@ -4,7 +4,6 @@
     min-height: calc(100vh - 100px);
     display: flex;
     flex-flow: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -24,15 +23,16 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    align-items: center;
     width: 90vw;
     max-width: 1000px;
 }
 
-.board-header button { 
+.board-header button.big { 
     background-image: url(https://image.flaticon.com/icons/svg/1001/1001371.svg);
-    width: 140px;
-    height: 40px;
-    background-color: rgb(253, 255, 147);
+    width: 150px;
+    padding: 10px 15px;
+    background-color: #FFF5FF;
     background-position: 10px;
     background-size: 30px 30px;
     background-repeat: no-repeat;
@@ -40,6 +40,19 @@
     border-radius: 5px;
     display: flex;
     flex-flow: row-reverse;
+}
+
+.board-header button.small { 
+    background-image: url(https://image.flaticon.com/icons/svg/1001/1001371.svg);
+    width: 40px;
+    height: 40px;
+    background-color: #FFF5FF;
+    background-position: center;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 5px;
+    display: none;
 }
 
 .boardBody .boards { 
@@ -55,7 +68,7 @@
     height: auto;
     margin-top: 10px;
     padding: 10px;
-    background-color: rgb(253, 255, 147);
+    background-color: #FFF5FF;
     border-radius: 10px;
 }
 
@@ -102,8 +115,13 @@
     overflow: scroll;
 }
 
+.boardBody .board img {
+    width: 100%;
+    height: 50vw;
+}
+
 .boardBody .board > a > p {
-    height: 100%;
+    height: 60px;
     font-size: 20px;
     overflow: scroll;
 }
@@ -133,7 +151,7 @@
 }
 
 .boardBody .create-modal-body {
-    background-color: #ffdde6;
+    background-color: #FFF5FF;
     width: 100%;
     padding: 0px;
     margin: 0px;
@@ -186,11 +204,11 @@
 }
 
 .modal input {
-    background-color: #ffdde6;
+    background-color: #FFF5FF;
 }
 
 .modal textarea {
-    background-color: #ffdde6;
+    background-color: #FFF5FF;
     border: 2px solid deeppink;
     height: 20vh;
 }
@@ -234,7 +252,7 @@
     height: 10vw;
     max-height: 60px;
     max-width: 60px;
-    background-color: aliceblue;
+    background-color: #FFF5FF;
     margin: 1px;
     font-weight: bold;
 }
@@ -280,4 +298,9 @@
     border: none;
     border-bottom: 2px solid #ced4da;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 300px) {
+    .board-header button.small { display: block; }
+    .board-header button.big { display: none; }
 }

@@ -12,11 +12,12 @@ ul.tabs li{
     display: inline-block;
     padding: 10px 15px;
     cursor: pointer;
-    background: cornsilk;
+    background: #FFF5FF;
+    border-radius: 5px;
 }
 
 ul.tabs li.current{
-    background: #FFCE4D;
+    background: pink;
     color: #222;
 }
 
