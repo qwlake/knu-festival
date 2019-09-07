@@ -5,6 +5,7 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    width: 100%;
 }
 
 .boardBody .title, p{
@@ -22,15 +23,16 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    width: 100%;
-    max-width: 500px;
+    align-items: center;
+    width: 90vw;
+    max-width: 1000px;
 }
 
-.board-header button { 
+.board-header button.big { 
     background-image: url(https://image.flaticon.com/icons/svg/1001/1001371.svg);
-    width: 140px;
-    height: 40px;
-    background-color: rgb(253, 255, 147);
+    width: 150px;
+    padding: 10px 15px;
+    background-color: #FFF5FF;
     background-position: 10px;
     background-size: 30px 30px;
     background-repeat: no-repeat;
@@ -40,8 +42,22 @@
     flex-flow: row-reverse;
 }
 
+.board-header button.small { 
+    background-image: url(https://image.flaticon.com/icons/svg/1001/1001371.svg);
+    width: 40px;
+    height: 40px;
+    background-color: #FFF5FF;
+    background-position: center;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 5px;
+    display: none;
+}
+
 .boardBody .boards { 
-    width: 100%;
+    width: 90vw;
+    max-width: 1000px;
     flex-flow: column;
     align-items: center;
 }
@@ -52,7 +68,7 @@
     height: auto;
     margin-top: 10px;
     padding: 10px;
-    background-color: rgb(253, 255, 147);
+    background-color: #FFF5FF;
     border-radius: 10px;
 }
 
@@ -99,8 +115,13 @@
     overflow: scroll;
 }
 
+.boardBody .board img {
+    width: 100%;
+    height: 50vw;
+}
+
 .boardBody .board > a > p {
-    height: 100%;
+    height: 60px;
     font-size: 20px;
     overflow: scroll;
 }
@@ -126,11 +147,11 @@
 }
 
 .boardBody .create-modal {
-    padding: 10%;
+    padding: 5vw;
 }
 
 .boardBody .create-modal-body {
-    background-color: #FFCE4D;
+    background-color: #FFF5FF;
     width: 100%;
     padding: 0px;
     margin: 0px;
@@ -148,12 +169,15 @@
 .boardBody .create-modal-body input {
     width: 100%;
     border: none;
-    border-bottom: 2px solid #ced4da;
+    border-bottom: 2px solid deeppink;
 }
 
-.boardBody .create-modal-body p:nth-of-type(2) {
+.boardBody .create-modal-body p:nth-of-type(2),
+.boardBody .create-modal-body p:nth-of-type(3),
+.boardBody .create-modal-body p:nth-of-type(5){
     margin-top: 20px;
 }
+
 
 
 
@@ -170,8 +194,24 @@
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    color: deeppink;
 }
 
+.modal .modal-footer button{
+    border: 2px solid;
+    background-color: #ffdde6;
+    color: deeppink;
+}
+
+.modal input {
+    background-color: #FFF5FF;
+}
+
+.modal textarea {
+    background-color: #FFF5FF;
+    border: 2px solid deeppink;
+    height: 20vh;
+}
 
 .modal-content {
     background-color: #fefefe;
@@ -212,7 +252,7 @@
     height: 10vw;
     max-height: 60px;
     max-width: 60px;
-    background-color: aliceblue;
+    background-color: #FFF5FF;
     margin: 1px;
     font-weight: bold;
 }
@@ -258,4 +298,9 @@
     border: none;
     border-bottom: 2px solid #ced4da;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 300px) {
+    .board-header button.small { display: block; }
+    .board-header button.big { display: none; }
 }
