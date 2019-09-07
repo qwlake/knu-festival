@@ -296,3 +296,7 @@ modules.xml
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/django,python,pycharm+all,visualstudiocode
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
