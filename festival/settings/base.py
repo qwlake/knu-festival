@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'foodtruck',
     'friendboard',
     'lostboard',
-    'qnaknuch'
+    'qnaknuch',
+    'sass_processor',
 ]
 
 MIDDLEWARE = [

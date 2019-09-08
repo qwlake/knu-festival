@@ -2,12 +2,22 @@
 # Edit at https://www.gitignore.io/?templates=django,python,pycharm+all,visualstudiocode
 
 ### custome files ###
+# after collectstatic, static files 
 .static_root/
+# migration files
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
 !__init__.py
+# virtual environment
 /myVenv/
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+**/sass/*.css
 
 ### VisualStudioCode ###
 .vscode/*
