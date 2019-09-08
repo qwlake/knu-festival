@@ -1,19 +1,17 @@
 {% extends 'base.html' %}
-{% block contents %}
 {% load static %}
-    <head>
-      <!-- swiper package -->
-      <link rel="stylesheet" href="{% static 'css/swiper.css'%}">
-      <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+{% load sass_tags %}
 
-      <!-- index -->
-      <link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
+{% block css %}
+<!-- swiper package -->
+<link rel="stylesheet" href="{% static 'css/swiper.css'%}">
+<!-- index -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
+<!-- progressbar -->
+<link rel="stylesheet" type="text/css" href="{% sass_src 'sass/progressbar.sass'%}">
+{% endblock %}
 
-      <!-- progressbar -->
-      <link rel="stylesheet" type="text/css" href="{% static 'css/progressbar.css'%}">
-    </head>
-    
-<body>
+{% block contents %}
 
   <div class="buttonContainer">
     <button onclick="fnMove('lineup')" class="scroll btn btn-secondary">라인업</button>
@@ -57,15 +55,19 @@
       </div>
 
       {% if request.user.is_staff %}
+      <div class="container">
         <form method="POST" action="{% url 'index:percentage' %}">
           {% csrf_token %}
           <input type="number" name="percentage">
           <button type="submit" class="btn btn-primary">확인</button>
         </form>
+      </div>
       {% endif %}
     </div>
   </div>
 
+  <!-- swiper package -->
+  <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
   <script>
     /* swiper */
     var mySwiper = new Swiper('.swiper-container', {
@@ -81,7 +83,4 @@
       $('html, body').animate({scrollTop:offset.top}, 500);
     }
   </script>
-
-</body>
-
 {% endblock %}
