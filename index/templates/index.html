@@ -2,9 +2,6 @@
 {% block contents %}
 {% load static %}
     <head>
-      <!-- jquery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
       <!-- swiper package -->
       <link rel="stylesheet" href="{% static 'css/swiper.css'%}">
       <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
@@ -19,13 +16,13 @@
 <body>
 
   <div class="buttonContainer">
-    <button onclick="location.href='#moveToLineup'" class="scroll btn btn-secondary">라인업</button>
-    <button onclick="location.href='#moveToTimetable'" class="scroll btn btn-secondary">타임테이블</button>
-    <button onclick="location.href='#moveToZone'" class="scroll btn btn-secondary">강대ZONE</button>
+    <button onclick="fnMove('lineup')" class="scroll btn btn-secondary">라인업</button>
+    <button onclick="fnMove('timetable')" class="scroll btn btn-secondary">타임테이블</button>
+    <button onclick="fnMove('zone')" class="scroll btn btn-secondary">강대ZONE</button>
   </div>
 
   <div class="contentContainer">
-    <div class="empty" id="moveToLineup"></div>
+    <div class="empty" id="lineup"></div>
     <h1 class="title">라인업</h1>
     <!-- Slider main container -->
     <div class="swiper-container">
@@ -42,7 +39,7 @@
   </div>
   
   <div class="contentContainer">
-    <div class="empty" id="moveToTimetable"></div>
+    <div class="empty" id="timetable"></div>
     <h1 class="title" id="target">타임테이블</h1>
     <div class="timetable">
       <img src="{% static 'img/timetable1.png' %}" class="timetableImage" alt="timetable" width="80%" height="80%" />
@@ -50,7 +47,7 @@
   </div>
 
   <div class="contentContainer">
-    <div class="empty" id="moveToZone"></div>
+    <div class="empty" id="zone"></div>
     <h1 class="title">강대ZONE</h1>
     <div class="zone">
       <div class="progress-wrap">
@@ -79,12 +76,10 @@
       },
     });
 
-    jQuery(document).ready(function($) {
-      $(".scroll").click(function(event){            
-        event.preventDefault();
-        $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
-      });
-    });
+    function fnMove(seq){
+      var offset = $("#" + seq).offset();
+      $('html, body').animate({scrollTop:offset.top}, 500);
+    }
   </script>
 
 </body>
