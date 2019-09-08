@@ -1,17 +1,9 @@
 html, body {
-   /* height: 100%; */
-   background-image: url('back.jpg');
-	background-attachment: scroll;
-   background-size: 100vw 100vh;
+   background-color: #ffdde6;
 }
 
-a{
+a { 
    color: black !important;
-}
-
-#content-container {
-   width: 100%;
-   min-height: calc(100vh - 100px);
 }
 
 .nav-item a {
@@ -57,4 +49,44 @@ footer {
 
 .icon {
    margin-right: 10px;
+   /* #ffdde6; */
+}
+
+.topNav {
+   position: fixed;
+   padding-top: 20px;
+   padding-left: 20px;
+   list-style: none;
+   background-color:white;
+   min-height: 65px;
+   display: flex;
+   flex-direction: row;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   width: 100%;
+   color:#d4002f;
+}
+
+.dropMenu {
+   margin-left: 10%;
+}
+.subNav {
+   display: flex;
+   flex-direction: column;
+   display: block;
+}
+
+.item1 {
+   list-style: none;
+}
+
+.contentSection {
+   transition: all 0.7s;
+   margin-top: 70px;
+}
+
+.contentDiv {
+   margin-top: 130px !important;
+   transition: all 0.5s !important;
 }

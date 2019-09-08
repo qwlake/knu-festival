@@ -7,9 +7,10 @@
     <title>KNU - 대동제</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/dropDown.js' %}"></script>
     <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{% static 'css/font.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -18,35 +19,25 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg text-uppercase" id="mainNav" style="background-color: #D6CBC8 !important; min-height: 80px;">
-    <div class="container">
-        <a class="navbar-brand nav-link item py-3 px-0 px-lg-3 rounded" href="{% url 'index' %}">
+    <div class="topNav fontClass">
+        <a class="item" href="{% url 'index' %}">
             <i class="icon fab fa-forumbee"></i>
             <span>로고자리</span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="navbar-toggler-icon fas fa-list"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item hover_li">
-                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/foodtruck/">
+        <div class="dropMenu item">Menu</div>
+          <ul class="subNav">
+            <li class="item1">
+                <a href="/foodtruck/">
                     <i class="icon fas fa-utensils"></i><span class="hover_word">푸드트럭</span></a></li>
-            <li class="nav-item hover_li">
-                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/lostboard/">
+            <li class="item1">
+                <a href="/lostboard/find">
                     <i class="icon fas fa-inbox"></i><span class="hover_word">분실물</span></a></li>
-            <li class="nav-item hover_li">
-                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/friendboard/">
+            <li class="item1">
+                <a href="/friendboard/">
                     <i class="icon fas fa-users"></i><span class="hover_word">술친구찾기</span></a></li>
-            <li class="nav-item hover_li">
-                <a class="nav-link item py-3 px-0 px-lg-3 rounded" href="/qnaknuch/">
-                    <i class="icon fas fa-question-circle"></i><span class="hover_word">총학QnA</span></a></li>
-          </ul>
-        </div>
+            </ul>
     </div>
-    </nav>
-
-<div id="content-container">
+<div class="contentSection">
     {% block contents %}
     {% endblock %}
 </div>
@@ -59,6 +50,5 @@
         <small>Copyright &copy; KNU Likelion 7th</small>
     </div>
 </footer>
-
 </body>
 </html>

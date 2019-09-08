@@ -3,26 +3,26 @@ ul.tabs{
     margin: 0px;
     padding: 0px;
     list-style: none;
-    width: 100%;
+    width: 90vw;
+    max-width: 1000px;
     margin-top: 10px;
-    padding-left: 15px;
 }
 ul.tabs li{
     color: #222;
     display: inline-block;
     padding: 10px 15px;
     cursor: pointer;
-    background: cornsilk;
+    background: #FFF5FF;
+    border-radius: 5px;
 }
 
 ul.tabs li.current{
-    background: #FFCE4D;
+    background: pink;
     color: #222;
 }
 
 .tab-content{
     display: none;
-    padding: 15px;
 }
 
 .tab-content.current{

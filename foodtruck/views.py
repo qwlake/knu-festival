@@ -8,26 +8,30 @@ import logging
 
 # 푸드트럭 views.py
 def foodtruck(request):
-    foodtrucks = Foodtruck.objects.all()
-    foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2+1)]
-    foodtrucks2 = foodtrucks[int(len(foodtrucks)/2+1):]
-    # print(foodtrucks.name)
+    foodtrucks = Foodtruck.objects.all().filter(divi=1)
+    if len(foodtrucks)%2 == 0:
+        foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2)]
+        foodtrucks2 = foodtrucks[int(len(foodtrucks)/2):]
+    else:
+        foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2+1)]
+        foodtrucks2 = foodtrucks[int(len(foodtrucks)/2+1):]
+    
     return render(request,'foodtruck.html',{'foodtrucks1': foodtrucks1, 'foodtrucks2': foodtrucks2})
 
 def haminseop(request):
-    foodtrucks = Foodtruck.objects.all()
-    foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2+1)]
-    foodtrucks2 = foodtrucks[int(len(foodtrucks)/2+1):]
-    booths = Booth.objects.all()
-    booths1 = booths[:int(len(booths)/2+1)]
-    booths2 = booths[int(len(booths)/2+1):]
+    foodtrucks = Foodtruck.objects.all().filter(divi=2)
+    booths = Booth.objects.all().filter(divi=2)
     # print(foodtrucks.name)
-    return render(request,'haminseop.html',{'foodtrucks1': foodtrucks1, 'foodtrucks2': foodtrucks2, 'booths1': booths1, 'booths2': booths2})
+    return render(request,'haminseop.html',{'foodtrucks': foodtrucks, 'booths': booths})
 
 def mirae(request):
-    booths = Booth.objects.all()
-    booths1 = booths[:int(len(booths)/2+1)]
-    booths2 = booths[int(len(booths)/2+1):]
+    booths = Booth.objects.all().filter(divi=3)
+    if len(booths)%2 == 0:
+        booths1 = booths[:int(len(booths)/2)]
+        booths2 = booths[int(len(booths)/2):]
+    else:
+        booths1 = booths[:int(len(booths)/2+1)]
+        booths2 = booths[int(len(booths)/2+1):]
     # print(foodtrucks.name)
     return render(request,'mirae.html',{'booths1': booths1, 'booths2': booths2})
 

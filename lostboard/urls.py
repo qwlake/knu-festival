@@ -6,7 +6,8 @@ from . import views
 # 분실물 urls.py
 app_name = 'lostboard'
 urlpatterns = [
-    path('', views.board, name="board"),
+    path('find', views.find, name="find"),
+    path('lost', views.lost, name="lost"),
     path('createpost/', views.createpost, name="createpost"),
     path('<int:pk>/', views.detail, name="detail"),
     path('<int:pk>/createcomment/', views.createcomment, name="createcomment"),

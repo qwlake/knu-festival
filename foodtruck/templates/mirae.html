@@ -14,6 +14,11 @@
     <img class="foodMap" src="{% static "img/mirae2.png" %}">
 </section>
 
+<div class="Mapleport">
+    <button type="button" onclick="location.href='{% url 'foodtruck:haminseop' %}';">함인섭광장</button>
+    <button type="button" onclick="location.href='{% url 'foodtruck:foodtruck'%}';"> 60주년 기념관 </button>
+</div>
+
 <div class="FTcontainer">
     <section class="Booth_1 List">
         {% for booth in booths1 %}
