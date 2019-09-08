@@ -61,6 +61,7 @@ footer {
    min-height: 65px;
    display: flex;
    flex-direction: row;
+   /* justify-content: space-between; */
    top: 0;
    left: 0;
    z-index: 10;
@@ -69,16 +70,12 @@ footer {
 }
 
 .dropMenu {
-   margin-left: 10%;
-}
-.subNav {
-   display: flex;
-   flex-direction: column;
-   display: block;
+   margin-left: 20px;
 }
 
 .item1 {
    list-style: none;
+   margin-right: 50px;
 }
 
 .contentSection {
@@ -87,7 +84,7 @@ footer {
 }
 
 .contentDiv {
-   margin-top: 130px !important;
+   margin-top: 115px !important;
    transition: all 0.5s !important;
 }
 
