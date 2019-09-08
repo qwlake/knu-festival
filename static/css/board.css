@@ -117,11 +117,11 @@
 
 .boardBody .board img {
     width: 100%;
-    height: 50vw;
+    /* height: 50vw; */
 }
 
 .boardBody .board > a > p {
-    height: 60px;
+    height: auto;
     font-size: 20px;
     overflow: scroll;
 }
