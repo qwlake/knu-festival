@@ -90,3 +90,8 @@ footer {
    margin-top: 130px !important;
    transition: all 0.5s !important;
 }
+
+.scroll.btn.btn-secondary {
+   border: 2px solid white;
+   background-color: pink;
+}
