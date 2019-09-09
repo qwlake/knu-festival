@@ -14,34 +14,39 @@
     <div class="board-header">
         <p class="title">분실물</p>
     </div>
-
     <div class="boards detail-container">
-        
-        <div class="board">
-            <a>
-                <div class="detail-content">
-                    <p>{{post.content|linebreaks}}</p>
-                    <br>
-                    <div>{{post.created_at}}</div>
-                    {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="">
-                    {% endif %}
-                    <div class="cmt-cnt">댓글 {{ post.comments.count }}개</div>
-                    {% for comment in post.comments.all %}
-                        <hr>
-                        <div class="comment">
-                            <p class="detail-comment">{{ comment.content|linebreaks }}</p>
-                            <div class="detail-comment-date">{{ comment.created_at }}</div>
-                        </div>
-                    {% endfor %}
+        <div class="board-detail">
+            <div class="detail-header">
+                {% if post.found is True %}
+                <p>주웠어요</p>
+                {% else %}
+                <p>잃어버렸어요</p>
+                {% endif %}
+                <div class="buttons">
+                    <button id="cmtBtn{{post.pk}}" onclick="addcomment(event, '{{post.pk}}')" class="btn-addcmt"></button>
+                    <button id="delBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
                 </div>
-            </a>
-            <div class="btn-addcmt">
-                <button id="cmtBtn{{post.pk}}" onclick="addcomment(event, '{{post.pk}}')"></button>
             </div>
-            <div class="buttons">
-                <button id="delBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            <div class="detail-content">
+                <p>{{post.content|linebreaks}}</p>
+                <br>
             </div>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="">
+            {% endif %}
+            <div class="detail-footer">
+                <p>{{post.created_at}}</p>
+                <p>댓글 {{ post.comments.count }}개</p>
+            </div>
+        </div>
+        <hr>
+        <div class="board-detail-comments">
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <p class="detail-comment">{{ comment.content|linebreaks }}</p>
+                <div class="detail-comment-date">{{ comment.created_at }}</div>
+            </div>
+        {% endfor %}
         </div>
 
         <div id="delModal{{post.pk}}" class="modal">

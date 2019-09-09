@@ -35,7 +35,7 @@ a {
    /* bottom: 0;  */
    text-align: center;
    border-top: 1px solid black;
-   padding-top: 20px;
+   padding: 20px 0px;
 }
 
 .title {
@@ -86,4 +86,9 @@ footer {
 .contentDiv {
    margin-top: 115px !important;
    transition: all 0.5s !important;
+}
+
+.scroll.btn.btn-secondary {
+   border: 2px solid white;
+   background-color: pink;
 }
