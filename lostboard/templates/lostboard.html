@@ -49,20 +49,36 @@
     <div id="tab-1" class="boards tab-content {% if foundposts is not None %} current {% endif %}">
         
         {% for post in foundposts %}
-        
+
+        {% if post.image %}
+            <div class="lostboard">
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.content}}</p>
+                </a>
+                <div class="buttons">
+                    <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+                <img src="{{ post.image.url }}" alt="">
+                <div class="lostboard-footer">
+                    <p>{{post.created_at}}</p>
+                    <p>댓글 {{ post.comments.count }}개</p>
+                </div>
+            </div>
+        {% else %}
             <div class="board">
                 <a href="{% url 'lostboard:detail' pk=post.pk %}">
                     <p>{{post.content}}<br>
                         {{post.created_at}}<br>
-                    {% if post.image %}
+                    {% comment %} {% if post.image %}
                     </p><img src="{{ post.image.url }}" alt=""><p>
-                    {% endif %}<br>
+                    {% endif %}<br> {% endcomment %}
                     댓글 {{ post.comments.count }}개</p>
                 </a>
                 <div class="buttons">
                     <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
                 </div>
-            </div>
+            </div> 
+        {% endif %}
 
             <div id="myModal{{post.pk}}" class="modal">
             <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
@@ -86,20 +102,35 @@
             
         {% for post in findingposts %}
         
-            <div class="board">
-                <a href="{% url 'lostboard:detail' pk=post.pk %}">
-                    <p>{{post.content}}</p>
-                    <p>{{post.created_at}}</p>
-                    {% if post.image %}
-                    <p><img src="{{ post.image.url }}" alt=""></p>
-                    {% endif %}
-                    <br>
-                    <p>댓글 {{ post.comments.count }}개</p>
-                </a>
-                <div class="buttons">
-                    <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
-                </div>
+        {% if post.image %}
+        <div class="lostboard">
+            <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                <p>{{post.content}}</p>
+            </a>
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
             </div>
+            <img src="{{ post.image.url }}" alt="">
+            <div class="lostboard-footer">
+                <p>{{post.created_at}}</p>
+                <p>댓글 {{ post.comments.count }}개</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="board">
+            <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                <p>{{post.content}}<br>
+                    {{post.created_at}}<br>
+                {% comment %} {% if post.image %}
+                </p><img src="{{ post.image.url }}" alt=""><p>
+                {% endif %}<br> {% endcomment %}
+                댓글 {{ post.comments.count }}개</p>
+            </a>
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
+        </div> 
+        {% endif %}
 
             <div id="myModal{{post.pk}}" class="modal">
             <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
