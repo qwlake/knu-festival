@@ -73,7 +73,7 @@
 }
 
 .boardBody .board .buttons {
-    margin-left: 20px;
+    margin-left: 10px;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -303,4 +303,96 @@
 @media screen and (max-width: 300px) {
     .board-header button.small { display: block; }
     .board-header button.big { display: none; }
+}
+
+.boardBody .lostboard {
+    display: grid;
+    grid-template-rows: auto 50vw auto;
+    grid-template-columns: auto 40px;
+    grid-gap: 2vw;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #FFF5FF;
+    border-radius: 10px;
+}
+
+.boardBody .lostboard a{
+    grid-column: 1/2;
+    grid-row: 1/2
+}
+
+.boardBody .lostboard .buttons{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.boardBody .lostboard img{
+    grid-column: 1/3;
+    grid-row: 2/3;
+    height: 100%;
+    width: 70%;
+    border-radius: 20px;
+    justify-self: center;
+}
+
+.boardBody .lostboard .lostboard-footer{
+    grid-column: 1/3;
+    grid-row: 3/4;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+
+/* .boardBody .lostboard a p{
+    overflow: hidden;
+} */
+
+
+/*board-detail*/
+.detail-container .board-detail {
+    display: flex;
+    flex-flow: column;
+    background-color: #FFF5FF;
+
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.detail-container .board-detail .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.detail-container .board-detail .detail-header .btn-addcmt {
+    background-image: url("https://image.flaticon.com/icons/svg/1380/1380338.svg");
+}
+
+.detail-container .board-detail .detail-footer p {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.detail-container .board-detail-comments .comment {
+    background-color: #FFF5FF;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.detail-container .board-detail img{
+    width: 70vw;
+    height: 70vw;
+    max-width: 700px;
+    max-height: 500px;
+    align-self: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
