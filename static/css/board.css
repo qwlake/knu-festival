@@ -397,3 +397,9 @@
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+.friendTitle {
+    border-bottom: 2px solid white;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
