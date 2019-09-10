@@ -1,33 +1,27 @@
-.Map{
-	margin: 1%;
-	width: 98%;
-	height: auto;
-}
-
 .foodMap{
 	width:100vw;
-	height:40vh;
-	border-radius:15px !important;
+	height:83vw;
+	border-radius:20px;
+	background-color:#fff0f5;
 }
 
 .Mapleport{
 	display: flex;
 	justify-content: space-around;
-	margin: 3vh 0 3vh 0;
+	flex-grow: 1;
+	margin: 3vh 0 0 0;
 }
 
 button{
-	background-color:transparent;
-	border: 1px solid #d4002f;
-	border-radius: 110px;
-	color:#d4002f;
-	font-size:10px;
-	height:7vh;
-	width:35vw;
+	border:none;
+	background-color: pink;
+	color: deeppink;
+	border-radius: 0.7rem;
+	height: 10vw;
+	font-size: 0.8rem;
 }
 
 .List{
-	margin: 3%;
 	width: 40vw;
 }
 
@@ -35,14 +29,32 @@ button{
 	display:flex;
 	font-size:1rem;
 	margin:0;
+	font-size: 0.8rem;
 }
 
 .FT_1{
 	border-right: 3px solid white;
 	padding-right: 0;
 	flex-grow:1;
-	padding-right:1%;
-	margin-right:1%;
+	margin:3% 0 0 0;
+	flex-grow:1;
+}
+
+.FT_2{
+	flex-grow:1;
+	margin-left: 0;
+	flex-grow:1;
+}
+
+.Booth_1{
+	border-right: 3px solid white;
+	margin-right: 1%;
+	flex-grow:1;
+}
+
+.Booth_2{
+	margin:3% 0 0 0;
+	flex-grow:1;
 }
 
 .detail{
@@ -55,14 +67,10 @@ button{
 	height:6vh;
 }
 
-p{
-	margin:0;
-}
-
 .intro{
 	width:40vw;
 	flex-grow:2;
-	padding-top:3%;
+	padding:5%;
 	background-image: url(ex.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -72,18 +80,10 @@ p{
 	padding-left:5vw;
 }
 
-.FT_2{
-	flex-grow:1;
-	margin-left: 0;
+p{
+	margin:0;
 }
 
-.Booth_1{
-	border-right: 3px solid black;
-}
-
-.Booth_2{
-
-}
 
 @media(min-width: 360px){
 
