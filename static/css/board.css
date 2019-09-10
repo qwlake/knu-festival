@@ -399,6 +399,9 @@
 
 .friendTitle {
     border-bottom: 2px solid white;
-    border-radius: 5px;
     padding-bottom: 10px;
+}
+
+.footerArea {
+    font-size: 15px;
 }
