@@ -93,4 +93,5 @@ footer {
 .scroll.btn.btn-secondary {
    border: 2px solid white;
    background-color: pink;
+   width: 100%;
 }
