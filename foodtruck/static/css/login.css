@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background-image: url('back.jpg');
+    background-color: #ffdde6;
     background-size: cover;
     padding-top: 20vh;
 }
@@ -16,6 +16,7 @@ body {
     background-color: white;
     max-width: 80%;
     height: 60%;
+    border-radius: 10px;
 }
 
 .login h1 {
@@ -34,12 +35,14 @@ body {
 
 .login input {
     width: 100%;
-    border: 1px solid black;
+    border: none;
+    border-bottom: 2px solid black;
     margin: 1% 0%;
     height: 2em;
 }
 
 .login button {
     width: 100%;
-    background-color: snow;
+    background-color: #ffdde6;
+    border: none;
 }

@@ -10,10 +10,10 @@ body{
 }
 
 .buttonContainer{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 8vw;
-    padding-right: 8vw;
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    grid-gap: 10px;
+    justify-content: center;
 }
 
 .title{
@@ -27,4 +27,55 @@ body{
 
 .contentContainer {
     margin-bottom: 10vh;
+    width: 90vw;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.contentContainer.main-img { width: 100vw; }
+
+.events {
+    width: 90vw;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+.event {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    border: 1px solid black;
+    width: 50vw;
+    max-width: 400px;
+    height: 70vw;
+    max-height: 600px;
+    background-color: white;
+    padding: 10px;
+}
+
+.event-pagination { 
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.events .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+}
+
+.event .main-img {
+    width: 20vw;
+    height: 20vw;
+}
+
+.event h4 {
+    color: black;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }

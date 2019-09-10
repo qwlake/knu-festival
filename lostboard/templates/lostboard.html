@@ -162,11 +162,11 @@
                 <form action="{% url 'lostboard:createpost' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <p><label for="id_content">내용</label> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea></p>
+                        <p> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="분실물 찾아요"></textarea></p>
                         <p><label for="id_image">사진</label> <input type="file" name="image" id="id_image"></p>
                         <p><label for="found">주웠어요</label> <input id="found" type='radio' name='found' value=True required></p>
                         <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='found' value=False></p>
-                        <p><label for="id_password">패스워드</label> <input type="password" name="password" maxlength="200" required="" id="id_password"></p>
+                        <p><input type="password" name="password" maxlength="200" required="" id="id_password" placeholder="패스워드"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>

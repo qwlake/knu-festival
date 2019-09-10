@@ -13,11 +13,12 @@
 
 {% block contents %}
 
-  <div class="contentContainer"><img src="{% static 'img/main.png' %}" width="100%" height="50%"/></div>
+  <div class="contentContainer main-img"><img src="{% static 'img/main.png' %}" width="100%" height="50%"/></div>
 
   <div class="buttonContainer">
     <button onclick="fnMove('lineup')" class="scroll btn btn-secondary">라인업</button>
     <button onclick="fnMove('timetable')" class="scroll btn btn-secondary">타임테이블</button>
+    <button onclick="fnMove('event')" class="scroll btn btn-secondary">이벤트</button>
     <button onclick="fnMove('zone')" class="scroll btn btn-secondary">강대ZONE</button>
   </div>
 
@@ -44,6 +45,29 @@
     <div class="timetable">
       <img src="{% static 'img/timetable1.png' %}" class="timetableImage" alt="timetable" width="80%" height="80%" />
     </div>
+  </div>
+  
+  <div class="contentContainer">
+    <div class="empty" id="event"></div>
+    <h1 class="title">이벤트</h1>
+    <div class="events">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide event" >
+          <img src="{% static 'img/timetable1.png' %}" class="main-img">
+          <h4>호호호호</h4>
+        </div>
+        <div class="swiper-slide event">
+          <img src="{% static 'img/timetable1.png' %}" class="main-img">
+          <h4>#호호호호</h4>
+        </div>
+        <div class="swiper-slide event">
+          <img src="{% static 'img/timetable1.png' %}" class="main-img">
+          <h4>#호호호호</h4>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="event-pagination"></div>
+  </div>
   </div>
 
   <div class="contentContainer">
@@ -77,6 +101,16 @@
       loop: true,
       autoplay: {
         delay: 2000,
+      },
+    });
+
+    var events = new Swiper('.events', {
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.event-pagination',
+        clickable: true,
       },
     });
 
