@@ -144,6 +144,7 @@
     border: none;
     border-bottom: 2px solid #ced4da;
     margin-top: 20px;
+    background-color: #FFF5FF;
 }
 
 .boardBody .create-modal {
@@ -214,7 +215,7 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #FFF5FF;
     margin:20% auto; 
     padding: 20px;
     border: 1px solid #888;

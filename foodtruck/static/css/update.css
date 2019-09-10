@@ -16,6 +16,7 @@
     background-color: white;
 
     padding: 2vh;
+    border-radius: 10px;
 }
 
 .update input, .update textarea{
@@ -29,18 +30,18 @@
 }
 
 .update input[type="file"] {
-    background-color: blanchedalmond;
+    background-color: #ffdde6;
     border-bottom: none;
 }
 
 .update textarea {
     height: 20vh;
-    background-color: rgb(250, 250, 253);
+    background-color: #ffdde6;
     border: 1px solid rgb(244, 244, 247);
 }
 
 .update button {
     height: 10%;
     border: none;
-    background-color: blanchedalmond;
+    background-color: #ffdde6;
 }
