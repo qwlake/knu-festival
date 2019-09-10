@@ -96,8 +96,8 @@
                             <form action="{% url 'friendboard:friendboard' %}" method = "POST">
                                 {% csrf_token %}
                                 <div class="modal-body">
-                                    <p><label for="id_content">내용</label> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea></p>
-                                    <p><label for="id_password">패스워드</label> <input type="password" name="password" maxlength="200" required="" id="id_password"></p>
+                                    <p><textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="술친구 구해욧"></textarea></p>
+                                    <p><input type="password" name="password" maxlength="200" required="" id="id_password" placeholder="패스워드를 입력하세요"></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
