@@ -52,17 +52,37 @@
     <h1 class="title">이벤트</h1>
     <div class="events">
       <div class="swiper-wrapper">
-        <div class="swiper-slide event" >
-          <img src="{% static 'img/timetable1.png' %}" class="main-img">
-          <h4>호호호호</h4>
+        <div class="swiper-slide event" onclick="showEvent(event, 1)">
+          <img src="{% static 'img/event/event_1.jpg' %}" class="main-img">
+          <h4>#버스를타고</h4>
         </div>
-        <div class="swiper-slide event">
-          <img src="{% static 'img/timetable1.png' %}" class="main-img">
-          <h4>#호호호호</h4>
+        <div class="swiper-slide event" onclick="showEvent(event, 2)">
+          <img src="{% static 'img/event/event_2.jpg' %}" class="main-img">
+          <h4>#분노의질주</h4>
         </div>
-        <div class="swiper-slide event">
-          <img src="{% static 'img/timetable1.png' %}" class="main-img">
-          <h4>#호호호호</h4>
+        <div class="swiper-slide event" onclick="showEvent(event, 3)">
+          <img src="{% static 'img/event/event_3.jpg' %}" class="main-img">
+          <h4>#부산행</h4>
+        </div>
+        <div class="swiper-slide event" onclick="showEvent(event, 4)">
+          <img src="{% static 'img/event/event_4.jpg' %}" class="main-img">
+          <h4>#명사수코난</h4>
+        </div>
+        <div class="swiper-slide event" onclick="showEvent(event, 5)">
+          <img src="{% static 'img/event/event_5.jpg' %}" class="main-img">
+          <h4>#미니겜천국</h4>
+        </div>
+        <div class="swiper-slide event" onclick="showEvent(event, 6)">
+          <img src="{% static 'img/event/event_6.jpg' %}" class="main-img">
+          <h4>#도전과제</h4>
+        </div>
+        <div class="swiper-slide event" onclick="showEvent(event, 7)">
+          <img src="{% static 'img/event/event_7.jpg' %}" class="main-img">
+          <h4>#우리도핑크</h4>
+        </div>
+        <div class="swiper-slide event" onclick="showEvent(event, 8)">
+          <img src="{% static 'img/event/event_8.jpg' %}" class="main-img">
+          <h4>#인싸아이탬</h4>
         </div>
       </div>
       <!-- Add Pagination -->
@@ -92,6 +112,11 @@
     </div>
   </div>
 
+  <div class="index-modal" onclick="closeEvent(event)">
+    <div class="body">
+    </div>
+  </div>
+
   <!-- swiper package -->
   <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
   <script>
@@ -117,6 +142,17 @@
     function fnMove(seq){
       var offset = $("#" + seq).offset();
       $('html, body').animate({scrollTop:offset.top}, 500);
+    }
+
+    function showEvent(event, number) {
+      document.querySelectorAll('.index-modal .body')[0].style.backgroundImage =  "url('" + "{% static 'img/event/event_' %}" + number + ".jpg')"
+      document.querySelectorAll('.index-modal')[0].style.display = 'flex' 
+      event.stopPropagation()
+    }
+
+    function closeEvent(event) {
+      document.querySelectorAll('.index-modal')[0].style.display = 'none';
+      event.stopPropagation();
     }
   </script>
 {% endblock %}

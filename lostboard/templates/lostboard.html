@@ -180,7 +180,7 @@
     {% if foundposts is not None %}
     <ul class="pagination">
         {% if foundposts.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ foundposts.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -194,13 +194,13 @@
 
         {% if foundposts.has_next %}
         <li><a href="?page={{ foundposts.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ foundposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ foundposts.paginator.num_pages }}">Last</a></li>
         {% endif %}
     </ul>
     {% else %}
     <ul class="pagination">
         {% if findingposts.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ findingposts.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -214,7 +214,7 @@
 
         {% if findingposts.has_next %}
         <li><a href="?page={{ findingposts.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ findingposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ findingposts.paginator.num_pages }}">Last</a></li>
         {% endif %}
     </ul>
     {% endif %}
