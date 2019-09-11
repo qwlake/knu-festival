@@ -89,13 +89,13 @@ p{
 	width:40vw%;
 	height:40vh%;
 	z-index:4;
-  }
-  
-  .modal h2 {
+}
+
+.modal h2 {
 	margin:0;   
-  }
-  
-  .modal button {
+}
+
+.modal button {
 	display:block;
 	width:200px;
 	height:50px;
@@ -105,18 +105,18 @@ p{
 	margin: 0 auto;
 	text-align:center;
 
-  }
-  
-  .modal .modal_content {
+}
+
+.modal .modal_content {
 	width:400px;
 	height:500px;
 	margin:100px auto;
 	padding:10px;
 	background-color:rgba(251, 239, 242, 1);
 	border:2px solid #FF68AF;	
-  }
-  
-  .modal .modal_layer { 
+}
+
+.modal .modal_layer { 
 	position:fixed;
 	top:0;
 	left:0;
@@ -124,9 +124,9 @@ p{
 	height:100%;
 	background:rgba(0, 0, 0, 0.5);
 	z-index:-1;
-  }  
+}  
 
- .modal_content .modal_button{
+.modal_content .modal_button{
 	height:auto;
 	display:block;
 	text-align:center;
@@ -178,6 +178,7 @@ p{
 	margin-bottom:10px;
 	border:1px solid #FF68AF;
 }
+
 
 
 @media(min-width: 360px){
