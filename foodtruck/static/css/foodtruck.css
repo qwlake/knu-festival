@@ -99,8 +99,8 @@ p{
 	display:block;
 	width:200px;
 	height:50px;
-	border:1px solid #d4002f;
-	color:#d4002f;
+	border:1px solid #FF68AF;	
+	color:#FF68AF;	
 	background-color:white;
 	margin: 0 auto;
 	text-align:center;
@@ -113,7 +113,7 @@ p{
 	margin:100px auto;
 	padding:10px;
 	background-color:rgba(251, 239, 242, 1);
-	border:2px solid #d4002f;	
+	border:2px solid #FF68AF;	
   }
   
   .modal .modal_layer { 
@@ -136,13 +136,13 @@ p{
 	width:376px;
 	height:100px;	
 	display:block;
+	margin-bottom:10px;
 }
 
-.modal_content .info_left{
+.modal_content .modal_img{
 	float:left;
 	width:100px;
 	height:100px;
-	background-image: url( "back.jpg" );
 	background-color: white;
 	margin-right:20px;
 	display:inline-block;
@@ -150,12 +150,15 @@ p{
 
 .modal_content .info_right{
 	width:250px;
-	height:100px;
+	height:80px;
 	vertical-align:center;
-	line-height:100px;
-	font-size:40px;
+	line-height:60px;
+	font-size:30px;
 	float:right;
-	color:#d4002f;
+	color:#FF68AF;
+	background-color:transparent;
+	border-bottom:4px solid #FF68AF;
+	padding:10px;
 }
 .modal_content .info_sub{
 	width:376px;
@@ -164,14 +167,16 @@ p{
 	line-height:100px;
 	vertical-align:center;
 	text-align:center;
-	color:#F17F42;
+	color:white;
+	background-color:#FF68AF;
+	margin-bottom:10px;
 }
 .modal_content .menu{
 	width:376px;
 	height:200px;
-	background-color:white;
-	margin-bottom:20px;
-
+	color:rgba(212, 114, 160, 1);
+	margin-bottom:10px;
+	border:1px solid #FF68AF;
 }
 
 
