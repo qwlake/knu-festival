@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'lostboard',
     'qnaknuch',
     'sass_processor',
+    'autofixture'
 ]
 
 MIDDLEWARE = [

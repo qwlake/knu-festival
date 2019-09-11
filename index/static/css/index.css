@@ -48,8 +48,7 @@ body{
     display: flex;
     flex-flow: column;
     justify-content: space-between;
-
-    border: 1px solid black;
+    
     width: 50vw;
     max-width: 400px;
     height: 70vw;
@@ -70,8 +69,7 @@ body{
 }
 
 .event .main-img {
-    width: 20vw;
-    height: 20vw;
+    width: 100%;
 }
 
 .event h4 {
