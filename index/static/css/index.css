@@ -67,6 +67,8 @@ body{
     width: 20px;
     height: 20px;
 }
+.events .swiper-pagination-bullet-active { background: hotpink; }
+
 
 .event .main-img {
     width: 100%;
@@ -76,4 +78,25 @@ body{
     color: black;
     margin-block-start: 0em;
     margin-block-end: 0em;
+}
+
+.index-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000000;
+}
+
+.index-modal .body {
+    width: 90vw;
+    height: 90vw;
+    max-width: 500px;
+    max-height: 500px;
+    background-size: contain;
 }
