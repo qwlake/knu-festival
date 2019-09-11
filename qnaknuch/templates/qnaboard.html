@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+
+<head>
+</head>
+<div class="boardBody">
+    <h1 class="title">총학문의</h1>
+    <form method="POST" action="{% url 'qnaknuch:createpost' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <!-- {{ form.as_table }} 로 프론트 꾸미기가 어렵다면 {{ form.as_table }}를 지우고 이 주석을 사용하세요.
+            <tr><td><input type="text" name="title"></td></tr>
+            <tr><td><input type="text" name="content"></td></tr>
+            <tr><td>
+                <input id="public" type='radio' name='public' value=True><label for="public">공개</label>
+                <input id="private" type='radio' name='public' value=False><label for="private">비공개</label>
+            </td></tr>
+            <tr><td><input type="password" name="password"></td></tr> -->
+        </table>
+        <input type="submit">
+    </form>
+    <hr>
+    {% for qnapost in qnaposts %}
+        <div>
+            <a href="{% url 'qnaknuch:detail' pk=qnapost.pk %}">
+                <p>{{qnapost.title}}</p>
+                <p>{{qnapost.created_at}}</p>
+                <p>댓글 {{ qnapost.comments.count }}개</p>
+                {% if qnapost.public %}
+                <p>공개</p>
+                {% else %}
+                <P>비공개</P>
+                {% endif %}
+            </a>
+        </div>
+        <hr>
+    {% endfor %}
+</div>
+{% endblock %}

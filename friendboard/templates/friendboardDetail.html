@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+{% endblock %}
+
+{% block contents %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="boardBody fontClass2">
+    <div class="board-header">
+        <p class="title">술친구</p>
+        <a href="{% url 'friendboard:friendboard' %}">뒤로가기</a>
+    </div>
+
+
+    <div class="boards detail-container">
+        <div class="board-detail ">
+            <div class="detail-header">
+                <p>술친구 구해요!</p>
+                <div class="buttons">
+                    <button id="cmtBtn{{post.pk}}" onclick="addcomment(event, '{{post.pk}}')" class="btn-addcmt"></button>
+                    <button id="delBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+            </div>
+            <div class="detail-content">
+                <p>{{post.content|linebreaks}}</p>
+                <br>
+            </div>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="">
+            {% endif %}
+            <div class="detail-footer">
+                <p class="footerArea">{{post.created_at}}</p>
+                <p class="footerArea">댓글 {{ post.comments.count }}개</p>
+            </div>
+        </div>
+        <hr>
+        <div class="board-detail-comments">
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <p class="detail-comment">{{ comment.content|linebreaks }}</p>
+                <div class="detail-comment-date">{{ comment.created_at }}</div>
+            </div>
+        {% endfor %}
+        </div>
+        <div id="delModal{{post.pk}}" class="modal">
+            <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="delcls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div>
+        <div id="cmtModal{{post.pk}}" class="modal">
+            <form action="{% url 'friendboard:createcomment' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content addcmt-body">
+                    <div class="addcmt-header">
+                        <p>댓글 작성</p>
+                        <span class="close" id="cmtcls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea>
+                    <button type="submit" class="btn btn-primary">확인</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function delpost(event, pk){
+                console.log(event)
+                clickmodal = "delModal" + pk;
+                clickbtn = "delBtn" + pk;
+                clickcls = "delcls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+        function addcomment(event, pk){
+                console.log(event)
+                clickmodal = "cmtModal" + pk;
+                clickbtn = "cmtBtn" + pk;
+                clickcls = "cmtcls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+    </script>
+</div>
+{% endblock %}

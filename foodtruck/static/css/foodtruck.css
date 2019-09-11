@@ -1,0 +1,90 @@
+.foodMap{
+	width:100vw;
+	height:83vw;
+	border-radius:20px;
+	background-color:#fff0f5;
+}
+
+.Mapleport{
+	display: flex;
+	justify-content: space-around;
+	flex-grow: 1;
+	margin: 3vh 0 0 0;
+}
+
+button{
+	border:none;
+	background-color: pink;
+	color: deeppink;
+	border-radius: 0.7rem;
+	height: 10vw;
+	font-size: 0.8rem;
+}
+
+.List{
+	width: 40vw;
+}
+
+.FTcontainer{
+	display:flex;
+	font-size:1rem;
+	margin:0;
+	font-size: 0.8rem;
+}
+
+.FT_1{
+	border-right: 3px solid white;
+	padding-right: 0;
+	flex-grow:1;
+	margin:3% 0 0 0;
+	flex-grow:1;
+}
+
+.FT_2{
+	flex-grow:1;
+	margin-left: 0;
+	flex-grow:1;
+}
+
+.Booth_1{
+	border-right: 3px solid white;
+	margin-right: 1%;
+	flex-grow:1;
+}
+
+.Booth_2{
+	margin:3% 0 0 0;
+	flex-grow:1;
+}
+
+.detail{
+	display:flex;
+	margin-top: 1vh;
+}
+
+.img{
+	width:6vh;
+	height:6vh;
+}
+
+.intro{
+	width:40vw;
+	flex-grow:2;
+	padding:5%;
+	background-image: url(ex.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.space{
+	padding-left:5vw;
+}
+
+p{
+	margin:0;
+}
+
+
+@media(min-width: 360px){
+
+}

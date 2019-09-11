@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block css %}
+<!-- swiper package -->
+<link rel="stylesheet" href="{% static 'css/swiper.css'%}">
+<!-- index -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
+<!-- progressbar -->
+<link rel="stylesheet" type="text/css" href="{% sass_src 'sass/progressbar.sass'%}">
+{% endblock %}
+
+{% block contents %}
+
+  <div class="contentContainer main-img"><img src="{% static 'img/main.png' %}" width="100%" height="50%"/></div>
+
+  <div class="buttonContainer">
+    <button onclick="fnMove('lineup')" class="scroll btn btn-secondary">라인업</button>
+    <button onclick="fnMove('timetable')" class="scroll btn btn-secondary">타임테이블</button>
+    <button onclick="fnMove('event')" class="scroll btn btn-secondary">이벤트</button>
+    <button onclick="fnMove('zone')" class="scroll btn btn-secondary">강대ZONE</button>
+  </div>
+
+  <div class="contentContainer">
+    <div class="empty" id="lineup"></div>
+    <h1 class="title">라인업</h1>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide"><img src="{% static 'img/back7.jpg' %}" alt="lineup1" width="100%" height="50%"/></div>
+        <div class="swiper-slide"><img src="{% static 'img/back8.jpg' %}" alt="lineup2" width="100%" height="50%"/></div>
+        <div class="swiper-slide"><img src="{% static 'img/back9.jpg' %}" alt="lineup3" width="100%" height="50%"/></div>
+      </div>
+        <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  
+  <div class="contentContainer">
+    <div class="empty" id="timetable"></div>
+    <h1 class="title" id="target">타임테이블</h1>
+    <div class="timetable">
+      <img src="{% static 'img/timetable1.png' %}" class="timetableImage" alt="timetable" width="80%" height="80%" />
+    </div>
+  </div>
+  
+  <div class="contentContainer">
+    <div class="empty" id="event"></div>
+    <h1 class="title">이벤트</h1>
+    <div class="events">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide event" >
+          <img src="{% static 'img/timetable1.png' %}" class="main-img">
+          <h4>호호호호</h4>
+        </div>
+        <div class="swiper-slide event">
+          <img src="{% static 'img/timetable1.png' %}" class="main-img">
+          <h4>#호호호호</h4>
+        </div>
+        <div class="swiper-slide event">
+          <img src="{% static 'img/timetable1.png' %}" class="main-img">
+          <h4>#호호호호</h4>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="event-pagination"></div>
+  </div>
+  </div>
+
+  <div class="contentContainer">
+    <div class="empty" id="zone"></div>
+    <h1 class="title">강대ZONE</h1>
+    <div class="zone">
+      <div class="progress-wrap">
+        <div class="progress-radial progress-{{ percent }}">
+          <div class="overlay"><span id="percentage">{{ percent }}%</span></div>
+        </div>
+      </div>
+
+      {% if request.user.is_staff %}
+      <div class="container">
+        <form method="POST" action="{% url 'index:percentage' %}">
+          {% csrf_token %}
+          <input type="number" name="percentage">
+          <button type="submit" class="btn btn-primary">확인</button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- swiper package -->
+  <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+  <script>
+    /* swiper */
+    var mySwiper = new Swiper('.swiper-container', {
+      speed: 400,
+      loop: true,
+      autoplay: {
+        delay: 2000,
+      },
+    });
+
+    var events = new Swiper('.events', {
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.event-pagination',
+        clickable: true,
+      },
+    });
+
+    function fnMove(seq){
+      var offset = $("#" + seq).offset();
+      $('html, body').animate({scrollTop:offset.top}, 500);
+    }
+  </script>
+{% endblock %}

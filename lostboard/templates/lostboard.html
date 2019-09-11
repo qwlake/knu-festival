@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}">
+{% endblock %}
+
+{% block contents %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="boardBody fontClass2">
+    <div class="board-header">
+        <p class="title">분실물</p>
+        <button data-toggle="modal" data-target="#createModal" class="big">분실물 작성</button>
+        <button data-toggle="modal" data-target="#createModal" class="small"></button>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'info' %}
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ message }} 
+                </div>
+            {% else %}
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ message }} 
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <ul class="tabs">
+        <a href="{% url 'lostboard:find' %}">
+            <li 
+                class="tab-link {% if foundposts is not None %} current {% endif %}" 
+                data-tab="tab-1"
+            >주웠어요</li></a>
+        <a href="{% url 'lostboard:lost' %}">
+            <li 
+                class="tab-link {% if findingposts is not None %} current {% endif %}" 
+                data-tab="tab-2"
+            >잃어버렸어요</li></a>
+    </ul>
+
+    <div id="tab-1" class="boards tab-content {% if foundposts is not None %} current {% endif %}">
+        
+        {% for post in foundposts %}
+
+        {% if post.image %}
+            <div class="lostboard">
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.content}}</p>
+                </a>
+                <div class="buttons">
+                    <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+                <img src="{{ post.image.url }}" alt="">
+                <div class="lostboard-footer">
+                    <p>{{post.created_at}}</p>
+                    <p>댓글 {{ post.comments.count }}개</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="board">
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.content}}<br>
+                        {{post.created_at}}<br>
+                    {% comment %} {% if post.image %}
+                    </p><img src="{{ post.image.url }}" alt=""><p>
+                    {% endif %}<br> {% endcomment %}
+                    댓글 {{ post.comments.count }}개</p>
+                </a>
+                <div class="buttons">
+                    <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+            </div> 
+        {% endif %}
+
+            <div id="myModal{{post.pk}}" class="modal">
+            <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="cls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div> 
+        </a>
+        {% endfor %}
+    </div>
+
+    <div id="tab-2" class="boards tab-content {% if findingposts is not None %} current {% endif %}">
+            
+        {% for post in findingposts %}
+        
+        {% if post.image %}
+        <div class="lostboard">
+            <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                <p>{{post.content}}</p>
+            </a>
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
+            <img src="{{ post.image.url }}" alt="">
+            <div class="lostboard-footer">
+                <p>{{post.created_at}}</p>
+                <p>댓글 {{ post.comments.count }}개</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="board">
+            <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                <p>{{post.content}}<br>
+                    {{post.created_at}}<br>
+                {% comment %} {% if post.image %}
+                </p><img src="{{ post.image.url }}" alt=""><p>
+                {% endif %}<br> {% endcomment %}
+                댓글 {{ post.comments.count }}개</p>
+            </a>
+            <div class="buttons">
+                <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
+        </div> 
+        {% endif %}
+
+            <div id="myModal{{post.pk}}" class="modal">
+            <form action="{% url 'lostboard:deletepost' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="cls{{post.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                    <input name="valpw" type="password">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div> 
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog create-modal" role="document">
+            <div class="modal-content create-modal-body">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">분실물 작성</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'lostboard:createpost' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <p> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="분실물 찾아요"></textarea></p>
+                        <p><label for="id_image">사진</label> <input type="file" name="image" id="id_image"></p>
+                        <p><label for="found">주웠어요</label> <input id="found" type='radio' name='found' value=True required></p>
+                        <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='found' value=False></p>
+                        <p><input type="password" name="password" maxlength="200" required="" id="id_password" placeholder="패스워드"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                        <button type="submit" class="btn btn-primary">작성</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+
+    {% if foundposts is not None %}
+    <ul class="pagination">
+        {% if foundposts.has_previous %}
+        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page={{ foundposts.previous_page_number }}">&#60;</a></li>
+        {% endif %}
+
+        {% for num in foundposts.paginator.page_range %}
+            {% if foundposts.number == num %}
+            <li>{{ num }}</li>
+            {% elif num > foundposts.number|add:'-3' and num < foundposts.number|add:'3' %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if foundposts.has_next %}
+        <li><a href="?page={{ foundposts.next_page_number }}">&#62;</a></li>
+        <li><a href="?page={{ foundposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        {% endif %}
+    </ul>
+    {% else %}
+    <ul class="pagination">
+        {% if findingposts.has_previous %}
+        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page={{ findingposts.previous_page_number }}">&#60;</a></li>
+        {% endif %}
+
+        {% for num in findingposts.paginator.page_range %}
+            {% if findingposts.number == num %}
+            <li>{{ num }}</li>
+            {% elif num > findingposts.number|add:'-3' and num < findingposts.number|add:'3' %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if findingposts.has_next %}
+        <li><a href="?page={{ findingposts.next_page_number }}">&#62;</a></li>
+        <li><a href="?page={{ findingposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    
+
+    
+
+    <script>
+        function delpost(event, pk){
+                console.log(event)
+                clickmodal = "myModal" + pk;
+                clickbtn = "myBtn" + pk;
+                clickcls = "cls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+        {% comment %} $(document).ready(function(){
+            $('ul.tabs li').click(function(){
+                var tab_id = $(this).attr('data-tab');
+            
+                $('ul.tabs li').removeClass('current');
+                $('.tab-content').removeClass('current');
+            
+                $(this).addClass('current');
+                $("#"+tab_id).addClass('current');
+            })
+        }) {% endcomment %}
+    </script>
+</div>
+{% endblock %}

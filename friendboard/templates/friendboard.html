@@ -1,0 +1,136 @@
+    {% extends 'base.html' %}
+    {% load static %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    {% endblock %}
+
+    {% block contents %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <div class="boardBody fontClass2">
+            <div class="board-header friendTitle">
+                <p class="title">술친구 구하기</p>
+                <button data-toggle="modal" class="big" data-target="#createModal">술친구 만들기</button>
+                <button data-toggle="modal" class="small" data-target="#createModal"></button>
+            </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'info' %}
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }} 
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }} 
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <div class="boards">
+                {% for post in post_list %}
+            
+                    <div class="board">
+                        <a href= "{% url 'friendboard:detail' post.pk %}">
+                        <p>{{ post.content }}</p>
+                        </a>
+                        <div class="buttons">
+                            <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                        </div>
+                    </div>
+
+                    <div id="myModal{{post.pk}}" class="modal">
+                    <form action="{% url 'friendboard:delete' post.pk %}" method="POST">
+                        {% csrf_token %}
+                        <div class="modal-content delete-body">
+                            <div class="delete-header">
+                                <p>삭제하기</p>
+                                <span class="close" id="cls{{post.pk}}">&times;</span>     
+                            </div>                                                          
+                            <p>글 등록시 입력 한 비밀번호 입력하세요</p>
+                            <input name="valpw" type="password">
+                            <button type="submit" class="btn btn-danger">삭제</button>
+                        </div>
+                    </form>
+                </div> 
+                </a>
+                {% empty %}
+                    <p>아직 등록된 게시물이 없습니다.</p>
+                {% endfor %}
+            </div>
+
+        <ul class="pagination">
+        {% if post_list.has_previous %}
+        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page={{ post_list.previous_page_number }}">&#60;</a></li>
+        {% endif %}
+
+        {% for num in post_list.paginator.page_range %}
+            {% if post_list.number == num %}
+            <li>{{ num }}</li>
+            {% elif num > post_list.number|add:'-3' and num < post_list.number|add:'3' %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if post_list.has_next %}
+        <li><a href="?page={{ post_list.next_page_number }}">&#62;</a></li>
+        <li><a href="?page={{ post_list.paginator.num_pages }}">&#62;&#62;</a></li>
+        {% endif %}
+        </ul>
+        
+                <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog create-modal" role="document">
+                        <div class="modal-content create-modal-body">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">술친구 구하기</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{% url 'friendboard:friendboard' %}" method = "POST">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <p><textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="술친구 구해욧"></textarea></p>
+                                    <p><input type="password" name="password" maxlength="200" required="" id="id_password" placeholder="패스워드를 입력하세요"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                                    <button type="submit" class="btn btn-primary">작성</button>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function delpost(event, pk){
+                            console.log(event)
+                            clickmodal = "myModal" + pk;
+                            clickbtn = "myBtn" + pk;
+                            clickcls = "cls"+ pk;
+                            var btn = document.getElementById(clickbtn);
+                            var modal = document.getElementById(clickmodal);
+                            var span = document.getElementById(clickcls);   
+                            modal.style.display = "block";
+
+
+                            span.onclick = function() {
+                                modal.style.display = "none";
+                            }
+                                window.onclick = function(event) {
+                                    if (event.target == modal) {
+                                        modal.style.display = "none";
+                                    }
+                                }
+                            event.stopPropagation()
+                    }
+                </script>
+
+        </div>
+    {% endblock %}
+

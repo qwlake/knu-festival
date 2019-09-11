@@ -1,0 +1,40 @@
+/* 탭 관련 */
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    width: 90vw;
+    max-width: 1000px;
+    margin-top: 10px;
+}
+ul.tabs li{
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    background: #FFF5FF;
+    border-radius: 5px;
+}
+
+ul.tabs li.current{
+    background: pink;
+    color: #222;
+}
+
+.tab-content{
+    display: none;
+}
+
+.tab-content.current{
+    display: inherit;
+}
+
+
+
+/* 주웠어요, 잃어버렸어요 */
+#found, #finding {
+    width:30px;
+    border: none;
+    border-bottom: 2px solid #ced4da;
+}
+

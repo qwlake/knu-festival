@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/foodtruck.css' %}">
+{% endblock %}
+
+{% block contents %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+
+<section class="Map">
+    <img class="foodMap" src="{% static "img/mirae2.png" %}">
+</section>
+
+<div class="Mapleport">
+    <button type="button" onclick="location.href='{% url 'foodtruck:haminseop' %}';">함인섭광장</button>
+    <button type="button" onclick="location.href='{% url 'foodtruck:foodtruck'%}';"> 60주년 기념관 </button>
+</div>
+
+<div class="FTcontainer">
+    <section class="Booth_1 List">
+        {% for booth in booths1 %}
+            <div class="detail">
+                <img class="img" src="{% static "img/booth.png" %}">
+                <div class="intro">
+                    <p class="space">{{booth.name}}</p>
+                    <p class="space">{{booth.memo}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    <section class="Booth_2 List">
+        {% for booth in booths2 %}
+            <div class="detail">
+                <img class="img" src="{% static "img/booth.png" %}">
+                <div class="intro">
+                    <p class="space">{{booth.name}}</p>
+                    <p class="space">{{booth.memo}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

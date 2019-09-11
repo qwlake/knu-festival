@@ -1,0 +1,97 @@
+html, body {
+   background-color: #ffdde6;
+}
+
+a { 
+   color: black !important;
+}
+
+.nav-item a {
+   text-align: center;
+}
+
+.hover_li:hover {
+   background-color: black;
+   font-size: 20px;
+   color: aliceblue;
+   border-radius: 5em;
+}
+
+.hover_li:hover .hover_word {
+   font-size: 20px;
+   color: aliceblue;
+}
+
+.hover_li:hover i {
+   font-size: 20px;
+   color: aliceblue;
+}
+
+.footerClass {
+   /* position: absolute;
+   display: block; */
+   width: 80%;
+   margin-left: 10%;
+   /* bottom: 0;  */
+   text-align: center;
+   border-top: 1px solid black;
+   padding: 20px 0px;
+}
+
+.title {
+   margin-top: 20px;
+   margin-left: 20px;
+}
+
+footer {
+   height: 100px;
+}
+
+.icon {
+   margin-right: 10px;
+   /* #ffdde6; */
+}
+
+.topNav {
+   position: fixed;
+   padding-top: 20px;
+   padding-left: 20px;
+   list-style: none;
+   background-color:white;
+   min-height: 65px;
+   display: flex;
+   flex-direction: row;
+   /* justify-content: space-between; */
+   top: 0;
+   left: 0;
+   z-index: 10;
+   width: 100%;
+   color:#d4002f;
+}
+
+
+.dropMenu {
+   margin-left: 20px;
+}
+
+.item1 {
+   list-style: none;
+   margin-right: 50px;
+   font-size: 15px;
+}
+
+.contentSection {
+   transition: all 0.7s;
+   margin-top: 70px;
+}
+
+.contentDiv {
+   margin-top: 115px !important;
+   transition: all 0.5s !important;
+}
+
+.scroll.btn.btn-secondary {
+   border: 2px solid white;
+   background-color: pink;
+   width: 100%;
+}
