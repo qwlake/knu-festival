@@ -327,7 +327,7 @@
 
 .boardBody .lostboard-img {
     display: grid;
-    grid-template-rows: auto 50vw auto;
+    grid-template-rows: min-content 50vw min-content;
     grid-template-columns: auto 40px;
     grid-gap: 2vw;
     width: 100%;
