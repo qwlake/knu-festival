@@ -37,7 +37,7 @@
             
                     <div class="board">
                         <a href= "{% url 'friendboard:detail' post.pk %}">
-                        <p>{{ post.content }}</p>
+                        <p style="word-break:break-all">{{ post.content|truncatechars_html:100 }}</p>
                         </a>
                         <div class="buttons">
                             <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
