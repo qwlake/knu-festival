@@ -95,3 +95,6 @@ footer {
    background-color: pink;
    width: 100%;
 }
+.hotpinkColor {
+   color: hotpink !important;
+}
