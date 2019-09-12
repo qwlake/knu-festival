@@ -69,6 +69,7 @@ footer {
    color:#d4002f;
 }
 
+
 .dropMenu {
    margin-left: 20px;
 }
@@ -76,6 +77,7 @@ footer {
 .item1 {
    list-style: none;
    margin-right: 50px;
+   font-size: 15px;
 }
 
 .contentSection {
@@ -91,4 +93,5 @@ footer {
 .scroll.btn.btn-secondary {
    border: 2px solid white;
    background-color: pink;
+   width: 100%;
 }

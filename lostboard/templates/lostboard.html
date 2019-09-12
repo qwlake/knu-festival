@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="boardBody">
+<div class="boardBody fontClass2">
     <div class="board-header">
         <p class="title">분실물</p>
         <button data-toggle="modal" data-target="#createModal" class="big">분실물 작성</button>
@@ -162,11 +162,11 @@
                 <form action="{% url 'lostboard:createpost' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <p><label for="id_content">내용</label> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content"></textarea></p>
+                        <p> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="분실물 찾아요"></textarea></p>
                         <p><label for="id_image">사진</label> <input type="file" name="image" id="id_image"></p>
                         <p><label for="found">주웠어요</label> <input id="found" type='radio' name='found' value=True required></p>
                         <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='found' value=False></p>
-                        <p><label for="id_password">패스워드</label> <input type="password" name="password" maxlength="200" required="" id="id_password"></p>
+                        <p><input type="password" name="password" maxlength="200" required="" id="id_password" placeholder="패스워드"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -180,7 +180,7 @@
     {% if foundposts is not None %}
     <ul class="pagination">
         {% if foundposts.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ foundposts.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -194,13 +194,13 @@
 
         {% if foundposts.has_next %}
         <li><a href="?page={{ foundposts.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ foundposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ foundposts.paginator.num_pages }}">Last</a></li>
         {% endif %}
     </ul>
     {% else %}
     <ul class="pagination">
         {% if findingposts.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ findingposts.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -214,7 +214,7 @@
 
         {% if findingposts.has_next %}
         <li><a href="?page={{ findingposts.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ findingposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ findingposts.paginator.num_pages }}">Last</a></li>
         {% endif %}
     </ul>
     {% endif %}

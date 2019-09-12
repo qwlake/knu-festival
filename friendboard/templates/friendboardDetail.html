@@ -9,13 +9,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="boardBody">
+<div class="boardBody fontClass2">
     <div class="board-header">
-        <p class="title">술친구</p> 
+        <p class="title">술친구</p>
+        <a href="{% url 'friendboard:friendboard' %}">뒤로가기</a>
     </div>
 
+
     <div class="boards detail-container">
-        <div class="board-detail">
+        <div class="board-detail ">
             <div class="detail-header">
                 <p>술친구 구해요!</p>
                 <div class="buttons">
@@ -31,8 +33,8 @@
                 <img src="{{ post.image.url }}" alt="">
             {% endif %}
             <div class="detail-footer">
-                <p>{{post.created_at}}</p>
-                <p>댓글 {{ post.comments.count }}개</p>
+                <p class="footerArea">{{post.created_at}}</p>
+                <p class="footerArea">댓글 {{ post.comments.count }}개</p>
             </div>
         </div>
         <hr>
