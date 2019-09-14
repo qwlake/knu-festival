@@ -6,6 +6,10 @@ a {
    color: black !important;
 }
 
+a:hover {
+   text-decoration: none;
+}
+
 .nav-item a {
    text-align: center;
 }
