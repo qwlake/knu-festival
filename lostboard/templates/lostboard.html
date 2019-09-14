@@ -57,10 +57,12 @@
                 <div class="buttons">
                     <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
                 </div>
-                <img src="{{ post.image.url }}" alt="">
+                <img src="{{ post.image.url }}" alt="" onClick="location.href = '{% url 'lostboard:detail' pk=post.pk %}'">
                 <div class="lostboard-footer">
-                    <p>{{post.created_at}}</p>
-                    <p>댓글 {{ post.comments.count }}개</p>
+                    <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                        <p>{{post.created_at}}</p>
+                        <p>댓글 {{ post.comments.count }}개</p>
+                    </a>
                 </div>
             </div>
         {% else %}
@@ -72,8 +74,10 @@
                     <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
                 </div>
                 <div class="lostboard-footer">
-                    <p>{{post.created_at}}</p>
-                    <p>댓글 {{ post.comments.count }}개</p>
+                    <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                        <p>{{post.created_at}}</p>
+                        <p>댓글 {{ post.comments.count }}개</p>
+                    </a>
                 </div>
             </div> 
         {% endif %}
