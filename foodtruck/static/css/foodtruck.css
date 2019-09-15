@@ -169,8 +169,23 @@ p{
 	width:276px;
 	height:200px;
 } 
-.modal_menu .modal_food{
+.modal_menu tbody{
+	display: flex;
+    flex-flow: row;
+	justify-content: space-between;
+	padding:10px;
+	font-size:20px;
+
+}
+.modal_menu .tr1{
+	display:flex;
+	flex-flow:column;
+	text-align:left;
 
 
 }
-W
+.modal_menu .tr2{
+	display:flex;
+	flex-flow:column;
+	text-align:right;
+}

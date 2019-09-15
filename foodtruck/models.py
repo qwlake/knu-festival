@@ -20,6 +20,7 @@ class Booth (models.Model):
 
     def __str__(self):
         return self.name
+    btimage= models.ImageField(null=True, blank=True)
 
 class menu (models.Model):
     food = models.CharField(max_length=20)
