@@ -37,7 +37,7 @@
             
                     <div class="board">
                         <a href= "{% url 'friendboard:detail' post.pk %}">
-                        <p>{{ post.content }}</p>
+                        <p style="word-break:break-all">{{ post.content|truncatechars_html:100 }}</p>
                         </a>
                         <div class="buttons">
                             <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
@@ -66,7 +66,7 @@
 
         <ul class="pagination">
         {% if post_list.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ post_list.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -80,7 +80,7 @@
 
         {% if post_list.has_next %}
         <li><a href="?page={{ post_list.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ post_list.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ post_list.paginator.num_pages }}">Last</a></li>
         {% endif %}
         </ul>
         

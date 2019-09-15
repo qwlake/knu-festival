@@ -3,7 +3,6 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/board.css' %}">
-    <link rel="stylesheet" href="{% static 'css/lostboard.css' %}">
 {% endblock %}
 
 {% block contents %}
@@ -51,31 +50,34 @@
         {% for post in foundposts %}
 
         {% if post.image %}
-            <div class="lostboard">
+            <div class="lostboard-img">
                 <a href="{% url 'lostboard:detail' pk=post.pk %}">
-                    <p>{{post.content}}</p>
+                    <p style="word-break:break-all">{{post.content|truncatechars_html:100}}</p>
                 </a>
                 <div class="buttons">
                     <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
                 </div>
-                <img src="{{ post.image.url }}" alt="">
+                <img src="{{ post.image.url }}" alt="" onClick="location.href = '{% url 'lostboard:detail' pk=post.pk %}'">
                 <div class="lostboard-footer">
-                    <p>{{post.created_at}}</p>
-                    <p>댓글 {{ post.comments.count }}개</p>
+                    <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                        <p>{{post.created_at}}</p>
+                        <p>댓글 {{ post.comments.count }}개</p>
+                    </a>
                 </div>
             </div>
         {% else %}
-            <div class="board">
+            <div class="lostboard">
                 <a href="{% url 'lostboard:detail' pk=post.pk %}">
-                    <p>{{post.content}}<br>
-                        {{post.created_at}}<br>
-                    {% comment %} {% if post.image %}
-                    </p><img src="{{ post.image.url }}" alt=""><p>
-                    {% endif %}<br> {% endcomment %}
-                    댓글 {{ post.comments.count }}개</p>
+                    <p style="word-break:break-all">{{post.content|truncatechars_html:100}}</p>
                 </a>
                 <div class="buttons">
                     <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+                </div>
+                <div class="lostboard-footer">
+                    <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                        <p>{{post.created_at}}</p>
+                        <p>댓글 {{ post.comments.count }}개</p>
+                    </a>
                 </div>
             </div> 
         {% endif %}
@@ -103,31 +105,34 @@
         {% for post in findingposts %}
         
         {% if post.image %}
-        <div class="lostboard">
+        <div class="lostboard-img">
             <a href="{% url 'lostboard:detail' pk=post.pk %}">
-                <p>{{post.content}}</p>
+                <p style="word-break:break-all">{{post.content|truncatechars_html:100}}</p>
             </a>
             <div class="buttons">
                 <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
             </div>
-            <img src="{{ post.image.url }}" alt="">
+            <img src="{{ post.image.url }}" alt="" onClick="location.href = '{% url 'lostboard:detail' pk=post.pk %}'">
             <div class="lostboard-footer">
-                <p>{{post.created_at}}</p>
-                <p>댓글 {{ post.comments.count }}개</p>
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.created_at}}</p>
+                    <p>댓글 {{ post.comments.count }}개</p>
+                </a>
             </div>
         </div>
         {% else %}
-        <div class="board">
+        <div class="lostboard">
             <a href="{% url 'lostboard:detail' pk=post.pk %}">
-                <p>{{post.content}}<br>
-                    {{post.created_at}}<br>
-                {% comment %} {% if post.image %}
-                </p><img src="{{ post.image.url }}" alt=""><p>
-                {% endif %}<br> {% endcomment %}
-                댓글 {{ post.comments.count }}개</p>
+                <p style="word-break:break-all">{{post.content|truncatechars_html:100}}</p>
             </a>
             <div class="buttons">
                 <button id="myBtn{{post.pk}}" onclick="delpost(event, '{{post.pk}}')"></button>
+            </div>
+            <div class="lostboard-footer">
+                <a href="{% url 'lostboard:detail' pk=post.pk %}">
+                    <p>{{post.created_at}}</p>
+                    <p>댓글 {{ post.comments.count }}개</p>
+                </a>
             </div>
         </div> 
         {% endif %}
@@ -162,7 +167,7 @@
                 <form action="{% url 'lostboard:createpost' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <p> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="분실물 찾아요"></textarea></p>
+                        <p> <textarea name="content" cols="40" rows="10" class="form-control" required="" id="id_content" placeholder="분실물 주웠어요 or 찾아요"></textarea></p>
                         <p><label for="id_image">사진</label> <input type="file" name="image" id="id_image"></p>
                         <p><label for="found">주웠어요</label> <input id="found" type='radio' name='found' value=True required></p>
                         <p><label for="finding">잃어버렸어요</label> <input id="finding" type='radio' name='found' value=False></p>
@@ -180,7 +185,7 @@
     {% if foundposts is not None %}
     <ul class="pagination">
         {% if foundposts.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ foundposts.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -194,13 +199,13 @@
 
         {% if foundposts.has_next %}
         <li><a href="?page={{ foundposts.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ foundposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ foundposts.paginator.num_pages }}">Last</a></li>
         {% endif %}
     </ul>
     {% else %}
     <ul class="pagination">
         {% if findingposts.has_previous %}
-        <li><a href="?page=1">&#60;&#60;</a></li>
+        <li><a href="?page=1">First</a></li>
         <li><a href="?page={{ findingposts.previous_page_number }}">&#60;</a></li>
         {% endif %}
 
@@ -214,7 +219,7 @@
 
         {% if findingposts.has_next %}
         <li><a href="?page={{ findingposts.next_page_number }}">&#62;</a></li>
-        <li><a href="?page={{ findingposts.paginator.num_pages }}">&#62;&#62;</a></li>
+        <li><a href="?page={{ findingposts.paginator.num_pages }}">Last</a></li>
         {% endif %}
     </ul>
     {% endif %}

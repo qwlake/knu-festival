@@ -9,9 +9,9 @@
 {% block contents %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
 
-<div class = "Map">
-    <img class="foodMap" src="{% static "img/sixty2.png" %}">
-</div>
+
+<img class="foodMap" src="{% static "img/sixty2.png" %}">
+
 
 <div class="Mapleport">
     <button type="button" onclick="location.href='{% url 'foodtruck:haminseop' %}';">함인섭광장</button>
@@ -63,7 +63,6 @@
                 <img class="img" src="{% static "img/foodTruck.png" %}">
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
-                    <p class="space">{{foodtruck.memo}}</p>
                 </div>
             </div>
         {% endfor %}        
