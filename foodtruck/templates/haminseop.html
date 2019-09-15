@@ -23,7 +23,7 @@
     <section class="FT_1 List">
         {% for foodtruck1 in foodtrucks %}
             <div class="detail">
-                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <img class="img" src="{{ foodtruck1.ftimage.url }}">
                 <div class="intro">
                     <p class="space">{{foodtruck1.name}}</p>
                 </div>
@@ -33,7 +33,7 @@
     <section class="Booth_2 List">
         {% for booth1 in booths %}
             <div class="detail">
-                <img class="img" src="{% static "img/booth.png" %}">
+                <img class="img" src="{{ booth1.btimage.url }}">
                 <div class="intro">
                     <p class="space">{{booth1.name}}</p>
                 </div>
