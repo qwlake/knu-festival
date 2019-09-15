@@ -1,3 +1,4 @@
+
 .foodMap{
 	width:100vw;
 	height:75vw;
@@ -64,6 +65,7 @@ button{
 .img{
 	width:6vh;
 	height:6vh;
+	min-width:
 }
 
 .intro{
@@ -171,7 +173,4 @@ p{
 
 
 }
-
-@media(min-width: 360px){
-
-}
+W
