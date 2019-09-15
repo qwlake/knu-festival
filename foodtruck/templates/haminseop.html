@@ -15,8 +15,8 @@
 </section>
 
 <div class="Mapleport">
-    <button type="button" onclick="location.href='{% url 'foodtruck:foodtruck' %}';">60주년 기념관</button>
     <button type="button" onclick="location.href='{% url 'foodtruck:mirae'%}';"> 미래광장 </button>
+    <button type="button" onclick="location.href='{% url 'foodtruck:foodtruck' %}';">60주년 기념관</button>
 </div>
 
 <div class="FTcontainer">
@@ -26,7 +26,6 @@
                 <img class="img" src="{% static "img/foodTruck.png" %}">
                 <div class="intro">
                     <p class="space">{{foodtruck1.name}}</p>
-                    <p class="space">{{foodtruck1.memo}}</p>
                 </div>
             </div>
         {% endfor %}
@@ -37,7 +36,6 @@
                 <img class="img" src="{% static "img/booth.png" %}">
                 <div class="intro">
                     <p class="space">{{booth1.name}}</p>
-                    <p class="space">{{booth1.memo}}</p>
                 </div>
             </div>
         {% endfor %}
