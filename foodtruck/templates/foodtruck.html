@@ -29,7 +29,6 @@
                     <div class="modal" id="modal{{foodtruck.id}}">
                         <div class="modal_content">
                             <div class = "modal_container">
-
                                 <div class = "modal_info">
                                     <div class = "info_left">
                                         <div class="modal_img"><img src="{{foodtruck.image.url}} ">
@@ -37,22 +36,24 @@
                                     </div>
                                 </div>
                                 <div class = "modal_menu">
-                                    <table = class ="modal_table">
-                                        <tr>
+                                    <table class ="modal_table">
+                                        <tbody>
+                                        <tr class = "tr1">
                                             {% for menu in foodtruck.menus.all %}
                                             <td class = "modal_food">{{ menu.food }}</td>
                                             {% endfor %}
                                         </tr>
-                                        <tr>
+                                        <tr class = "tr2">
                                             {% for menu in foodtruck.menus.all %}
                                             <td>{{ menu.price }}</td>
                                             {% endfor %}
                                         </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                                     <div class = "modal_button">
                                     <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
-                                </div>
+                                    </div>
                             </div>
                         </div>
                         <div class="modal_layer">
@@ -62,6 +63,7 @@
             </div>
         {% endfor %}
     </div>
+
     <div class="FT_2 List">
         {% for foodtruck in foodtrucks2 %}
             <div class="detail" onclick = "myFunction({{foodtruck.id}})">
@@ -74,24 +76,36 @@
                     <div class="modal" id="modal{{foodtruck.id}}">
                         <div class="modal_content">
                             <div class = "modal_container">
-
                                     <div class = "modal_info">
                                         <div class = "info_left">
                                             <div class="modal_img"> {% if foodtruck.image %}<img src="{{foodtruck.image.url}} ">{% endif %}
                                             </div>
                                         </div>
                                     </div>
-                                                
-                                                        <div class = "modal_menu">
-                                                    
-                                                        </div>
-                                                            <div class = "modal_button">
-                                                            <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
-                                                            </div>
+                                </div>
+                                <div class = "modal_menu">
+                                    <table class ="modal_table">
+                                        <tbody>
+                                        <tr class = "tr1">
+                                            {% for menu in foodtruck.menus.all %}
+                                            <td class = "modal_food">{{ menu.food }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr class = "tr2">
+                                            {% for menu in foodtruck.menus.all %}
+                                            <td>{{ menu.price }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                    <div class = "modal_button">
+                                    <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
+                                    </div>
                             </div>
                         </div>
-                                                                <div class="modal_layer">
-                                                                </div>
+                        <div class="modal_layer">
+                        </div>
                     </div>
                 </div>
             </div>
