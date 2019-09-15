@@ -8,19 +8,21 @@
 
 {% block contents %}
 
-<img class="foodMap fontClass2" src="{% static "img/sixty2.png" %}">
+<img class="foodMap" src="{% static "img/sixty2.png" %}">
 
-<div class="Mapleport fontClass2">
+<div class="Mapleport upperDiv">
     <button type="button" onclick="location.href='{% url 'foodtruck:haminseop' %}';">함인섭광장</button>
     <button type="button" onclick="location.href='{% url 'foodtruck:mirae'%}';"> 미래광장 </button>
 </div>
 
 
-<div class="FTcontainer fontClass2">
+<div class="FTcontainer upperDiv">
     <div class="FT_1 List">
         {% for foodtruck in foodtrucks1 %}
             <div class="detail" onclick = "myFunction({{foodtruck.id}})">
+            {% if foodtruck.ftimage %}
                 <img class="img" src="{{ foodtruck.ftimage.url }}">
+            {% endif %}
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
                     <p class="space">{{foodtruck.memo}}</p>
@@ -29,7 +31,7 @@
                             <div class = "modal_container">
                                 <div class = "modal_info">
                                     <div class = "info_left">
-                                        <div class="modal_img"> <img src="{{foodtruck.image.url}} ">
+                                        <div class="modal_img"><img src="{{foodtruck.image.url}} ">
                                         </div>
                                     </div>
                                 </div>
@@ -65,16 +67,19 @@
     <div class="FT_2 List">
         {% for foodtruck in foodtrucks2 %}
             <div class="detail" onclick = "myFunction({{foodtruck.id}})">
+            {% if foodtruck.ftimage %}
                 <img class="img" src="{{ foodtruck.ftimage.url }}">
+            {% endif %}
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
                     <p class="space">{{foodtruck.memo}}</p>
                     <div class="modal" id="modal{{foodtruck.id}}">
                         <div class="modal_content">
                             <div class = "modal_container">
-                                <div class = "modal_info">
-                                    <div class = "info_left">
-                                        <div class="modal_img"> <img src="{{foodtruck.image.url}} ">
+                                    <div class = "modal_info">
+                                        <div class = "info_left">
+                                            <div class="modal_img"> {% if foodtruck.image %}<img src="{{foodtruck.image.url}} ">{% endif %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

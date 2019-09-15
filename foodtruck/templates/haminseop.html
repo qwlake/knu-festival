@@ -14,16 +14,18 @@
     <img class="foodMap" src="{% static "img/haminseop2.png" %}">
 </section>
 
-<div class="Mapleport">
+<div class="Mapleport upperDiv">
     <button type="button" onclick="location.href='{% url 'foodtruck:mirae'%}';"> 미래광장 </button>
     <button type="button" onclick="location.href='{% url 'foodtruck:foodtruck' %}';">60주년 기념관</button>
 </div>
 
-<div class="FTcontainer">
+<div class="FTcontainer upperDiv">
     <section class="FT_1 List">
         {% for foodtruck1 in foodtrucks %}
             <div class="detail">
+            {% if foodtruck1.ftimage %}
                 <img class="img" src="{{ foodtruck1.ftimage.url }}">
+            {% endif %}
                 <div class="intro">
                     <p class="space">{{foodtruck1.name}}</p>
                 </div>
@@ -33,7 +35,9 @@
     <section class="Booth_2 List">
         {% for booth1 in booths %}
             <div class="detail">
+            {% if booth1.btimage %}
                 <img class="img" src="{{ booth1.btimage.url }}">
+            {% endif %}
                 <div class="intro">
                     <p class="space">{{booth1.name}}</p>
                 </div>
