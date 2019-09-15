@@ -13,4 +13,12 @@ class Booth (models.Model):
     name = models.CharField(max_length=20)
     image = models.ImageField(null=True, blank=True)
     divi = models.IntegerField()
+<<<<<<< Updated upstream
     btimage= models.ImageField(null=True, blank=True)
+=======
+
+class menu (models.Model):
+    food = models.CharField(max_length=20)
+    price = models.CharField(max_length=20)
+    foodtruck = models.ForeignKey('FoodTruck', on_delete=models.CASCADE, null=False, related_name='menus')
+>>>>>>> Stashed changes

@@ -91,7 +91,7 @@ p{
 	display:none;
 	position:fixed;
 	width:40vw%;
-	height:40vh%;
+	height:30vh%;
 	z-index:4;
 }
 
@@ -101,23 +101,23 @@ p{
 
 .modal button {
 	display:block;
-	width:200px;
+	width:150px;
 	height:50px;
-	border:1px solid #FF68AF;	
-	color:#FF68AF;	
-	background-color:white;
+	border:1px solid deeppink;	
+	color:deeppink;	
+	background-color:#ffdde6;
 	margin: 0 auto;
 	text-align:center;
 
 }
 
 .modal .modal_content {
-	width:400px;
-	height:500px;
+	width:300px;
+	height:410px;
 	margin:100px auto;
 	padding:10px;
-	background-color:rgba(251, 239, 242, 1);
-	border:2px solid #FF68AF;	
+	background-color:#fff5ff;
+	border:2px solid deeppink;	
 }
 
 .modal .modal_layer { 
@@ -137,53 +137,40 @@ p{
 	background-color:transparent;
 } 
 .modal_content .modal_info{
-	width:376px;
-	height:100px;	
+	width:276px;
+	height:120px;	
 	display:block;
 	margin-bottom:10px;
 }
 
 .modal_content .modal_img{
 	float:left;
-	width:100px;
-	height:100px;
+	width:276px;
+	height:120px;
 	background-color: white;
 	margin-right:20px;
 	display:inline-block;
 }
-
-.modal_content .info_right{
-	width:250px;
-	height:80px;
-	vertical-align:center;
-	line-height:60px;
-	font-size:30px;
-	float:right;
-	color:#FF68AF;
-	background-color:transparent;
-	border-bottom:4px solid #FF68AF;
-	padding:10px;
+.modal_img img{
+	width:276px;
+	height:120px;
 }
-.modal_content .info_sub{
-	width:376px;
-	height:100px;
-	font-size:25px;
-	line-height:100px;
-	vertical-align:center;
-	text-align:center;
-	color:white;
-	background-color:#FF68AF;
-	margin-bottom:10px;
-}
-.modal_content .menu{
-	width:376px;
+.modal_content .modal_menu{
+	width:276px;
 	height:200px;
-	color:rgba(212, 114, 160, 1);
+	color:black;
 	margin-bottom:10px;
 	border:1px solid #FF68AF;
+	border-radius: 7px;
 }
+.modal_menu .modal_table{
+	width:276px;
+	height:200px;
+} 
+.modal_menu .modal_food{
 
 
+}
 
 @media(min-width: 360px){
 
