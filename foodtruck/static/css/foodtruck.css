@@ -1,4 +1,8 @@
-
+@font-face { font-family: 'BBTreeGB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
+.upperDiv{
+	font-family: 'BBTreeGB';
+	font-size: 20px;
+}
 .foodMap{
 	width:100vw;
 	height:75vw;
@@ -28,9 +32,9 @@ button{
 
 .FTcontainer{
 	display:flex;
-	font-size:1rem;
+	/* font-size:1rem; */
 	margin:0;
-	font-size: 0.7rem;
+	/* font-size: 0.7rem; */
 	margin: 0 1.5vw 5vw 1.5vw;
 }
 
