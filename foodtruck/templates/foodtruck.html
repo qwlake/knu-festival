@@ -25,13 +25,12 @@
             {% endif %}
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
-                    <p class="space">{{foodtruck.memo}}</p>
                     <div class="modal" id="modal{{foodtruck.id}}">
                         <div class="modal_content">
                             <div class = "modal_container">
                                 <div class = "modal_info">
                                     <div class = "info_left">
-                                        <div class="modal_img"><img src="{{foodtruck.image.url}} ">
+                                        <div class="modal_img">{% if foodtruck.image %}<img src="{{foodtruck.image.url}} ">{% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +71,6 @@
             {% endif %}
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
-                    <p class="space">{{foodtruck.memo}}</p>
                     <div class="modal" id="modal{{foodtruck.id}}">
                         <div class="modal_content">
                             <div class = "modal_container">
@@ -106,7 +104,6 @@
                         </div>
                         <div class="modal_layer">
                         </div>
-                    </div>
                 </div>
             </div>
         {% endfor %}        
