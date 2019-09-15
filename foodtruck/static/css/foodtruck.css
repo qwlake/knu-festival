@@ -1,195 +1,198 @@
 @font-face { font-family: 'BBTreeGB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; } 
 .upperDiv{
-	font-family: 'BBTreeGB';
-	font-size: 20px;
+   font-family: 'BBTreeGB';
+   font-size: 20px;
 }
 .foodMap{
-	width:100vw;
-	height:75vw;
-	border-radius:20px;
-	background-color:#fff0f5;
+   width:100vw;
+   height:75vw;
+   border-radius:20px;
+   background-color:#fff0f5;
 }
 
 .Mapleport{
-	display: flex;
-	justify-content: space-around;
-	flex-grow: 1;
-	margin: 3vh 0 0 0;
+   display: flex;
+   justify-content: space-around;
+   flex-grow: 1;
+   margin: 3vh 0 0 0;
+   font-family: 'yg-jalnan';
 }
 
 button{
-	border:none;
-	background-color: pink;
-	color: deeppink;
-	border-radius: 0.7rem;
-	height: 10vw;
-	font-size: 0.8rem;
+   border: 2px solid white;
+   background-color: pink;
+   color: white;
+   border-radius: 0.7rem;
+   height: 10vw;
+   font-size: 0.9em;
+   padding: 1.5vw;
 }
 
 .List{
-	width: 40vw;
+   width: 40vw;
 }
 
 .FTcontainer{
-	display:flex;
-	/* font-size:1rem; */
-	margin:0;
-	/* font-size: 0.7rem; */
-	margin: 0 1.5vw 5vw 1.5vw;
+   display:flex;
+   /* font-size:1rem; */
+   margin:0;
+   /* font-size: 0.7rem; */
+   margin: 0 1.5vw 5vw 1.5vw;
 }
 
 .FT_1{
-	border-right: 1px solid white;
-	padding-right: 1vw;
-	flex-grow:1;
+   border-right: 1px solid white;
+   padding-right: 1vw;
+   flex-grow:1;
 }
 
 .FT_2{
-	flex-grow:1;
-	margin-left: 2vw;
+   flex-grow:1;
+   margin-left: 2vw;
 }
 
 .Booth_1{
-	border-right: 1px solid white;
-	padding-right: 1vw;
-	flex-grow:1;
+   border-right: 1px solid white;
+   padding-right: 1vw;
+   flex-grow:1;
 }
 
 .Booth_2{
-	border-right: 1px solid white;
-	padding-right: 1vw;
-	flex-grow:1;
+   border-right: 1px solid white;
+   padding-right: 1vw;
+   flex-grow:1;
 }
 
 .detail{
-	display:flex;
-	margin-top: 1vh;
+   display:flex;
+   margin-top: 1vh;
 }
 
 .img{
-	width:6vh;
-	height:6vh;
-	min-width:
+   width:6vh;
+   height:6vh;
+   min-width:
 }
 
 .intro{
-	width:40vw;
-	flex-grow:2;
-	padding:5%;
-	background-color: #fbf2f6;
-	border: 1px solid #f8dcdc;
-	border-radius: 10px;
-	margin-left:2vw;
-	text-align: center;
-	/* background-image: url(ex.png);
-	background-size: 100% 100%;
-	background-repeat: no-repeat; */
+   width:40vw;
+   flex-grow:2;
+   padding:5%;
+   background-color: #fbf2f6;
+   border: 1px solid #f8dcdc;
+   border-radius: 10px;
+   margin-left:2vw;
+   text-align: center;
+   /* background-image: url(ex.png);
+   background-size: 100% 100%;
+   background-repeat: no-repeat; */
 }
 
 .space{
 }
 
 p{
-	margin:0;
-	padding:0;
+   margin:0;
+   padding:0;
 }
 .modal {
-	display:none;
-	position:fixed;
-	width:40vw%;
-	height:30vh%;
-	z-index:4;
+   display:none;
+   position:fixed;
+   width:40vw%;
+   height:30vh%;
+   z-index:4;
 }
 
 .modal h2 {
-	margin:0;   
+   margin:0;   
 }
 
 .modal button {
-	display:block;
-	width:150px;
-	height:50px;
-	border:1px solid deeppink;	
-	color:deeppink;	
-	background-color:#ffdde6;
-	margin: 0 auto;
-	text-align:center;
+   display:block;
+   width:150px;
+   height:50px;
+   border:1px solid deeppink;   
+   color:deeppink;   
+   background-color:#ffdde6;
+   margin: 0 auto;
+   text-align:center;
 
 }
 
 .modal .modal_content {
-	width:300px;
-	height:410px;
-	margin:100px auto;
-	padding:10px;
-	background-color:#fff5ff;
-	border:2px solid deeppink;	
+   width:300px;
+   height:410px;
+   margin:100px auto;
+   padding:10px;
+   background-color:#fff5ff;
+   border:2px solid deeppink;   
 }
 
 .modal .modal_layer { 
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background:rgba(0, 0, 0, 0.5);
-	z-index:-1;
+   position:fixed;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   background:rgba(0, 0, 0, 0.5);
+   z-index:-1;
 }  
 
 .modal_content .modal_button{
-	height:auto;
-	display:block;
-	text-align:center;
-	background-color:transparent;
+   height:auto;
+   display:block;
+   text-align:center;
+   background-color:transparent;
 } 
 .modal_content .modal_info{
-	width:276px;
-	height:120px;	
-	display:block;
-	margin-bottom:10px;
+   width:276px;
+   height:120px;   
+   display:block;
+   margin-bottom:10px;
 }
 
 .modal_content .modal_img{
-	float:left;
-	width:276px;
-	height:120px;
-	background-color: white;
-	margin-right:20px;
-	display:inline-block;
+   float:left;
+   width:276px;
+   height:120px;
+   background-color: white;
+   margin-right:20px;
+   display:inline-block;
 }
 .modal_img img{
-	width:276px;
-	height:120px;
+   width:276px;
+   height:120px;
 }
 .modal_content .modal_menu{
-	width:276px;
-	height:200px;
-	color:black;
-	margin-bottom:10px;
-	border:1px solid #FF68AF;
-	border-radius: 7px;
+   width:276px;
+   height:200px;
+   color:black;
+   margin-bottom:10px;
+   border:1px solid #FF68AF;
+   border-radius: 7px;
 }
 .modal_menu .modal_table{
-	width:276px;
-	height:200px;
+   width:276px;
+   height:200px;
 } 
 .modal_menu tbody{
-	display: flex;
+   display: flex;
     flex-flow: row;
-	justify-content: space-between;
-	padding:10px;
-	font-size:20px;
+   justify-content: space-between;
+   padding:10px;
+   font-size:20px;
 
 }
 .modal_menu .tr1{
-	display:flex;
-	flex-flow:column;
-	text-align:left;
+   display:flex;
+   flex-flow:column;
+   text-align:left;
 
 
 }
 .modal_menu .tr2{
-	display:flex;
-	flex-flow:column;
-	text-align:right;
+   display:flex;
+   flex-flow:column;
+   text-align:right;
 }
