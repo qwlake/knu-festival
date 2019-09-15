@@ -23,7 +23,7 @@
     <div class="FT_1 List">
         {% for foodtruck in foodtrucks1 %}
             <div class="detail" onclick = "myFunction({{foodtruck.id}})">
-                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <img class="img" src="{{ foodtruck.ftimage.url }}">
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
                     <p class="space">{{foodtruck.memo}}</p>
@@ -60,7 +60,7 @@
     <div class="FT_2 List">
         {% for foodtruck in foodtrucks2 %}
             <div class="detail">
-                <img class="img" src="{% static "img/foodTruck.png" %}">
+                <img class="img" src="{{ foodtruck.ftimage.url }}">
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
                 </div>
