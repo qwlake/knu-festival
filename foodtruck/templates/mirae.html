@@ -24,7 +24,7 @@
     <section class="Booth_1 List">
         {% for booth in booths1 %}
             <div class="detail">
-                <img class="img" src="{% static "img/booth.png" %}">
+                <img class="img" src="{{ booth.btimage.url }}">
                 <div class="intro">
                     <p class="space">{{booth.name}}</p>
                 </div>
@@ -34,7 +34,7 @@
     <section class="Booth_2 List">
         {% for booth in booths2 %}
             <div class="detail">
-                <img class="img" src="{% static "img/booth.png" %}">
+                <img class="img" src="{{ booth.btimage.url }}">
                 <div class="intro">
                     <p class="space">{{booth.name}}</p>
                 </div>
