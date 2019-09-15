@@ -14,7 +14,8 @@ body {
 
 .login {
     background-color: white;
-    max-width: 80%;
+    width: 80vw;
+    max-width: 400px;
     height: 60%;
     border-radius: 10px;
 }
