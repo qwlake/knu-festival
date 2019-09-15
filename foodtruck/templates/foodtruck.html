@@ -22,10 +22,37 @@
 <div class="FTcontainer">
     <div class="FT_1 List">
         {% for foodtruck in foodtrucks1 %}
-            <div class="detail">
+            <div class="detail" onclick = "myFunction({{foodtruck.id}})">
                 <img class="img" src="{% static "img/foodTruck.png" %}">
                 <div class="intro">
                     <p class="space">{{foodtruck.name}}</p>
+                    <p class="space">{{foodtruck.memo}}</p>
+                    <div class="modal" id="modal{{foodtruck.id}}">
+                        <div class="modal_content">
+                            <div class = "modal_container">
+
+                                    <div class = "modal_info">
+                                        <div class = "info_left">
+                                            <div class="modal_img"> {{foodtruck.image}}
+                                            </div>
+                                        </div>
+                                                <div class = "info_right">
+                                                {{foodtruck.name}}
+                                                </div>
+                                    </div>
+                                                    <div class = "info_sub">
+                                                    {{foodtruck.memo}}
+                                                    </div>
+                                                        <div class = "menu">
+                                                        </div>
+                                                            <div class = "modal_button">
+                                                            <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
+                                                            </div>
+                            </div>
+                        </div>
+                                                                <div class="modal_layer">
+                                                                </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -43,5 +70,20 @@
 </div>
 
 
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script>
+function myFunction(id){
+    console.log('hohohoho')
+     $("#modal" + id).fadeIn();
+}
 
+function deleteFunction(id, event){
+    console.log(event)
+    $("#modal" + id).fadeOut();
+    event.stopPropagation()
+}
+  </script>   
 {% endblock %}
