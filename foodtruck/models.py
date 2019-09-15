@@ -28,5 +28,12 @@ class menu (models.Model):
     foodtruck = models.ForeignKey('FoodTruck', on_delete=models.CASCADE, null=False, related_name='menus')
 
     def __str__(self):
-        return self.foodtruck
+        return self.foodtruck.name
 
+class booth_menu (models.Model):
+    food = models.CharField(max_length=20)
+    price = models.CharField(max_length=20)
+    booth = models.ForeignKey('Booth', on_delete=models.CASCADE, null=False, related_name='menus')
+
+    def __str__(self):
+        return self.foodtruck.name

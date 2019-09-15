@@ -10,14 +10,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
 
 <div class="update">
+ {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'info' %}
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }} 
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }} 
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
   <form method="POST" action="{% url 'foodtruck:foodtruck_update' pk=foodtruck.id %}" enctype="multipart/form-data">
     {% csrf_token %}
     <h4>수정하기</h4>
     <div class="update-body">
       <label>부스 이름</label>
       <input type="text" name="name" value="{{ foodtruck.name }}">
-      <label>부스 소개</label>
-      <textarea  name="memo">{{ foodtruck.memo }}</textarea>
       <label>사진 수정 (사진 수정시만 변경)</label>
       <input type="file" name="image" value="foodtruck.image">
     </div>

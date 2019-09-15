@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+{% endblock %}
+
+{% block contents %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="boardBody fontClass2">
+    <div class="board-header">
+        <p class="title">메뉴</p>
+        <button data-toggle="modal" class="big" data-target="#createModal">새로운 메뉴</button>
+    </div>
+
+     {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'info' %}
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }} 
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }} 
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+    <div class="boards detail-container">
+        {% if foodtruck is not None %}
+        {% for menu in foodtruck.menus.all %}
+        <div class="board-detail">
+            <div class="detail-header">
+                <p>{{menu.food}} <br/>{{menu.price}}원</p>
+                <div class="buttons">
+                    <button id="upBtn{{post.pk}}" onclick="uppost(event, '{{menu.pk}}')" class="btn-addcmt"></button>
+                    <button id="delBtn{{post.pk}}" onclick="delpost(event, '{{menu.pk}}')"></button>
+                </div>
+            </div>
+        </div>
+        <div id="delModal{{menu.pk}}" class="modal">
+            <form action="{% url 'foodtruck:foodtruck_menu_delete' menu.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="delcls{{menu.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>정말로 삭제하시겠습니까?</p>
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div>  
+        <div id="upModal{{menu.pk}}" class="modal">
+            <form action="{% url 'foodtruck:foodtruck_menu_update' menu.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>수정하기</p>
+                        <span class="close" id="upcls{{menu.pk}}">&times;</span>     
+                    </div> 
+                    <input type="text" name="food" maxlength="200" value="{{menu.food}}" id="id_password" placeholder="메뉴 이름">
+                    <input type="text" name="price" maxlength="200" value="{{menu.price}}" id="id_password" placeholder="가격">
+
+                    <button type="submit" class="btn btn-danger">수정</button>
+                </div>
+            </form>
+        </div>                           
+        {% endfor %}
+
+        {% else %}
+        {% for menu in booth.menus.all %}
+        <div class="board-detail">
+            <div class="detail-header">
+                <p>{{menu.food}} <br/>{{menu.price}}원</p>
+                <div class="buttons">
+                    <button id="cmtBtn{{post.pk}}" onclick="uppost(event, '{{menu.pk}}')" class="btn-addcmt"></button>
+                    <button id="delBtn{{post.pk}}" onclick="delpost(event, '{{menu.pk}}')"></button>
+                </div>
+            </div>
+        </div>
+        <div id="delModal{{menu.pk}}" class="modal">
+            <form action="{% url 'foodtruck:booth_menu_delete' menu.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>삭제하기</p>
+                        <span class="close" id="delcls{{menu.pk}}">&times;</span>     
+                    </div>                                                          
+                    <p>정말로 삭제하시겠습니까?</p>
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </div>
+            </form>
+        </div>   
+        <div id="upModal{{menu.pk}}" class="modal">
+            <form action="{% url 'foodtruck:booth_menu_update' menu.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-content delete-body">
+                    <div class="delete-header">
+                        <p>수정하기</p>
+                        <span class="close" id="upcls{{menu.pk}}">&times;</span>     
+                    </div> 
+                    <input type="text" name="food" maxlength="200" value="{{menu.food}}" id="id_password" placeholder="메뉴 이름">
+                    <input type="text" name="price" maxlength="200" value="{{menu.price}}" id="id_password" placeholder="가격">
+
+                    <button type="submit" class="btn btn-danger">수정</button>
+                </div>
+            </form>
+        </div>                           
+        {% endfor %}
+        {% endif %}
+
+        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog create-modal" role="document">
+                        <div class="modal-content create-modal-body">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">새로운 매뉴</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% if foodtruck is not None %}
+                            <form action="{% url 'foodtruck:foodtruck_menu_list' foodtruck.pk %}" method = "POST">
+                            {% else %}
+                            <form action="{% url 'foodtruck:booth_menu_list' booth.pk %}" method = "POST">
+                            {% endif %}
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <p><input type="text" name="food" maxlength="200" required="" id="id_password" placeholder="메뉴 이름"></p>
+                                    <p><input type="text" name="price" maxlength="200" required="" id="id_password" placeholder="가격"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                                    <button type="submit" class="btn btn-primary">작성</button>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <script>
+        function delpost(event, pk){
+                console.log(event)
+                clickmodal = "delModal" + pk;
+                clickbtn = "delBtn" + pk;
+                clickcls = "delcls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+
+        function uppost(event, pk){
+                clickmodal = "upModal" + pk;
+                clickbtn = "upBtn" + pk;
+                clickcls = "upcls"+ pk;
+                var btn = document.getElementById(clickbtn);
+                var modal = document.getElementById(clickmodal);
+                var span = document.getElementById(clickcls);   
+                modal.style.display = "block";
+
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                event.stopPropagation()
+        }
+    </script>
+</div>
+{% endblock %}
