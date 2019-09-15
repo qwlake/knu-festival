@@ -31,19 +31,63 @@
                         <div class="modal_content">
                             <div class = "modal_container">
 
+                                <div class = "modal_info">
+                                    <div class = "info_left">
+                                        <div class="modal_img"> <img src="{{foodtruck.image.url}} ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "modal_menu">
+                                    <table = class ="modal_table">
+                                        <tr>
+                                            {% for menu in foodtruck.menus.all %}
+                                            <td class = "modal_food">{{ menu.food }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                            {% for menu in foodtruck.menus.all %}
+                                            <td>{{ menu.price }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    </table>
+                                </div>
+                                    <div class = "modal_button">
+                                    <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_layer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="FT_2 List">
+        {% for foodtruck in foodtrucks2 %}
+<<<<<<< Updated upstream
+            <div class="detail">
+                <img class="img" src="{{ foodtruck.ftimage.url }}">
+=======
+            <div class="detail" onclick = "myFunction({{foodtruck.id}})">
+                <img class="img" src="{% static "img/foodTruck.png" %}">
+>>>>>>> Stashed changes
+                <div class="intro">
+                    <p class="space">{{foodtruck.name}}</p>
+                    <p class="space">{{foodtruck.memo}}</p>
+                    <div class="modal" id="modal{{foodtruck.id}}">
+                        <div class="modal_content">
+                            <div class = "modal_container">
+
                                     <div class = "modal_info">
                                         <div class = "info_left">
-                                            <div class="modal_img"> {{foodtruck.image}}
+                                            <div class="modal_img"> <img src="{{foodtruck.image.url}} ">
                                             </div>
                                         </div>
-                                                <div class = "info_right">
-                                                {{foodtruck.name}}
-                                                </div>
                                     </div>
-                                                    <div class = "info_sub">
-                                                    {{foodtruck.memo}}
-                                                    </div>
-                                                        <div class = "menu">
+                                                
+                                                        <div class = "modal_menu">
+                                                    
                                                         </div>
                                                             <div class = "modal_button">
                                                             <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
@@ -53,16 +97,6 @@
                                                                 <div class="modal_layer">
                                                                 </div>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="FT_2 List">
-        {% for foodtruck in foodtrucks2 %}
-            <div class="detail">
-                <img class="img" src="{{ foodtruck.ftimage.url }}">
-                <div class="intro">
-                    <p class="space">{{foodtruck.name}}</p>
                 </div>
             </div>
         {% endfor %}        
