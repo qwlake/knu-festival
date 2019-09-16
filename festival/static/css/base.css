@@ -75,6 +75,8 @@ footer {
 
 
 .dropMenu {
+   position: relative;
+   top: 2px;
    margin-left: 20px;
 }
 
