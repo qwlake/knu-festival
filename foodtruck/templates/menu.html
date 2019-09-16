@@ -11,8 +11,13 @@
 
 <div class="boardBody fontClass2">
     <div class="board-header">
-        <p class="title">메뉴</p>
+        {% if foodtruck is not None %}
+        <p class="title">{{foodtruck.name}}</p>
+        {% else %}
+        <p class="title">{{booth.name}}</p>
+        {% endif %}
         <button data-toggle="modal" class="big" data-target="#createModal">새로운 메뉴</button>
+        <button data-toggle="modal" class="small" data-target="#createModal"></button>
     </div>
 
      {% if messages %}

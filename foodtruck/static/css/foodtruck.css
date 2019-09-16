@@ -5,8 +5,12 @@
    font-size: 20px;
 }
 .foodMap{
+   display: block;
    width:100vw;
+   max-width: 1000px;
    height:75vw;
+   max-height: 700px;
+   margin: auto;
    border-radius:20px;
    background-color:#fff0f5;
 }
@@ -24,7 +28,7 @@ button{
    background-color: pink;
    color: white;
    border-radius: 0.7rem;
-   height: 10vw;
+   /* height: 10vw; */
    font-size: 0.9em;
    padding: 1.5vw;
 }
@@ -117,16 +121,17 @@ p{
    background-color:#ffdde6;
    margin: 0 auto;
    text-align:center;
-
+   padding: 10px;
 }
 
 .modal .modal_content {
    width:300px;
-   height:410px;
+   /* height:410px; */
    margin:100px auto;
    padding:10px;
    background-color:#fff5ff;
-   border:2px solid deeppink;   
+   /* border:2px solid deeppink;    */
+   border-radius: 20px;
 }
 
 .modal .modal_layer { 
@@ -147,7 +152,7 @@ p{
 } 
 .modal_content .modal_info{
    width:276px;
-   height:120px;   
+   height:276px;   
    display:block;
    margin-bottom:10px;
 }
@@ -155,14 +160,15 @@ p{
 .modal_content .modal_img{
    float:left;
    width:276px;
-   height:120px;
+   height:276px;
    background-color: white;
    margin-right:20px;
    display:inline-block;
 }
 .modal_img img{
    width:276px;
-   height:120px;
+   height:276px;
+   border-radius: 20px;
 }
 .modal_content .modal_menu{
    width:276px;
