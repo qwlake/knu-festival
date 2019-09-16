@@ -100,3 +100,14 @@
     max-height: 500px;
     background-size: contain;
 }
+
+
+.lineup img{
+    border-radius: 30px;
+}
+
+.timetable {
+    width: 90vw;
+    max-width: 500px;
+    margin: 0 auto;
+}
