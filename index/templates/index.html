@@ -26,12 +26,12 @@
     <div class="empty" id="lineup"></div>
     <h1 class="title">라인업</h1>
     <!-- Slider main container -->
-    <div class="swiper-container">
+    <div class="swiper-container swiper-lineup">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide"><img src="{% static 'img/lineup-wed.png' %}" alt="수요일 라인업" width="100%" height="50%"/></div>
-        <div class="swiper-slide"><img src="{% static 'img/lineup-thu.png' %}" alt="목요일 라인업" width="100%" height="50%"/></div>
+        <div class="swiper-slide"><img class="swiper-image" src="{% static 'img/lineup-wed.png' %}" alt="수요일 라인업" width="100%" height="50%"/></div>
+        <div class="swiper-slide"><img class="swiper-image" src="{% static 'img/lineup-thu.png' %}" alt="목요일 라인업" width="100%" height="50%"/></div>
       </div>
         <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
@@ -43,7 +43,7 @@
     <h1 class="title" id="target">타임테이블</h1>
     <div class="timetable">
       <img src="{% static 'img/timetable-title.png' %}" class="timetableImage" alt="timetable" width="85%" />
-      <div class="swiper-container">
+      <div class="swiper-container swiper-timetable">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
@@ -55,7 +55,11 @@
       <div class="swiper-pagination"></div>
     </div>
     </div>
+    <h6>* 9/16일(월) 총학 제공</h6>
+    <h6>* 상기 내용은 당일 상황에 따라 변경될 수 있습니다.</h6>
   </div>
+
+
   
   <div class="fontWhite contentContainer">
     <div class="empty" id="event"></div>
@@ -131,13 +135,22 @@
   <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
   <script>
     /* swiper */
-    var mySwiper = new Swiper('.swiper-container', {
+    var mySwiper = new Swiper('.swiper-lineup', {
       speed: 400,
       loop: true,
       autoplay: {
         delay: 2000,
       },
     });
+
+    var mySwiper = new Swiper('.swiper-timetable', {
+      speed: 400,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+      },
+    });
+    
 
     var events = new Swiper('.events', {
       slidesPerView: 'auto',

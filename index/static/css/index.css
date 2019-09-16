@@ -100,3 +100,7 @@
     max-height: 500px;
     background-size: contain;
 }
+
+.swiper-image{
+    border-radius: 10px;
+}
