@@ -70,13 +70,13 @@ button{
 
 .detail{
    display:flex;
-   margin-top: 1vh;
+   margin-top: 2vw;
 }
 
 .img{
-   width:6vh;
-   height:6vh;
-   min-width:
+   margin-top: 7px;
+   width:12vw;
+   height:9vw;
 }
 
 .intro{
