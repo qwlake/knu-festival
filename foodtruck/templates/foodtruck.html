@@ -81,6 +81,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% if foodtruck.menus.count != 0 %}
                                 <div class = "modal_menu">
                                     <table class ="modal_table">
                                         <tbody>
@@ -97,12 +98,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                {% endif %}
                                     <div class = "modal_button">
                                     <button type="button" onclick = "deleteFunction({{foodtruck.id}}, event)">닫기</button>
                                     </div>
                             </div>
+                            <div class="modal_layer">
                         </div>
-                        <div class="modal_layer">
                         </div>
                 </div>
             </div>
