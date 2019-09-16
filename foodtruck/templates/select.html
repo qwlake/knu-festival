@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/select.css' %}">
+{% endblock %}
+
+{% block contents %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+
+<div class="select">
+    <div>
+        {% if foodtruck is not None %}
+        <a href="{% url 'foodtruck:foodtruck_update' foodtruck.id %}">내용수정</a>
+        <a href="{% url 'foodtruck:foodtruck_menu_list' foodtruck.id %}">메뉴수정</a>
+        {% else %}
+        <a href="{% url 'foodtruck:booth_update' booth.id %}">내용수정</a>
+        <a href="{% url 'foodtruck:booth_menu_list' booth.id %}">메뉴수정</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
