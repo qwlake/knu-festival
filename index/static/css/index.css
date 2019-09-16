@@ -57,17 +57,20 @@
     padding: 10px;
 }
 
-.event-pagination { 
+.event-pagination, .timetable-pagination { 
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-.events .swiper-pagination-bullet {
+.events .swiper-pagination-bullet,
+.timetables .swiper-pagination-bullet{
     width: 20px;
     height: 20px;
 }
-.events .swiper-pagination-bullet-active { background: hotpink; }
+.events .swiper-pagination-bullet-active,
+.timetables .swiper-pagination-bullet-active
+{ background: hotpink; }
 
 
 .event .main-img {
@@ -110,4 +113,5 @@
     width: 60vw;
     max-width: 500px;
     margin: 0 auto;
+    overflow: hidden;
 }

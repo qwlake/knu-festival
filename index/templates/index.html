@@ -43,7 +43,7 @@
     <h1 class="title" id="target">타임테이블</h1>
     <div class="timetable">
       <img src="{% static 'img/timetable-title.png' %}" class="timetableImage" alt="timetable" width="85%" />
-      <div class="swiper-container">
+      <div class="timetables">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
@@ -52,7 +52,7 @@
         <div class="swiper-slide"><img src="{% static 'img/timetable-thu.png' %}" alt="목요일" width="100%" height="100%"/></div>
       </div>
         <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
+      <div class="timetable-pagination"></div>
     </div>
     </div>
   </div>
@@ -145,6 +145,14 @@
       spaceBetween: 30,
       pagination: {
         el: '.event-pagination',
+        clickable: true,
+      },
+    });
+
+    var events = new Swiper('.timetables', {
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.timetable-pagination',
         clickable: true,
       },
     });

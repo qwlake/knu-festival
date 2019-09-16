@@ -6,9 +6,13 @@
 }
 .foodMap{
    width:100vw;
+   max-width: 1000px;
    height:75vw;
+   max-height: 700px;
    border-radius:20px;
    background-color:#fff0f5;
+   display: block;
+   margin: auto;
 }
 
 .Mapleport{
@@ -24,7 +28,7 @@ button{
    background-color: pink;
    color: white;
    border-radius: 0.7rem;
-   height: 10vw;
+   /* height: 10vw; */
    font-size: 0.9em;
    padding: 1.5vw;
 }
@@ -117,7 +121,7 @@ p{
    background-color:#ffdde6;
    margin: 0 auto;
    text-align:center;
-
+   padding: 10px;
 }
 
 .modal .modal_content {
