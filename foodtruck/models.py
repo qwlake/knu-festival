@@ -36,4 +36,4 @@ class booth_menu (models.Model):
     booth = models.ForeignKey('Booth', on_delete=models.CASCADE, null=False, related_name='menus')
 
     def __str__(self):
-        return self.foodtruck.name
+        return self.booth.name + '/' + self.food
