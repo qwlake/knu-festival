@@ -13,6 +13,11 @@
 <div class="boardBody fontClass2">
     <div class="board-header">
         <p class="title">분실물</p>
+        {% if post.found is True %}
+            <a href="{% url 'lostboard:find' %}">뒤로가기</a>
+        {% else %}
+            <a href="{% url 'lostboard:lost' %}">뒤로가기</a>
+        {% endif %}
     </div>
     <div class="boards detail-container">
         <div class="board-detail">
