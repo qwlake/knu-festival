@@ -104,7 +104,7 @@ def foodtruck_menu_update(request, pk):
         return redirect('foodtruck:foodtruck_menu_list', pk=updated_menu.foodtruck.pk)
     else:
         messages.error(request, '허용되지 않은 접근입니다.')
-        return redirect('foodtruck:foodtruck_menu_list', pk=foodtruck.pk)
+        return redirect('foodtruck:foodtruck_menu_list', pk=updated_menu.foodtruck.pk)
 
 def foodtruck_update(request, pk):
     foodtruck = Foodtruck.objects.get(pk=pk)
