@@ -106,12 +106,13 @@
 
   <div class="fontWhite contentContainer">
     <div class="empty" id="zone"></div>
-    <h1 class="title">강대ZONE</h1>
+    <h1 class="title">무대 앞 혼잡도</h1>
     <div class="zone">
       <div class="progress-wrap">
         <div class="progress-radial progress-{{ percent }}">
           <div class="overlay"><span id="percentage">{{ percent }}%</span></div>
         </div>
+        <p>{% now "j일 H시 기준" %}</p>
       </div>
 
       {% if request.user.is_staff %}

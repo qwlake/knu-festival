@@ -9,7 +9,7 @@ import logging
 
 # 푸드트럭 views.py
 def foodtruck(request):
-    foodtrucks = Foodtruck.objects.all().filter(divi=1)
+    foodtrucks = Foodtruck.objects.all().filter(divi=1).order_by('id')
     if len(foodtrucks)%2 == 0:
         foodtrucks1 = foodtrucks[:int(len(foodtrucks)/2)]
         foodtrucks2 = foodtrucks[int(len(foodtrucks)/2):]
@@ -20,13 +20,13 @@ def foodtruck(request):
     return render(request,'foodtruck.html',{'foodtrucks1': foodtrucks1, 'foodtrucks2': foodtrucks2})
 
 def haminseop(request):
-    foodtrucks = Foodtruck.objects.all().filter(divi=2)
-    booths = Booth.objects.all().filter(divi=2)
+    foodtrucks = Foodtruck.objects.all().filter(divi=2).order_by('id')
+    booths = Booth.objects.all().filter(divi=2).order_by('id')
     # print(foodtrucks.name)
     return render(request,'haminseop.html',{'foodtrucks': foodtrucks, 'booths': booths})
 
 def mirae(request):
-    booths = Booth.objects.all().filter(divi=3)
+    booths = Booth.objects.all().filter(divi=3).order_by(id)
     if len(booths)%2 == 0:
         booths1 = booths[:int(len(booths)/2)]
         booths2 = booths[int(len(booths)/2):]

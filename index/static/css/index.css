@@ -104,3 +104,9 @@
 .swiper-image{
     border-radius: 10px;
 }
+
+.zone p {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
