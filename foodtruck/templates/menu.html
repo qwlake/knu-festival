@@ -26,6 +26,19 @@
                         <div class="alert alert-success alert-dismissible">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             {{ message }} 
+                            {% if foodtruck is not None %}
+                                {% if foodtruck.divi == 1 %}
+                                <a href="{% url 'foodtruck:foodtruck' %}" style="color: deeppink !important;"><br/>변경 내역 확인하기 (클릭)</a>
+                                {% else %}
+                                <a href="{% url 'foodtruck:haminseop' %}" style="color: deeppink !important;"><br/>변경 내역 확인하기 (클릭)</a>
+                                {% endif %}
+                            {% else %}
+                                {% if booth.divi == 2 %}
+                                <a href="{% url 'foodtruck:haminseop' %}" style="color: deeppink !important;"><br/>변경 내역 확인하기 (클릭)</a>
+                                 {% else %}
+                                <a href="{% url 'foodtruck:mirae' %}" style="color: deeppink !important;"><br/>변경 내역 확인하기 (클릭)</a>
+                                {% endif %}
+                            {% endif %}
                         </div>
                     {% else %}
                         <div class="alert alert-danger alert-dismissible">
