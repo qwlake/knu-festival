@@ -1,11 +1,10 @@
-
 {% extends 'base.html' %}
 
 
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/foodtruck.css' %}">
+<link rel="stylesheet" href="{% static 'css/foodtruck.css' %}">
 {% endblock %}
 
 {% block contents %}
@@ -23,113 +22,112 @@
 <div class="FTcontainer upperDiv">
     <section class="Booth_1 List">
         {% for booth in booths1 %}
-            <div class="detail" onclick = "booth_myFunction({{booth.id}})">
+        <div class="detail" onclick="booth_myFunction({{booth.id}})">
             {% if booth.btimage %}
-                <img class="img" src="{{ booth.btimage.url }}">
+            <img class="img" src="{{ booth.btimage.url }}">
             {% endif %}
-                <div class="intro">
-                    <p class="space">{{booth.name}}</p>
-                    <div class="modal" id="booth_modal{{booth.id}}">
-                        <div class="modal_content">
-                            <div class = "modal_container">
-                                    <div class = "modal_info">
-                                        <div class = "info_left">
-                                            <div class="modal_img"> {% if booth.image %}<img src="{{booth.image.url}} ">{% endif %}
-                                            </div>
-                                        </div>
+            <div class="intro">
+                <p class="space">{{booth.name}}</p>
+                <div class="modal" id="booth_modal{{booth.id}}">
+                    <div class="modal_content">
+                        <div class="modal_container">
+                            <div class="modal_info">
+                                <div class="info_left">
+                                    <div class="modal_img"> {% if booth.image %}<img
+                                            src="{{booth.image.url}} ">{% endif %}
                                     </div>
                                 </div>
-                                {% if booth.menus.count != 0 %}
-                                <div class = "modal_menu">
-                                    <table class ="modal_table">
-                                        <tbody>
-                                        <tr class = "tr1">
-                                            {% for menu in booth.menus.all %}
-                                            <td class = "modal_food">{{ menu.food }}</td>
-                                            {% endfor %}
-                                        </tr>
-                                        <tr class = "tr2">
-                                            {% for menu in booth.menus.all %}
-                                            <td>{{ menu.price }}</td>
-                                            {% endfor %}
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                {% endif %}
-                                    <div class = "modal_button">
-                                    <button type="button" onclick = "booth_deleteFunction({{booth.id}}, event)">닫기</button>
-                                    </div>
-                                    <div class="modal_layer">
-                                    </div>
                             </div>
                         </div>
+                        {% if booth.menus.count != 0 %}
+                        <div class="modal_menu">
+                            <table class="modal_table">
+                                <tbody>
+                                    <tr class="tr1">
+                                        {% for menu in booth.menus.all %}
+                                        <td class="modal_food">{{ menu.food }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr class="tr2">
+                                        {% for menu in booth.menus.all %}
+                                        <td>{{ menu.price }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                        <div class="modal_button">
+                            <button type="button" onclick="booth_deleteFunction({{booth.id}}, event)">닫기</button>
+                        </div>
+                        <div class="modal_layer">
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </section>
     <section class="Booth_2 List">
         {% for booth in booths2 %}
-            <div class="detail" onclick = "booth_myFunction({{booth.id}})">
+        <div class="detail" onclick="booth_myFunction({{booth.id}})">
             {% if booth.btimage %}
-                <img class="img" src="{{ booth.btimage.url }}">
+            <img class="img" src="{{ booth.btimage.url }}">
             {% endif %}
-                <div class="intro">
-                    <p class="space">{{booth.name}}</p>
-                    <div class="modal" id="booth_modal{{booth.id}}">
-                        <div class="modal_content">
-                            <div class = "modal_container">
-                                    <div class = "modal_info">
-                                        <div class = "info_left">
-                                            <div class="modal_img"> {% if booth.image %}<img src="{{booth.image.url}} ">{% endif %}
-                                            </div>
-                                        </div>
+            <div class="intro">
+                <p class="space">{{booth.name}}</p>
+                <div class="modal" id="booth_modal{{booth.id}}">
+                    <div class="modal_content">
+                        <div class="modal_container">
+                            <div class="modal_info">
+                                <div class="info_left">
+                                    <div class="modal_img"> {% if booth.image %}<img
+                                            src="{{booth.image.url}} ">{% endif %}
                                     </div>
                                 </div>
-                                {% if booth.menus.count != 0 %}
-                                <div class = "modal_menu">
-                                    <table class ="modal_table">
-                                        <tbody>
-                                        <tr class = "tr1">
-                                            {% for menu in booth.menus.all %}
-                                            <td class = "modal_food">{{ menu.food }}</td>
-                                            {% endfor %}
-                                        </tr>
-                                        <tr class = "tr2">
-                                            {% for menu in booth.menus.all %}
-                                            <td>{{ menu.price }}</td>
-                                            {% endfor %}
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                {% endif %}
-                                    <div class = "modal_button">
-                                    <button type="button" onclick = "booth_deleteFunction({{booth.id}}, event)">닫기</button>
-                                    </div>
-                                    <div class="modal_layer">
-                                    </div>
                             </div>
                         </div>
-                </div>
+                        {% if booth.menus.count != 0 %}
+                        <div class="modal_menu">
+                            <table class="modal_table">
+                                <tbody>
+                                    <tr class="tr1">
+                                        {% for menu in booth.menus.all %}
+                                        <td class="modal_food">{{ menu.food }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr class="tr2">
+                                        {% for menu in booth.menus.all %}
+                                        <td>{{ menu.price }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                        <div class="modal_button">
+                            <button type="button" onclick="booth_deleteFunction({{booth.id}}, event)">닫기</button>
+                        </div>
+                        <div class="modal_layer">
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </section>
 </div>
 
-<script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
-  <script>
-function booth_myFunction(id){
-     $("#booth_modal" + id).fadeIn();
-}
+<script>
+    function booth_myFunction(id) {
+        $("#booth_modal" + id).fadeIn();
+    }
 
-function booth_deleteFunction(id, event){
-    $("#booth_modal" + id).fadeOut();
-    event.stopPropagation()
-}
-</script>   
+    function booth_deleteFunction(id, event) {
+        $("#booth_modal" + id).fadeOut();
+        event.stopPropagation()
+    }
+</script>
 {% endblock %}
