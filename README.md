@@ -1,35 +1,29 @@
-apps
+# KNU Festival - 머동머동
+멋쟁이 사자처럼 7기 학생들과 운영진이 만든 강원대학교 2019년 대동제 사이트<br>
+만든이: [qwlake](https://github.com/qwlake), [chap95](https://github.com/chap95), [ClaireKi](https://github.com/ClaireKi), [Dohyun Park](https://github.com/freesin), [inbae12](https://github.com/inbae12), [DONGWON KIM](https://github.com/lunacircle4), [paekjiyeon](https://github.com/paekjiyeon), [pannchat](https://github.com/pannchat), [SMJin](https://github.com/SMJin)<br><br>
+![index1](./sample-img/knufestival1.png)
+![index2](./sample-img/knufestival2.png)
+![index3](./sample-img/knufestival3.png)
+
+# Apps
 1. 분실물 게시판
 2. 술 친구 게시판
 3. 푸드트럭
 4. 강대총학 문의 게시판
 5. 인덱스
 >타임 테이블,  라인업,  강대존
-  
 
-최신 작업내용(준혁) :  
-  navbar에 각각 app 링크  
-  각 app에 templates 폴더 생성후 html 파일 생성  
-  각 app 에 urls과 views 수정  
-  navbar 색상변경 및 부트스트랩 기능 몇 가지 삭제
-  
+# Environments
+```
+Windows or IOS
+Python 3.6+
+Django 2.1
+```
 
-가상환경  
-
-    myVenv, .env, .env, .venv, env/, venv/, ENV/
-    
-gitignore에 추가해 놓았음
-  
-
-### 프로젝트 구조
-  
-    ├── README.md
-    ├── db.sqlite3
-    ├── festival
-    ├── foodtruck
-    ├── friendboard
-    ├── index
-    ├── lostboard
-    ├── qnaknuch
-    ├── manage.py
-    └── myVenv
+# Quick Start
+```
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
