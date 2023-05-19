@@ -1,6 +1,6 @@
 # KNU Festival - 머동머동
 멋쟁이 사자처럼 7기 학생들과 운영진이 만든 강원대학교 2019년 대동제 사이트<br>
-만든이: [qwlake](https://github.com/qwlake), [chap95](https://github.com/chap95), [ClaireKi](https://github.com/ClaireKi), [Dohyun Park](https://github.com/freesin), [inbae12](https://github.com/inbae12), [DONGWON KIM](https://github.com/lunacircle4), [paekjiyeon](https://github.com/delay-100), [pannchat](https://github.com/pannchat), [SMJin](https://github.com/SMJin)<br><br>
+만든이: [qwlake](https://github.com/qwlake), [chap95](https://github.com/chap95), [ClaireKi](https://github.com/ClaireKi), [Dohyun Park](https://github.com/freesin), [inbae12](https://github.com/inbae12), [DONGWON KIM](https://github.com/lunacircle4), [delay-100](https://github.com/delay-100), [pannchat](https://github.com/pannchat), [SMJin](https://github.com/SMJin)<br><br>
 ![image](https://user-images.githubusercontent.com/41278416/82415398-6dca0100-9ab3-11ea-834a-dc3dcca00d8e.png)
 ![image](https://user-images.githubusercontent.com/41278416/82415571-ad90e880-9ab3-11ea-88ec-a7aecc10a8ef.png)
 ![image](https://user-images.githubusercontent.com/41278416/82415577-b08bd900-9ab3-11ea-912b-7751e63d9bbe.png)
